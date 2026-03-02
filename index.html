@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-US Entrepreneur Bootcamp | YSEALI 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: rgba(20, 20, 30, 0.6);
+            --orange: #ff6b35;
+            --cyan: #00d4ff;
+            --pink: #ff3366;
+            --gold: #ffd23f;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border: rgba(255, 255, 255, 0.1);
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 60%, rgba(255, 51, 102, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at 60% 30%, rgba(255, 210, 63, 0.05) 0%, transparent 40%);
+            animation: gradientMove 20s ease-in-out infinite;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(2%, 2%) rotate(1deg); }
+            50% { transform: translate(-1%, 3%) rotate(-1deg); }
+            75% { transform: translate(3%, -1%) rotate(0.5deg); }
+        }
+
+        /* Noise overlay */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 0;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--orange), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--orange), var(--pink));
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .lang-toggle {
+            display: flex;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 4px;
+            gap: 4px;
+        }
+
+        .mobile-lang-toggle {
+            display: none;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 4px;
+            gap: 4px;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+
+        .mobile-lang-toggle .lang-btn {
+            padding: 6px 14px;
+            font-size: 0.8rem;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .lang-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--orange), var(--pink));
+            color: white;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-live {
+            width: 8px;
+            height: 8px;
+            background: var(--cyan);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--orange), var(--pink), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--orange), var(--pink));
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--cyan);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--text-muted), transparent);
+            animation: scrollBounce 2s infinite;
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(10px); opacity: 0.5; }
+        }
+
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--orange);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 60px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--orange), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 107, 53, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .schedule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 51, 102, 0.1));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .target-audience {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .audience-tag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .audience-tag span {
+            color: var(--gold);
+        }
+
+        .schedule-days {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .day-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(20px);
+        }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .day-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--orange), var(--pink));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .day-info h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .day-info span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .schedule-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-number {
+            width: 28px;
+            height: 28px;
+            background: var(--glass);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--cyan);
+            flex-shrink: 0;
+        }
+
+        .item-content h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .item-content p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .team-grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px 24px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+
+        .team-card:hover::before {
+            opacity: 1;
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--orange), var(--pink));
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .team-avatar-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            position: relative;
+            padding: 3px;
+            background: linear-gradient(135deg, var(--orange), var(--pink), var(--cyan));
+        }
+
+        .team-avatar-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--bg-dark);
+        }
+
+        .team-flag {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            font-size: 1.5rem;
+            background: var(--bg-dark);
+            border-radius: 50%;
+            padding: 4px;
+        }
+
+        .team-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            font-size: 0.8rem;
+            color: var(--cyan);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .team-tagline {
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .team-bio {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .team-linkedin {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .team-linkedin:hover {
+            color: var(--cyan);
+        }
+
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .speakers-grid-new {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .tentative-badge {
+            display: inline-block;
+            background: rgba(255, 210, 63, 0.15);
+            color: var(--gold);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+
+        .speaker-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .speaker-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .speaker-card-new {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px;
+            text-align: center;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .speaker-card-new:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 212, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .speaker-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--cyan), var(--pink));
+        }
+
+        .speaker-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--bg-dark);
+        }
+
+        .speaker-card-new h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .speaker-title {
+            font-size: 0.85rem;
+            color: var(--cyan);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .speaker-tagline {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .linkedin-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-decoration: none;
+            padding: 6px 12px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            margin-top: 4px;
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+        }
+
+        .linkedin-link:hover {
+            color: var(--cyan);
+            border-color: var(--cyan);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .linkedin-link svg {
+            flex-shrink: 0;
+        }
+
+        /* Who Is This For Section */
+        .who-section {
+            background: linear-gradient(180deg, transparent 0%, rgba(255, 107, 53, 0.03) 50%, transparent 100%);
+        }
+
+        .who-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .who-main {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+        }
+
+        .serious-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 51, 102, 0.2));
+            border: 1px solid rgba(255, 107, 53, 0.4);
+            color: var(--orange);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .who-main h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .who-main > p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .not-for-box {
+            background: rgba(255, 51, 102, 0.08);
+            border: 1px solid rgba(255, 51, 102, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .not-for-box h4 {
+            color: var(--pink);
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        .not-for-box ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .not-for-box li {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .not-for-box li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--pink);
+        }
+
+        .who-requirements {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(20px);
+        }
+
+        .who-requirements h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--cyan);
+        }
+
+        .requirement-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .requirement-item:last-child {
+            border-bottom: none;
+        }
+
+        .req-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .requirement-item strong {
+            display: block;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .requirement-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .post-program {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 210, 63, 0.1));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 20px;
+            padding: 32px;
+        }
+
+        .post-program-content {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        .post-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .post-program h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--gold);
+        }
+
+        .post-program p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .speaker-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--cyan), var(--pink));
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .speaker-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .speaker-card span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .partnership-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .partnership-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+        }
+
+        .partnership-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .partnership-list {
+            list-style: none;
+        }
+
+        .partnership-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .partnership-list li:last-child {
+            border-bottom: none;
+        }
+
+        .partnership-list .icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .partnership-list .text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .partnership-list .text strong {
+            color: var(--text-primary);
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .stat-box {
+            flex: 1;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-box .value {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .stat-box .label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 160px 0;
+        }
+
+        .cta-section .section-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 60px 0 40px;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-partners {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+            opacity: 0.6;
+        }
+
+        .footer-partners span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer-link {
+            color: var(--cyan);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 24px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        @media (max-width: 1024px) {
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-grid-3 { grid-template-columns: repeat(3, 1fr); }
+            .speakers-grid { grid-template-columns: repeat(3, 1fr); }
+            .speakers-grid-new { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu { display: flex; }
+            .nav-right { gap: 12px; }
+            .lang-toggle { display: none; }
+            .mobile-lang-toggle { display: flex; }
+            .nav-cta { padding: 8px 16px; font-size: 0.8rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-stats { gap: 24px; }
+            .about-content { grid-template-columns: 1fr; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .who-grid { grid-template-columns: 1fr; }
+            .post-program-content { flex-direction: column; text-align: center; }
+            .schedule-days { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
+            .team-grid-3 { grid-template-columns: 1fr; max-width: 100%; }
+            .speakers-grid { grid-template-columns: repeat(2, 1fr); }
+            .speakers-grid-new { grid-template-columns: 1fr; }
+            .partnership-grid { grid-template-columns: 1fr; }
+            .scroll-indicator { display: none; }
+            .tentative-badge { display: block; margin-top: 12px; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            section { padding: 80px 0; }
+            .hero-buttons { flex-direction: column; }
+            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+            .target-audience { flex-direction: column; gap: 12px; }
+            .speakers-grid { grid-template-columns: 1fr; }
+            .stats-row { flex-direction: column; }
+            .hero h1 { font-size: 2rem; }
+            .hero-stats { flex-wrap: wrap; }
+            .stat { flex: 0 0 45%; }
+            .section-title { font-size: 1.8rem; }
+            .nav-cta { display: none; }
+            .nav-right { gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="noise"></div>
+
+    <nav>
+        <div class="container">
+            <div class="logo">GO-US</div>
+            <ul class="nav-links">
+                <li><a href="#about" data-en="About" data-vi="Giới thiệu">About</a></li>
+                <li><a href="#who" data-en="Who" data-vi="Đối tượng">Who</a></li>
+                <li><a href="#schedule" data-en="Schedule" data-vi="Lịch trình">Schedule</a></li>
+                <li><a href="#team" data-en="Team" data-vi="Đội ngũ">Team</a></li>
+                <li><a href="#partners" data-en="Partners" data-vi="Đối tác">Partners</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="lang-toggle">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="vi">VI</button>
+                </div>
+                <a href="https://lu.ma/bkls5m3a" target="_blank" class="nav-cta" data-en="Apply Now" data-vi="Đăng ký">Apply Now</a>
+            </div>
+            <div class="mobile-menu"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="mobile-lang-toggle">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="vi">VI</button>
+                </div>
+                <div class="badge reveal">
+                    <span class="badge-live"></span>
+                    <span data-en="🇻🇳 → 🇺🇸 YSEALI Reciprocal Exchange 2025" data-vi="🇻🇳 → 🇺🇸 Chương trình Trao đổi YSEALI 2025">🇻🇳 → 🇺🇸 YSEALI Reciprocal Exchange 2025</span>
+                </div>
+                <h1 class="reveal reveal-delay-1">
+                    <span class="gradient">GO-US</span><br><span data-en="Entrepreneur" data-vi="Khởi nghiệp">Entrepreneur</span><br>Bootcamp
+                </h1>
+                <p class="reveal reveal-delay-2" data-en="A 2-day intensive workshop helping Vietnamese youth take local products global. Backed by U.S. Department of State." data-vi="Workshop 2 ngày dành cho các bạn trẻ Việt Nam muốn đưa sản phẩm ra thị trường Mỹ. Tài trợ bởi Bộ Ngoại giao Hoa Kỳ.">
+                    A 2-day intensive workshop helping Vietnamese youth take local products global. 
+                    Backed by U.S. Department of State.
+                </p>
+                <div class="hero-buttons reveal reveal-delay-3">
+                    <a href="https://lu.ma/bkls5m3a" target="_blank" class="btn-primary">
+                        <span data-en="Join the Bootcamp" data-vi="Tham gia ngay">Join the Bootcamp</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#about" class="btn-secondary" data-en="Learn More" data-vi="Tìm hiểu thêm">Learn More</a>
+                </div>
+                <div class="hero-stats reveal reveal-delay-4">
+                    <div class="stat"><span class="stat-value">2</span><span class="stat-label" data-en="Days" data-vi="Ngày">Days</span></div>
+                    <div class="stat"><span class="stat-value">30+</span><span class="stat-label" data-en="Participants" data-vi="Người tham gia">Participants</span></div>
+                    <div class="stat"><span class="stat-value">5+</span><span class="stat-label" data-en="Expert Mentors" data-vi="Chuyên gia">Expert Mentors</span></div>
+                    <div class="stat"><span class="stat-value">1</span><span class="stat-label" data-en="Goal: US Market" data-vi="Mục tiêu: Thị trường Mỹ">Goal: US Market</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" data-en="Scroll" data-vi="Cuộn xuống">Scroll</div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <span class="section-label reveal" data-en="About the Program" data-vi="Về chương trình">About the Program</span>
+                    <h2 class="section-title reveal reveal-delay-1" data-en="What is Go-US?" data-vi="Go-US là gì?">What is Go-US?</h2>
+                    <p class="reveal reveal-delay-2" data-en="Go-US Entrepreneur Bootcamp is a 2-day intensive workshop funded by the <strong>YSEALI Reciprocal Exchange Program</strong>, sponsored by the U.S. Department of State." data-vi="Go-US Entrepreneur Bootcamp là workshop 2 ngày được tài trợ bởi <strong>Chương trình Trao đổi YSEALI</strong> từ Bộ Ngoại giao Hoa Kỳ.">
+                        Go-US Entrepreneur Bootcamp is a 2-day intensive workshop funded by the 
+                        <strong>YSEALI Reciprocal Exchange Program</strong>, sponsored by the U.S. Department of State.
+                    </p>
+                    <p class="reveal reveal-delay-3" data-en="We're bringing an American entrepreneur to Vietnam to share real insights about entering the US market — consumer behaviors, go-to-market strategies, and what it actually takes to succeed." data-vi="Chúng tôi mời doanh nhân Mỹ đến Việt Nam chia sẻ kinh nghiệm thực tế về thị trường Mỹ — hành vi người tiêu dùng, chiến lược go-to-market, và những gì thực sự cần để thành công.">
+                        We're bringing an American entrepreneur to Vietnam to share real insights 
+                        about entering the US market — consumer behaviors, go-to-market strategies, and what it actually takes to succeed.
+                    </p>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-card reveal"><div class="feature-icon">🎯</div><h3 data-en="US Market Deep-Dive" data-vi="Hiểu sâu thị trường Mỹ">US Market Deep-Dive</h3><p data-en="Understand consumer behaviors, regional differences, and entry strategies" data-vi="Hiểu hành vi người tiêu dùng, sự khác biệt vùng miền và chiến lược thâm nhập">Understand consumer behaviors, regional differences, and entry strategies</p></div>
+                    <div class="feature-card reveal reveal-delay-1"><div class="feature-icon">🚀</div><h3 data-en="Go-to-Market Playbook" data-vi="Chiến lược Go-to-Market">Go-to-Market Playbook</h3><p data-en="Social media (TikTok, Instagram, UGC), LinkedIn personal branding, partnerships, community building, building in public, sales process & traditional channels" data-vi="Social media (TikTok, Instagram, UGC), xây dựng thương hiệu cá nhân trên LinkedIn, hợp tác, xây dựng cộng đồng, building in public, quy trình sales">Social media (TikTok, Instagram, UGC), LinkedIn personal branding, partnerships, community building, building in public, sales process & traditional channels</p></div>
+                    <div class="feature-card reveal reveal-delay-2"><div class="feature-icon">🏆</div><h3 data-en="Pitch Competition" data-vi="Thi thuyết trình">Pitch Competition</h3><p data-en="Present your US market strategy and get feedback from experts" data-vi="Trình bày chiến lược thâm nhập thị trường Mỹ và nhận phản hồi từ chuyên gia">Present your US market strategy and get feedback from experts</p></div>
+                    <div class="feature-card reveal reveal-delay-3"><div class="feature-icon">🤝</div><h3 data-en="Network & Connect" data-vi="Kết nối & Networking">Network & Connect</h3><p data-en="Meet founders who've done it, plus like-minded young entrepreneurs" data-vi="Gặp gỡ những founder đã thành công và các bạn trẻ khởi nghiệp cùng chí hướng">Meet founders who've done it, plus like-minded young entrepreneurs</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Is This For Section -->
+    <section id="who" class="who-section">
+        <div class="container">
+            <span class="section-label reveal" data-en="Selection Process" data-vi="Quy trình tuyển chọn">Selection Process</span>
+            <h2 class="section-title reveal reveal-delay-1" data-en="Who Is This For?" data-vi="Ai nên tham gia?">Who Is This For?</h2>
+            <p class="section-subtitle reveal reveal-delay-2" data-en="This isn't another certificate program. This is for founders who are <strong>serious about building real businesses.</strong>" data-vi="Đây không phải chương trình lấy chứng chỉ. Đây là chương trình dành cho những founder <strong>nghiêm túc xây dựng doanh nghiệp thực sự.</strong>">This isn't another certificate program. This is for founders who are <strong>serious about building real businesses.</strong></p>
+
+            <div class="who-grid">
+                <div class="who-main reveal">
+                    <div class="serious-badge" data-en="🎯 Highly Selective" data-vi="🎯 Tuyển chọn gắt gao">🎯 Highly Selective</div>
+                    <h3 data-en="30 Hand-Selected Young Entrepreneurs" data-vi="30 Founder trẻ được tuyển chọn kỹ lưỡng">30 Hand-Selected Young Entrepreneurs</h3>
+                    <p data-en="We're sourcing from <strong>1,000+ top students</strong> across Vietnam's leading universities to select only <strong>30 serious young founders</strong> who are ready to go global." data-vi="Chúng tôi sàng lọc từ <strong>1,000+ sinh viên xuất sắc</strong> tại các trường đại học hàng đầu Việt Nam để chọn ra <strong>30 founder trẻ nghiêm túc</strong> sẵn sàng vươn ra quốc tế.">We're sourcing from <strong>1,000+ top students</strong> across Vietnam's leading universities to select only <strong>30 serious young founders</strong> who are ready to go global.</p>
+                    
+                    <div class="not-for-box">
+                        <h4 data-en="❌ This is NOT for you if:" data-vi="❌ Chương trình KHÔNG phù hợp nếu bạn:">❌ This is NOT for you if:</h4>
+                        <ul>
+                            <li data-en="You're looking for certificates or prizes" data-vi="Chỉ muốn lấy chứng chỉ hoặc giải thưởng">You're looking for certificates or prizes</li>
+                            <li data-en='You want to "explore" entrepreneurship' data-vi='Muốn "tìm hiểu" khởi nghiệp cho vui'>You want to "explore" entrepreneurship</li>
+                            <li data-en="You don't have a product idea yet" data-vi="Chưa có ý tưởng sản phẩm cụ thể">You don't have a product idea yet</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="who-requirements reveal reveal-delay-1">
+                    <h4 data-en="✅ Ideal Participants" data-vi="✅ Đối tượng phù hợp">✅ Ideal Participants</h4>
+                    <div class="requirement-item">
+                        <span class="req-icon">🚀</span>
+                        <div>
+                            <strong data-en="Already Launched" data-vi="Đã ra mắt sản phẩm">Already Launched</strong>
+                            <p data-en="You've shipped a product and are getting real users" data-vi="Bạn đã có sản phẩm và đang có người dùng thực">You've shipped a product and are getting real users</p>
+                        </div>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="req-icon">🔧</span>
+                        <div>
+                            <strong data-en="Building Now" data-vi="Đang xây dựng">Building Now</strong>
+                            <p data-en="You're actively working on a product with your team" data-vi="Bạn đang tích cực phát triển sản phẩm cùng team">You're actively working on a product with your team</p>
+                        </div>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="req-icon">📅</span>
+                        <div>
+                            <strong data-en="Launching Soon" data-vi="Sắp ra mắt">Launching Soon</strong>
+                            <p data-en="You have a clear product and launch timeline" data-vi="Bạn có sản phẩm rõ ràng và timeline ra mắt cụ thể">You have a clear product and launch timeline</p>
+                        </div>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="req-icon">🌏</span>
+                        <div>
+                            <strong data-en="Global Ambition" data-vi="Tham vọng quốc tế">Global Ambition</strong>
+                            <p data-en="You want to expand beyond Vietnam's borders" data-vi="Bạn muốn đưa sản phẩm ra khỏi biên giới Việt Nam">You want to expand beyond Vietnam's borders</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-program reveal">
+                <div class="post-program-content">
+                    <div class="post-icon">💬</div>
+                    <div>
+                        <h4 data-en="Post-Program Community" data-vi="Cộng đồng sau chương trình">Post-Program Community</h4>
+                        <p data-en="After the bootcamp, you'll join an <strong>exclusive alumni group chat</strong> to maintain connections, share wins, get feedback, and support each other as you grow your businesses globally. The relationships don't end when the event does." data-vi="Sau bootcamp, bạn sẽ tham gia <strong>group chat alumni độc quyền</strong> để duy trì kết nối, chia sẻ thành công, nhận feedback và hỗ trợ nhau phát triển ra quốc tế. Mối quan hệ không kết thúc khi sự kiện kết thúc.">After the bootcamp, you'll join an <strong>exclusive alumni group chat</strong> to maintain connections, share wins, get feedback, and support each other as you grow your businesses globally. The relationships don't end when the event does.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule">
+        <div class="container">
+            <div class="schedule-header">
+                <div>
+                    <span class="section-label reveal" data-en="Event Schedule" data-vi="Lịch trình sự kiện">Event Schedule</span>
+                    <h2 class="section-title reveal reveal-delay-1" data-en="2 Days of Learning" data-vi="2 Ngày học tập chuyên sâu">2 Days of Learning</h2>
+                </div>
+                <div class="location-badge reveal reveal-delay-2">📍 Ho Chi Minh City • <span data-en="April 11-12, 2025" data-vi="11-12 Tháng 4, 2025">April 11-12, 2025</span></div>
+            </div>
+
+            <div class="target-audience reveal">
+                <div class="audience-tag"><span>👤</span> <span data-en="Under 30 years old" data-vi="Dưới 30 tuổi">Under 30 years old</span></div>
+                <div class="audience-tag"><span>🎓</span> <span data-en="Students & Young Professionals" data-vi="Sinh viên & Người đi làm trẻ">Students & Young Professionals</span></div>
+                <div class="audience-tag"><span>🌐</span> <span data-en="All Industries" data-vi="Mọi ngành nghề">All Industries</span></div>
+                <div class="audience-tag"><span>💡</span> <span data-en="Must have a product/idea in mind" data-vi="Phải có sản phẩm/ý tưởng cụ thể">Must have a product/idea in mind</span></div>
+            </div>
+
+            <div class="schedule-days">
+                <div class="day-card reveal">
+                    <div class="day-header">
+                        <div class="day-number">01</div>
+                        <div class="day-info"><h3 data-en="Learn & Strategize" data-vi="Học hỏi & Xây dựng chiến lược">Learn & Strategize</h3><span data-en="Saturday, April 11" data-vi="Thứ Bảy, 11 Tháng 4">Saturday, April 11</span></div>
+                    </div>
+                    <div class="schedule-item"><div class="item-number">1</div><div class="item-content"><h4 data-en="Understanding the US Market" data-vi="Hiểu thị trường Mỹ">Understanding the US Market</h4><p data-en="Consumer behaviors, market dynamics, regional differences across states" data-vi="Hành vi người tiêu dùng, động lực thị trường, khác biệt vùng miền giữa các tiểu bang">Consumer behaviors, market dynamics, regional differences across states</p></div></div>
+                    <div class="schedule-item"><div class="item-number">2</div><div class="item-content"><h4 data-en="Testing Ideas in the US" data-vi="Kiểm chứng ý tưởng tại thị trường Mỹ">Testing Ideas in the US</h4><p data-en="How to validate and assess product-market fit for American consumers" data-vi="Cách validate và đánh giá product-market fit cho người tiêu dùng Mỹ">How to validate and assess product-market fit for American consumers</p></div></div>
+                    <div class="schedule-item"><div class="item-number">3</div><div class="item-content"><h4 data-en="Go-to-Market Strategy" data-vi="Chiến lược Go-to-Market">Go-to-Market Strategy</h4><p data-en="Social media (TikTok, Instagram, UGC), LinkedIn personal branding, partnerships, community building, building in public, sales process" data-vi="Social media (TikTok, Instagram, UGC), xây dựng thương hiệu cá nhân LinkedIn, hợp tác, xây dựng cộng đồng, building in public, quy trình sales">Social media (TikTok, Instagram, UGC), LinkedIn personal branding, partnerships, community building, building in public, sales process</p></div></div>
+                    <div class="schedule-item"><div class="item-number">4</div><div class="item-content"><h4 data-en="Panel: Local → US Market" data-vi="Toạ đàm: Từ Việt Nam → Thị trường Mỹ">Panel: Local → US Market</h4><p data-en="Real stories from Vietnamese founders who've expanded to the US" data-vi="Câu chuyện thực tế từ các founder Việt Nam đã mở rộng sang Mỹ">Real stories from Vietnamese founders who've expanded to the US</p></div></div>
+                    <div class="schedule-item"><div class="item-number">5</div><div class="item-content"><h4 data-en="Team Formation" data-vi="Thành lập nhóm">Team Formation</h4><p data-en="Form teams for Day 2 pitch competition" data-vi="Thành lập nhóm cho phần thi pitch Ngày 2">Form teams for Day 2 pitch competition</p></div></div>
+                </div>
+
+                <div class="day-card reveal reveal-delay-1">
+                    <div class="day-header">
+                        <div class="day-number">02</div>
+                        <div class="day-info"><h3 data-en="Build & Pitch" data-vi="Xây dựng & Thuyết trình">Build & Pitch</h3><span data-en="Sunday, April 12" data-vi="Chủ Nhật, 12 Tháng 4">Sunday, April 12</span></div>
+                    </div>
+                    <div class="schedule-item"><div class="item-number">1</div><div class="item-content"><h4 data-en="Workshop Time" data-vi="Thời gian workshop">Workshop Time</h4><p data-en="Teams develop go-to-market strategy for their chosen local product" data-vi="Các nhóm phát triển chiến lược go-to-market cho sản phẩm địa phương đã chọn">Teams develop go-to-market strategy for their chosen local product</p></div></div>
+                    <div class="schedule-item"><div class="item-number">2</div><div class="item-content"><h4 data-en="Mentorship Rounds" data-vi="Phiên mentoring">Mentorship Rounds</h4><p data-en="1-on-1 feedback sessions with speakers and organizers" data-vi="Phiên feedback 1-1 với diễn giả và ban tổ chức">1-on-1 feedback sessions with speakers and organizers</p></div></div>
+                    <div class="schedule-item"><div class="item-number">3</div><div class="item-content"><h4 data-en="Pitch Competition" data-vi="Thi thuyết trình">Pitch Competition</h4><p data-en="Present your US market entry strategy to judges" data-vi="Trình bày chiến lược thâm nhập thị trường Mỹ trước ban giám khảo">Present your US market entry strategy to judges</p></div></div>
+                    <div class="schedule-item"><div class="item-number">4</div><div class="item-content"><h4 data-en="Awards & Networking" data-vi="Trao giải & Networking">Awards & Networking</h4><p data-en="Recognition ceremony + community building" data-vi="Lễ vinh danh + xây dựng cộng đồng">Recognition ceremony + community building</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="container">
+            <span class="section-label reveal" data-en="Meet the Team" data-vi="Gặp gỡ đội ngũ">Meet the Team</span>
+            <h2 class="section-title reveal reveal-delay-1" data-en="Built by YSEALI Fellows" data-vi="Được xây dựng bởi YSEALI Fellows">Built by YSEALI Fellows</h2>
+            <p class="section-subtitle reveal reveal-delay-2" data-en="A cross-border collaboration between American and Vietnamese entrepreneurs, united by a shared mission to help young founders go global." data-vi="Sự hợp tác xuyên biên giới giữa các doanh nhân Mỹ và Việt Nam, cùng chung sứ mệnh giúp các founder trẻ vươn ra thế giới.">A cross-border collaboration between American and Vietnamese entrepreneurs, united by a shared mission to help young founders go global.</p>
+
+            <div class="team-grid team-grid-3">
+                <div class="team-card reveal">
+                    <div class="team-avatar-img">
+                        <img src="https://media.licdn.com/dms/image/v2/D5603AQE57_VIhCoW6Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731138391633?e=1773878400&v=beta&t=XUwnQLKE5PMeEoYLSPCLw6pW3OhHwWSVZoMAtlpb-8Y" alt="Andrew Sapwell">
+                        <span class="team-flag">🇺🇸</span>
+                    </div>
+                    <h3>Andrew (AJ) Sapwell</h3>
+                    <div class="team-role">YSEALI Reciprocal Fellow 2026</div>
+                    <p class="team-tagline" data-en="&quot;Entrepreneurship as a lifestyle&quot;" data-vi="&quot;Khởi nghiệp là lối sống&quot;">"Entrepreneurship as a lifestyle"</p>
+                    <p class="team-bio" data-en="President, Entrepreneurship Club — University of Nevada, Reno. Founder — SW Pressure Washing" data-vi="Chủ tịch CLB Khởi nghiệp — University of Nevada, Reno. Founder — SW Pressure Washing">President, Entrepreneurship Club — University of Nevada, Reno. Founder — SW Pressure Washing</p>
+                    <a href="https://www.linkedin.com/in/andrewsapwell/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                </div>
+                <div class="team-card reveal reveal-delay-1">
+                    <div class="team-avatar-img">
+                        <img src="https://media.licdn.com/dms/image/v2/D5603AQHW5qAnwgnC9w/profile-displayphoto-crop_800_800/B56ZlGgWCgHAAI-/0/1757824508857?e=1773878400&v=beta&t=dSSZdTQXt506VC4f-D8RmzsBKleuJfBtHl4gE2rcTak" alt="Ky-Nam Nguyen">
+                        <span class="team-flag">🇻🇳</span>
+                    </div>
+                    <h3>Ky-Nam Nguyen</h3>
+                    <div class="team-role">YSEALI Entrepreneurship Fellow 2025</div>
+                    <p class="team-tagline" data-en="&quot;24 y/o tech founder helping you grow on LinkedIn&quot;" data-vi="&quot;Founder 24 tuổi, giúp bạn phát triển trên LinkedIn&quot;">"24 y/o tech founder helping you grow on LinkedIn"</p>
+                    <p class="team-bio" data-en="Host — BuildStuffs.com (Vietnam's largest network of young builders). Founder — EngageKit.io" data-vi="Host — BuildStuffs.com (Mạng lưới builder trẻ lớn nhất Việt Nam). Founder — EngageKit.io">Host — BuildStuffs.com (Vietnam's largest network of young builders). Founder — EngageKit.io</p>
+                    <a href="https://www.linkedin.com/in/withkynam/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                </div>
+                <div class="team-card reveal reveal-delay-2">
+                    <div class="team-avatar-img">
+                        <img src="https://media.licdn.com/dms/image/v2/D5603AQHJl2CTCGZXdw/profile-displayphoto-crop_800_800/B56Zo7T2G_G4AI-/0/1761931651271?e=1773878400&v=beta&t=sh-_um59gmGPyAprUaFuOzBWqYRMAU7eemlXwT-e5UU" alt="Duy Tran">
+                        <span class="team-flag">🇻🇳</span>
+                    </div>
+                    <h3>Duy (Fred) Tran</h3>
+                    <div class="team-role">YSEALI Entrepreneurship Fellow 2025</div>
+                    <p class="team-tagline" data-en="&quot;True Gen Z with nothing to lose, everything to dream&quot;" data-vi="&quot;Gen Z chính hiệu — không gì để mất, tất cả để mơ&quot;">"True Gen Z with nothing to lose, everything to dream"</p>
+                    <p class="team-bio" data-en="Insights & Analytics Associate — Abbott International. Director — SEO-V Vietnam Fellowship" data-vi="Insights & Analytics Associate — Abbott International. Giám đốc — SEO-V Vietnam Fellowship">Insights & Analytics Associate — Abbott International. Director — SEO-V Vietnam Fellowship</p>
+                    <a href="https://www.linkedin.com/in/trantienduy/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="speakers">
+        <div class="container">
+            <span class="section-label reveal" data-en="Expert Mentors" data-vi="Chuyên gia & Mentor">Expert Mentors</span>
+            <h2 class="section-title reveal reveal-delay-1" data-en="Potential Speakers" data-vi="Diễn giả tiềm năng">Potential Speakers</h2>
+            <p class="section-subtitle reveal reveal-delay-2"><span data-en="Learn from founders with real US-Vietnam business experience." data-vi="Học hỏi từ các founder có kinh nghiệm kinh doanh Mỹ-Việt thực tế.">Learn from founders with real US-Vietnam business experience.</span> <span class="tentative-badge" data-en="⚠️ Speakers are tentative and not yet confirmed" data-vi="⚠️ Diễn giả chưa được xác nhận chính thức">⚠️ Speakers are tentative and not yet confirmed</span></p>
+
+            <div class="speakers-grid-new">
+                <div class="speaker-card-new reveal">
+                    <div class="speaker-img"><img src="https://media.licdn.com/dms/image/v2/D5603AQHna0vy0Vx_kQ/profile-displayphoto-scale_400_400/B56ZfqglJ7G0Ak-/0/1751986100514?e=1773878400&v=beta&t=wJ4uYq_EBdlVSdT7tCE3Hl7AhVwtEaErUs-EAgUyYW4" alt="Jonathan Viet Pham"></div>
+                    <h4>Jonathan Viet Pham</h4>
+                    <span class="speaker-title">Founder @ Diaflow</span>
+                    <p class="speaker-tagline" data-en="Leader in AI for Businesses" data-vi="Tiên phong AI cho doanh nghiệp">Leader in AI for Businesses</p>
+                    <a href="https://www.linkedin.com/in/jonathanvietpham/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                </div>
+                <div class="speaker-card-new reveal reveal-delay-1">
+                    <div class="speaker-img"><img src="https://media.licdn.com/dms/image/v2/D5603AQGt_5cBknDjMw/profile-displayphoto-shrink_400_400/B56ZT9aTAwGsAg-/0/1739418317324?e=1773878400&v=beta&t=l7dhKBZHooL6zjYLTcbScGcvpL_r7IGlfw4ORs2n7Jg" alt="Stephen Turban"></div>
+                    <h4>Stephen Turban</h4>
+                    <span class="speaker-title">Founder @ Lumiere</span>
+                    <p class="speaker-tagline" data-en="McKinsey & Harvard Alum | Comedian" data-vi="Cựu McKinsey & Harvard | Diễn viên hài">McKinsey & Harvard Alum | Comedian</p>
+                    <a href="https://www.linkedin.com/in/stephenturban/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                </div>
+                <div class="speaker-card-new reveal reveal-delay-2">
+                    <div class="speaker-img"><img src="https://media.licdn.com/dms/image/v2/D5603AQHxYMB3-ouLKQ/profile-displayphoto-scale_400_400/B56ZpIXfc2J8Ag-/0/1762150711285?e=1773878400&v=beta&t=3YvJrq6idjGa44_mE04mCmiH3_Zd12kK_Qqoc2LCgKo" alt="Robert Huynh"></div>
+                    <h4>Robert Huynh</h4>
+                    <span class="speaker-title">Founder @ Reforged Labs (YC23)</span>
+                    <p class="speaker-tagline" data-en="Data alchemist turned startup pirate 🏴‍☠️" data-vi="Từ data alchemist thành startup pirate 🏴‍☠️">Data alchemist turned startup pirate 🏴‍☠️</p>
+                    <a href="https://www.linkedin.com/in/huynhrobert/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                </div>
+                <div class="speaker-card-new reveal reveal-delay-3">
+                    <div class="speaker-img"><img src="https://media.licdn.com/dms/image/v2/D5603AQFK8afxI0JQ9Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1666304361260?e=1773878400&v=beta&t=54NTcjpiKeB6uPLqv12SA2igFHL0lq_0z6MKB-8ioPs" alt="David Yi"></div>
+                    <h4>David Yi</h4>
+                    <span class="speaker-title">General Partner @ Ethos Fund</span>
+                    <p class="speaker-tagline" data-en="A VC who hates most VCs" data-vi="Một VC ghét đa số VC khác">A VC who hates most VCs</p>
+                    <a href="https://www.linkedin.com/in/thedavidyi/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                </div>
+                <div class="speaker-card-new reveal reveal-delay-4">
+                    <div class="speaker-img"><img src="https://media.licdn.com/dms/image/v2/D5603AQHgJo0ciD4HcA/profile-displayphoto-shrink_400_400/B56ZeKIaVQHoAs-/0/1750369151951?e=1773878400&v=beta&t=PfQH6GucIYhfWgizWK85_XroE100gV5cmRsG0VWa4i8" alt="Kelly Tran"></div>
+                    <h4>Kelly Tran</h4>
+                    <span class="speaker-title">Founder @ AppGenie</span>
+                    <p class="speaker-tagline" data-en="Helping the world bet on Vietnam" data-vi="Giúp thế giới đặt cược vào Việt Nam">Helping the world bet on Vietnam</p>
+                    <a href="https://www.linkedin.com/in/kellytranha/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                </div>
+                <div class="speaker-card-new reveal reveal-delay-4">
+                    <div class="speaker-img"><img src="https://media.licdn.com/dms/image/v2/C5603AQGOd0cLN8gtkA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1643014167094?e=1773878400&v=beta&t=ws_pnH_AYAwGzr3lkNeJDnlOZGqtodFWCV9Kpc2n7Jk" alt="Nhu Pham"></div>
+                    <h4>Nhu Pham</h4>
+                    <span class="speaker-title">Founder @ Coolmate</span>
+                    <p class="speaker-tagline" data-en="Changing men's shopping habits" data-vi="Thay đổi thói quen mua sắm của nam giới">Changing men's shopping habits</p>
+                    <a href="https://www.linkedin.com/in/nhu-pham-04639057/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="partners">
+        <div class="container">
+            <span class="section-label reveal" data-en="Partnership" data-vi="Hợp tác">Partnership</span>
+            <h2 class="section-title reveal reveal-delay-1" data-en="Become a Partner" data-vi="Trở thành Đối tác">Become a Partner</h2>
+            <p class="section-subtitle reveal reveal-delay-2" data-en="Join us in empowering the next generation of Vietnamese entrepreneurs." data-vi="Cùng chúng tôi tiếp sức cho thế hệ doanh nhân Việt Nam tiếp theo.">Join us in empowering the next generation of Vietnamese entrepreneurs.</p>
+
+            <div class="partnership-grid">
+                <div class="partnership-card reveal">
+                    <h3 data-en="🤝 What We're Asking" data-vi="🤝 Chúng tôi cần">🤝 What We're Asking</h3>
+                    <ul class="partnership-list">
+                        <li><span class="icon">🎤</span><span class="text"><strong data-en="Co-Host Role" data-vi="Đồng tổ chức">Co-Host Role</strong> — <span data-en="Introduce speakers & help promote to your students" data-vi="Giới thiệu diễn giả & quảng bá đến sinh viên của bạn">Introduce speakers & help promote to your students</span></span></li>
+                        <li><span class="icon">🌏</span><span class="text"><strong data-en="Speaker Referrals" data-vi="Giới thiệu diễn giả">Speaker Referrals</strong> — <span data-en="Connect us with entrepreneurs in your network who have US-Vietnam business experience" data-vi="Kết nối chúng tôi với các doanh nhân có kinh nghiệm kinh doanh Mỹ-Việt trong mạng lưới của bạn">Connect us with entrepreneurs in your network who have US-Vietnam business experience</span></span></li>
+                        <li><span class="icon">🏢</span><span class="text"><strong data-en="Venue Sponsorship" data-vi="Tài trợ địa điểm">Venue Sponsorship</strong> — <span data-en="Full-day venue access on April 11 & 12, 2025" data-vi="Sử dụng địa điểm cả ngày 11 & 12 tháng 4, 2025">Full-day venue access on April 11 & 12, 2025</span></span></li>
+                        <li><span class="icon">🍱</span><span class="text"><strong data-en="Lunch Arrangement" data-vi="Hỗ trợ ăn trưa">Lunch Arrangement</strong> — <span data-en="Permission to bring food/catering for participants" data-vi="Cho phép mang đồ ăn/catering cho người tham gia">Permission to bring food/catering for participants</span></span></li>
+                    </ul>
+                </div>
+                <div class="partnership-card reveal reveal-delay-1">
+                    <h3 data-en="✨ What You Get" data-vi="✨ Bạn nhận được">✨ What You Get</h3>
+                    <ul class="partnership-list">
+                        <li><span class="icon">✓</span><span class="text"><strong data-en="Logo on All Materials" data-vi="Logo trên mọi ấn phẩm">Logo on All Materials</strong> — <span data-en="Event posters distributed to 1,000+ students across HCMC" data-vi="Poster sự kiện phân phát đến 1,000+ sinh viên tại TP.HCM">Event posters distributed to 1,000+ students across HCMC</span></span></li>
+                        <li><span class="icon">✓</span><span class="text"><strong data-en="Social Media Exposure" data-vi="Tiếp cận mạng xã hội">Social Media Exposure</strong> — <span data-en="100,000+ potential reach through combined networks" data-vi="100,000+ người tiếp cận qua các mạng lưới kết hợp">100,000+ potential reach through combined networks</span></span></li>
+                        <li><span class="icon">✓</span><span class="text"><strong data-en="Official Co-Host Credit" data-vi="Ghi nhận Đồng tổ chức">Official Co-Host Credit</strong> — <span data-en="Full recognition claimable for impact reporting" data-vi="Được ghi nhận đầy đủ cho báo cáo tác động">Full recognition claimable for impact reporting</span></span></li>
+                        <li><span class="icon">✓</span><span class="text"><strong data-en="U.S. Government-Backed Event" data-vi="Sự kiện được Chính phủ Mỹ hỗ trợ">U.S. Government-Backed Event</strong> — <span data-en="Association with U.S. Department of State initiative" data-vi="Liên kết với sáng kiến của Bộ Ngoại giao Hoa Kỳ">Association with U.S. Department of State initiative</span></span></li>
+                    </ul>
+                    <div class="stats-row">
+                        <div class="stat-box"><div class="value">1,000+</div><div class="label" data-en="Students" data-vi="Sinh viên">Students</div></div>
+                        <div class="stat-box"><div class="value">100K+</div><div class="label" data-en="Social Reach" data-vi="Tiếp cận MXH">Social Reach</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apply" class="cta-section">
+        <div class="container">
+            <h2 class="section-title reveal"><span data-en="Ready to" data-vi="Sẵn sàng">Ready to</span> <span class="gradient" data-en="Go Global?" data-vi="Vươn ra Thế giới?">Go Global?</span></h2>
+            <p class="reveal reveal-delay-1" data-en="Join 30+ ambitious young entrepreneurs for 2 days of intensive learning, networking, and pitching." data-vi="Cùng 30+ doanh nhân trẻ đầy tham vọng trong 2 ngày học tập chuyên sâu, kết nối và thuyết trình.">Join 30+ ambitious young entrepreneurs for 2 days of intensive learning, networking, and pitching.</p>
+            <div class="cta-buttons reveal reveal-delay-2">
+                <a href="https://lu.ma/bkls5m3a" target="_blank" class="btn-primary">
+                    <span data-en="Apply Now" data-vi="Đăng ký ngay">Apply Now</span>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="https://ysealiafp.org/reciprocal-exchanges" target="_blank" class="btn-secondary" data-en="Learn About YSEALI" data-vi="Tìm hiểu về YSEALI">Learn About YSEALI</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-partners">
+                    <span>🇺🇸 U.S. Department of State</span>
+                    <span>YSEALI</span>
+                    <span>Ozmen Center for Entrepreneurship</span>
+                    <span>NNIC</span>
+                </div>
+                <a href="https://ysealiafp.org/reciprocal-exchanges" target="_blank" class="footer-link">ysealiafp.org/reciprocal-exchanges</a>
+                <p class="footer-copy" data-en="© 2025 Go-US Entrepreneur Bootcamp. A YSEALI Reciprocal Exchange Initiative." data-vi="© 2025 Go-US Entrepreneur Bootcamp. Sáng kiến Trao đổi YSEALI.">© 2025 Go-US Entrepreneur Bootcamp. A YSEALI Reciprocal Exchange Initiative.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        let lastScroll = 0;
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            nav.style.background = currentScroll > 100 ? 'rgba(10, 10, 15, 0.95)' : 'rgba(10, 10, 15, 0.8)';
+            lastScroll = currentScroll;
+        });
+
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        mobileMenu.addEventListener('click', () => {
+            const isOpen = navLinks.style.display === 'flex';
+            navLinks.style.display = isOpen ? 'none' : 'flex';
+            if (!isOpen) {
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'rgba(10, 10, 15, 0.98)';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.padding = '24px';
+                navLinks.style.gap = '16px';
+                navLinks.style.borderBottom = '1px solid var(--border)';
+            }
+        });
+
+        // Language Toggle Functionality
+        let currentLang = 'en';
+        const langBtns = document.querySelectorAll('.lang-btn');
+        
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Update button states
+            langBtns.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            // Update all elements with data-en and data-vi attributes
+            document.querySelectorAll('[data-en][data-vi]').forEach(el => {
+                const text = lang === 'en' ? el.dataset.en : el.dataset.vi;
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = text;
+                } else {
+                    el.innerHTML = text;
+                }
+            });
+            
+            // Update page title
+            document.title = lang === 'en' 
+                ? 'Go-US Entrepreneur Bootcamp | YSEALI 2025' 
+                : 'Go-US Entrepreneur Bootcamp | Chương trình YSEALI 2025';
+            
+            // Store preference
+            localStorage.setItem('go-us-lang', lang);
+        }
+        
+        // Event listeners for language buttons
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => switchLanguage(btn.dataset.lang));
+        });
+        
+        // Check for saved language preference
+        const savedLang = localStorage.getItem('go-us-lang');
+        if (savedLang && savedLang !== 'en') {
+            switchLanguage(savedLang);
+        }
+    </script>
+</body>
+</html>
