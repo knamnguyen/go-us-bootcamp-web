@@ -76,7 +76,7 @@ OUTPUT: Chỉ trả về tin nhắn. Không giải thích, KHÔNG CÓ LINK/URL.`
           'Authorization': `Bearer ${OPENROUTER_API_KEY}`
         },
         body: JSON.stringify({
-          model: 'arcee-ai/trinity-large-preview:free',
+          model: 'arcee-ai/trinity-mini:free',
           messages: [{ role: 'user', content: lang === 'en' ? promptEn : promptVi }],
           temperature: 0.9,
           max_tokens: 200
