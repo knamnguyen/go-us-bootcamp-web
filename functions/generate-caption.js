@@ -20,9 +20,9 @@ export async function onRequestPost(context) {
     const body = await request.json();
     lang = body.lang || 'en';
 
-    const GEMINI_API_KEY = env.GEMINI_API_KEY;
+    const OPENROUTER_API_KEY = env.OPENROUTER_API_KEY;
 
-    if (!GEMINI_API_KEY) {
+    if (!OPENROUTER_API_KEY) {
       throw new Error('API key not configured');
     }
 
@@ -68,27 +68,32 @@ VÍ DỤ:
 OUTPUT: Chỉ trả về tin nhắn. Không giải thích, KHÔNG CÓ LINK/URL.`;
 
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${GEMINI_API_KEY}`,
+      'https://openrouter.ai/api/v1/chat/completions',
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${OPENROUTER_API_KEY}`
+        },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: lang === 'en' ? promptEn : promptVi }] }],
-          generationConfig: { temperature: 0.9, maxOutputTokens: 200 }
+          model: 'arcee-ai/trinity-large-preview:free',
+          messages: [{ role: 'user', content: lang === 'en' ? promptEn : promptVi }],
+          temperature: 0.9,
+          max_tokens: 200
         })
       }
     );
 
     const data = await response.json();
-    console.log('Gemini response:', JSON.stringify(data));
+    console.log('OpenRouter response:', JSON.stringify(data));
 
-    let caption = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    let caption = data.choices?.[0]?.message?.content || '';
 
     // If no caption from API, throw error to use fallback
     if (!caption) {
-      console.log('No caption from Gemini, using fallback');
-      const err = new Error('Empty response from Gemini');
-      err.geminiResponse = JSON.stringify(data);
+      console.log('No caption from OpenRouter, using fallback');
+      const err = new Error('Empty response from OpenRouter');
+      err.apiResponse = JSON.stringify(data);
       throw err;
     }
 
@@ -123,8 +128,8 @@ OUTPUT: Chỉ trả về tin nhắn. Không giải thích, KHÔNG CÓ LINK/URL.`
       caption: lang === 'vi' ? fallbackVi : fallbackEn,
       error: true,
       errorMessage: error.message,
-      hasApiKey: !!env.GEMINI_API_KEY,
-      geminiResponse: error.geminiResponse || null
+      hasApiKey: !!env.OPENROUTER_API_KEY,
+      apiResponse: error.apiResponse || null
     }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' }
     });
