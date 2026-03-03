@@ -119,7 +119,9 @@ OUTPUT: Chỉ trả về tin nhắn. Không giải thích, KHÔNG CÓ LINK/URL.`
 
     return new Response(JSON.stringify({
       caption: lang === 'vi' ? fallbackVi : fallbackEn,
-      error: true
+      error: true,
+      errorMessage: error.message,
+      hasApiKey: !!env.GEMINI_API_KEY
     }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' }
     });
