@@ -1829,15 +1829,81 @@
         }
 
         .share-link {
+            display: none;
+        }
+
+        /* Share Platforms */
+        .share-platforms {
             margin-top: 16px;
-            padding: 12px;
-            background: rgba(255, 107, 53, 0.1);
-            border: 1px solid rgba(255, 107, 53, 0.3);
-            border-radius: 8px;
-            font-size: 0.85rem;
-            color: var(--orange);
-            text-align: center;
-            word-break: break-all;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .share-platform-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .share-platform-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            min-width: 60px;
+        }
+
+        .share-platform-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .platform-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .platform-btn:hover {
+            transform: translateY(-2px);
+            border-color: transparent;
+        }
+
+        .platform-btn[data-platform="facebook"]:hover {
+            background: #1877F2;
+            color: white;
+        }
+
+        .platform-btn[data-platform="linkedin"]:hover {
+            background: #0A66C2;
+            color: white;
+        }
+
+        .platform-btn[data-platform="threads"]:hover {
+            background: #000000;
+            color: white;
+        }
+
+        .platform-btn[data-platform="whatsapp"]:hover {
+            background: #25D366;
+            color: white;
+        }
+
+        .platform-btn[data-platform="messenger"]:hover {
+            background: #0099FF;
+            color: white;
+        }
+
+        .platform-btn[data-platform="zalo"]:hover {
+            background: #0068FF;
+            color: white;
         }
 
         .copied-toast {
@@ -2399,8 +2465,37 @@
                     <span data-en="Regenerate" data-vi="Tạo lại">Regenerate</span>
                 </button>
             </div>
-            <div class="share-link">
-                🔗 https://gous-entrecamp.pages.dev
+
+            <!-- Share Platforms -->
+            <div class="share-platforms">
+                <div class="share-platform-section">
+                    <span class="share-platform-label" data-en="Post to:" data-vi="Đăng lên:">Post to:</span>
+                    <div class="share-platform-buttons">
+                        <button class="platform-btn" data-platform="facebook" title="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </button>
+                        <button class="platform-btn" data-platform="linkedin" title="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </button>
+                        <button class="platform-btn" data-platform="threads" title="Threads">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.59 12c.025 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.182.408-2.256 1.332-3.023.88-.73 2.088-1.146 3.396-1.17 1.211-.024 2.318.193 3.312.65.009-.177.012-.356.012-.54 0-1.058-.13-1.88-.392-2.458-.375-.826-1.033-1.29-1.956-1.38-.772-.075-1.438.088-1.98.486-.458.337-.738.753-.861 1.275l-2.03-.482c.199-.993.713-1.819 1.532-2.46.953-.744 2.17-1.12 3.617-1.12h.18c1.65.074 2.938.63 3.829 1.652.717.825 1.153 1.95 1.297 3.343.986.569 1.782 1.309 2.365 2.203.833 1.277 1.106 2.765.79 4.302-.406 1.979-1.47 3.584-3.073 4.636-1.38.906-3.08 1.366-5.054 1.366h-.007z"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="share-platform-section">
+                    <span class="share-platform-label" data-en="Send to:" data-vi="Gửi tới:">Send to:</span>
+                    <div class="share-platform-buttons">
+                        <button class="platform-btn" data-platform="whatsapp" title="WhatsApp">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        </button>
+                        <button class="platform-btn" data-platform="messenger" title="Messenger">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.745 6.616 4.472 8.652V24l4.086-2.242c1.09.301 2.246.464 3.442.464 6.627 0 12-4.974 12-11.111S18.627 0 12 0zm1.193 14.963l-3.056-3.259-5.963 3.259 6.559-6.963 3.13 3.259 5.889-3.259-6.559 6.963z"/></svg>
+                        </button>
+                        <button class="platform-btn" data-platform="zalo" title="Zalo">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 14.957c-.09.376-.468.794-1.166.794H9.449l-.084-.004c-.357-.02-.617-.205-.776-.505-.106-.2-.136-.412-.112-.586l.004-.032.02-.08c.044-.138.154-.35.38-.6l3.66-4.087H9.296c-.473 0-.845-.145-1.106-.432-.264-.29-.357-.622-.357-.91 0-.432.17-.77.38-.97.218-.208.534-.367 1.005-.367h6.564l.09.008c.34.032.595.185.758.454.14.233.176.484.144.7l-.008.048c-.034.157-.116.357-.305.58l-3.744 4.265h3.943c.447 0 .815.13 1.09.387.294.274.428.62.428 1.004 0 .295-.078.552-.284.773z"/></svg>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -2541,6 +2636,18 @@
         let generatedCaptions = { en: '', vi: '' };
         const SHARE_URL = 'https://gous-entrecamp.pages.dev';
 
+        // Auto-copy to clipboard with toast
+        async function autoCopyCaption(text) {
+            try {
+                await navigator.clipboard.writeText(text);
+                copiedToast.textContent = currentShareLang === 'en' ? '✓ Caption copied!' : '✓ Đã sao chép!';
+                copiedToast.classList.add('show');
+                setTimeout(() => copiedToast.classList.remove('show'), 2000);
+            } catch (err) {
+                console.error('Auto-copy failed:', err);
+            }
+        }
+
         async function generateCaption(lang) {
             shareCaptionBox.classList.add('loading');
             shareCaptionBox.innerHTML = lang === 'en' ? 'Generating caption...' : 'Đang tạo caption...';
@@ -2557,17 +2664,56 @@
                 generatedCaptions[lang] = data.caption;
                 shareCaptionBox.classList.remove('loading');
                 shareCaptionBox.textContent = data.caption;
+                // Auto-copy after generation
+                autoCopyCaption(data.caption);
             } catch (error) {
                 console.error('Error generating caption:', error);
-                const fallbackEn = `🚀 Hey friends! Check out this FREE entrepreneur bootcamp in HCMC (April 11-12)! Learn to take Vietnamese products to the US market. Funded by U.S. Dept of State. Apply now! 🇻🇳→🇺🇸\n\n🔗 ${SHARE_URL}`;
-                const fallbackVi = `🚀 Các bạn ơi! Workshop khởi nghiệp MIỄN PHÍ tại TPHCM (11-12/4)! Học cách đưa sản phẩm Việt sang Mỹ. Tài trợ bởi Bộ Ngoại giao Hoa Kỳ. Đăng ký ngay! 🇻🇳→🇺🇸\n\n🔗 ${SHARE_URL}`;
+                const fallbackEn = `hey found this free workshop for viet founders wanting to learn about the US market, looks pretty solid\n\n${SHARE_URL}`;
+                const fallbackVi = `ê t mới thấy cái workshop này hay phết cho founders muốn hiểu thị trường mỹ, free luôn\n\n${SHARE_URL}`;
                 generatedCaptions[lang] = lang === 'en' ? fallbackEn : fallbackVi;
                 shareCaptionBox.classList.remove('loading');
                 shareCaptionBox.textContent = generatedCaptions[lang];
+                // Auto-copy fallback too
+                autoCopyCaption(generatedCaptions[lang]);
             }
 
             shareBtnRegenerate.classList.remove('loading');
         }
+
+        // Share handlers for each platform
+        const shareHandlers = {
+            facebook: (url, text) => `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+            linkedin: (url, text) => `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+            threads: (url, text) => `https://www.threads.net/intent/post?text=${encodeURIComponent(text)}`,
+            whatsapp: (url, text) => `https://wa.me/?text=${encodeURIComponent(text)}`,
+            messenger: (url, text) => `https://www.facebook.com/dialog/share?href=${encodeURIComponent(url)}&display=popup`,
+            zalo: (url, text) => {
+                const caption = text.replace(url, '').trim();
+                return `https://sp.zalo.me/share_h5?url=${encodeURIComponent(url)}&t=${encodeURIComponent(caption)}`;
+            }
+        };
+
+        // Platform buttons click handlers
+        document.querySelectorAll('.platform-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const platform = btn.dataset.platform;
+                const caption = shareCaptionBox.textContent || '';
+                const shareUrl = shareHandlers[platform](SHARE_URL, caption);
+
+                // For platforms that don't support pre-filled text, copy to clipboard first
+                if (['facebook', 'linkedin', 'messenger'].includes(platform)) {
+                    navigator.clipboard.writeText(caption).then(() => {
+                        copiedToast.textContent = currentShareLang === 'en'
+                            ? '✓ Caption copied! Paste in share dialog'
+                            : '✓ Đã sao chép! Dán vào hộp thoại chia sẻ';
+                        copiedToast.classList.add('show');
+                        setTimeout(() => copiedToast.classList.remove('show'), 3000);
+                    });
+                }
+
+                window.open(shareUrl, '_blank', 'width=550,height=500');
+            });
+        });
 
         function openSharePopup() {
             sharePopup.classList.add('open');
