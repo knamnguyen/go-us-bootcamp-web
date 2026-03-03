@@ -87,7 +87,9 @@ OUTPUT: Chỉ trả về tin nhắn. Không giải thích, KHÔNG CÓ LINK/URL.`
     // If no caption from API, throw error to use fallback
     if (!caption) {
       console.log('No caption from Gemini, using fallback');
-      throw new Error('Empty response from Gemini');
+      const err = new Error('Empty response from Gemini');
+      err.geminiResponse = JSON.stringify(data);
+      throw err;
     }
 
     // Clean up the caption
@@ -121,7 +123,8 @@ OUTPUT: Chỉ trả về tin nhắn. Không giải thích, KHÔNG CÓ LINK/URL.`
       caption: lang === 'vi' ? fallbackVi : fallbackEn,
       error: true,
       errorMessage: error.message,
-      hasApiKey: !!env.GEMINI_API_KEY
+      hasApiKey: !!env.GEMINI_API_KEY,
+      geminiResponse: error.geminiResponse || null
     }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' }
     });
