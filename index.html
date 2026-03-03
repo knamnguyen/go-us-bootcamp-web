@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Go-US Entrepreneur Bootcamp | YSEALI 2025</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -124,7 +126,7 @@
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -278,6 +280,33 @@
             background-clip: text;
         }
 
+        .hero-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(255, 51, 102, 0.1));
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            padding: 12px 24px;
+            border-radius: 50px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-date .date-icon {
+            font-size: 1.1rem;
+        }
+
+        .hero-date .date-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .hero-date .date-divider {
+            color: var(--text-muted);
+        }
+
         .hero p {
             font-size: 1.25rem;
             color: var(--text-secondary);
@@ -305,6 +334,43 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6), transparent);
+            animation: btnShine 2.5s infinite;
+            filter: blur(2px);
+        }
+
+        @keyframes btnShine {
+            0% { left: -100%; }
+            60%, 100% { left: 150%; }
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--orange), var(--pink), var(--cyan), var(--pink), var(--orange));
+            background-size: 300% 300%;
+            z-index: -1;
+            animation: borderGlow 3s ease infinite;
+            opacity: 0.7;
+            filter: blur(8px);
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; opacity: 0.5; }
+            50% { background-position: 100% 50%; opacity: 0.8; }
         }
 
         .btn-primary:hover {
@@ -628,6 +694,12 @@
             margin: 0 auto;
         }
 
+        .team-grid-4 {
+            grid-template-columns: repeat(4, 1fr);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .team-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -638,6 +710,8 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .team-card::before {
@@ -728,6 +802,7 @@
             color: var(--text-muted);
             line-height: 1.5;
             margin-bottom: 16px;
+            flex-grow: 1;
         }
 
         .team-linkedin {
@@ -742,6 +817,11 @@
 
         .team-linkedin:hover {
             color: var(--cyan);
+        }
+
+        .team-card .linkedin-link {
+            margin-top: auto;
+            align-self: center;
         }
 
         .speakers-grid {
@@ -986,6 +1066,147 @@
             margin: 0;
         }
 
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .benefit-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+
+        .benefit-featured {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(255, 51, 102, 0.1));
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .benefit-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .benefits-free {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 210, 63, 0.1));
+            border: 2px solid rgba(255, 210, 63, 0.4);
+            border-radius: 20px;
+            padding: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .free-badge {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .free-items {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .free-items span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .free-items .check {
+            color: var(--cyan);
+            font-weight: bold;
+        }
+
+        @media (max-width: 1024px) {
+            .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .benefits-grid { grid-template-columns: 1fr; }
+            .benefits-free { flex-direction: column; gap: 20px; }
+            .free-items { flex-direction: column; gap: 12px; align-items: center; }
+        }
+
+        .industries-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .industries-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .industries-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .industry-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .industry-item:hover {
+            border-color: var(--orange);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .industry-item span:first-child {
+            font-size: 1.1rem;
+        }
+
         .post-program {
             background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 210, 63, 0.1));
             border: 1px solid rgba(0, 212, 255, 0.3);
@@ -1120,6 +1341,44 @@
             letter-spacing: 0.1em;
         }
 
+        /* Supported By Partners */
+        .partners-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .partner-logo {
+            height: 105px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(1.5);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .partner-logo:hover {
+            filter: grayscale(0%) brightness(1);
+            opacity: 1;
+        }
+
+        .partner-logo.color {
+            filter: none;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .partners-logos {
+                gap: 24px;
+            }
+            .partner-logo {
+                height: 75px;
+            }
+        }
+
         .cta-section {
             text-align: center;
             padding: 160px 0;
@@ -1203,6 +1462,7 @@
         @media (max-width: 1024px) {
             .team-grid { grid-template-columns: repeat(2, 1fr); }
             .team-grid-3 { grid-template-columns: repeat(3, 1fr); }
+            .team-grid-4 { grid-template-columns: repeat(2, 1fr); }
             .speakers-grid { grid-template-columns: repeat(3, 1fr); }
             .speakers-grid-new { grid-template-columns: repeat(2, 1fr); }
         }
@@ -1223,6 +1483,7 @@
             .schedule-days { grid-template-columns: 1fr; }
             .team-grid { grid-template-columns: 1fr; }
             .team-grid-3 { grid-template-columns: 1fr; max-width: 100%; }
+            .team-grid-4 { grid-template-columns: 1fr; max-width: 100%; }
             .speakers-grid { grid-template-columns: repeat(2, 1fr); }
             .speakers-grid-new { grid-template-columns: 1fr; }
             .partnership-grid { grid-template-columns: 1fr; }
@@ -1257,8 +1518,10 @@
             <ul class="nav-links">
                 <li><a href="#about" data-en="About" data-vi="Giới thiệu">About</a></li>
                 <li><a href="#who" data-en="Who" data-vi="Đối tượng">Who</a></li>
+                <li><a href="#benefits" data-en="Benefits" data-vi="Lợi ích">Benefits</a></li>
                 <li><a href="#schedule" data-en="Schedule" data-vi="Lịch trình">Schedule</a></li>
                 <li><a href="#team" data-en="Team" data-vi="Đội ngũ">Team</a></li>
+                <li><a href="#speakers" data-en="Speakers" data-vi="Diễn giả">Speakers</a></li>
                 <li><a href="#partners" data-en="Partners" data-vi="Đối tác">Partners</a></li>
             </ul>
             <div class="nav-right">
@@ -1281,16 +1544,23 @@
                 </div>
                 <div class="badge reveal">
                     <span class="badge-live"></span>
-                    <span data-en="🇻🇳 → 🇺🇸 YSEALI Reciprocal Exchange 2025" data-vi="🇻🇳 → 🇺🇸 Chương trình Trao đổi YSEALI 2025">🇻🇳 → 🇺🇸 YSEALI Reciprocal Exchange 2025</span>
+                    <span data-en="🇻🇳 → 🇺🇸 YSEALI Reciprocal Exchange Program" data-vi="🇻🇳 → 🇺🇸 Chương trình Trao đổi YSEALI">🇻🇳 → 🇺🇸 YSEALI Reciprocal Exchange Program</span>
                 </div>
                 <h1 class="reveal reveal-delay-1">
                     <span class="gradient">GO-US</span><br><span data-en="Entrepreneur" data-vi="Khởi nghiệp">Entrepreneur</span><br>Bootcamp
                 </h1>
-                <p class="reveal reveal-delay-2" data-en="A 2-day intensive workshop helping Vietnamese youth take local products global. Backed by U.S. Department of State." data-vi="Workshop 2 ngày dành cho các bạn trẻ Việt Nam muốn đưa sản phẩm ra thị trường Mỹ. Tài trợ bởi Bộ Ngoại giao Hoa Kỳ.">
-                    A 2-day intensive workshop helping Vietnamese youth take local products global. 
+                <div class="hero-date reveal reveal-delay-2">
+                    <span class="date-icon">📅</span>
+                    <span class="date-text" data-en="April 11-12, 2025" data-vi="11-12 Tháng 4, 2025">April 11-12, 2025</span>
+                    <span class="date-divider">•</span>
+                    <span class="date-icon">📍</span>
+                    <span class="date-text" data-en="Ho Chi Minh City" data-vi="TP. Hồ Chí Minh">Ho Chi Minh City</span>
+                </div>
+                <p class="reveal reveal-delay-3" data-en="A 2-day intensive workshop helping Vietnamese youth take local products global. Backed by U.S. Department of State." data-vi="Workshop 2 ngày dành cho các bạn trẻ Việt Nam muốn đưa sản phẩm ra thị trường Mỹ. Tài trợ bởi Bộ Ngoại giao Hoa Kỳ.">
+                    A 2-day intensive workshop helping Vietnamese youth take local products global.
                     Backed by U.S. Department of State.
                 </p>
-                <div class="hero-buttons reveal reveal-delay-3">
+                <div class="hero-buttons reveal reveal-delay-4">
                     <a href="https://lu.ma/bkls5m3a" target="_blank" class="btn-primary">
                         <span data-en="Join the Bootcamp" data-vi="Tham gia ngay">Join the Bootcamp</span>
                         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1306,6 +1576,23 @@
             </div>
         </div>
         <div class="scroll-indicator" data-en="Scroll" data-vi="Cuộn xuống">Scroll</div>
+    </section>
+
+    <section id="supported-by">
+        <div class="container" style="text-align: center;">
+            <span class="section-label reveal" style="justify-content: center;" data-en="Our Partners" data-vi="Đối tác của chúng tôi">Our Partners</span>
+            <h2 class="section-title reveal reveal-delay-1" data-en="Supported By Absolutely Amazing Partners" data-vi="Được hỗ trợ bởi các Đối tác Tuyệt vời">Supported By Absolutely Amazing Partners</h2>
+
+            <div class="partners-logos reveal reveal-delay-2">
+                <a href="https://www.usa.gov/" target="_blank"><img src="assets/partners/us-flag.png" alt="United States" class="partner-logo color"></a>
+                <a href="https://www.state.gov/" target="_blank"><img src="assets/partners/us-dept-state.png" alt="U.S. Department of State" class="partner-logo color"></a>
+                <a href="https://www.ysealiafp.org/" target="_blank"><img src="assets/partners/yseali.png" alt="YSEALI" class="partner-logo color"></a>
+                <a href="https://buildstuffs.com" target="_blank"><img src="assets/partners/buildstuffs.png" alt="BuildStuffs.com" class="partner-logo color"></a>
+                <a href="https://engagekit.io" target="_blank"><img src="assets/partners/engagekit.png" alt="EngageKit" class="partner-logo color"></a>
+                <a href="https://upyouth.org/" target="_blank"><img src="assets/partners/upyouth.jpeg" alt="UpYouth" class="partner-logo color"></a>
+                <a href="https://www.unr.edu/nnic" target="_blank"><img src="assets/partners/nnic.jpg" alt="Northern Nevada International Center" class="partner-logo color"></a>
+            </div>
+        </div>
     </section>
 
     <section id="about">
@@ -1329,6 +1616,12 @@
                     <div class="feature-card reveal reveal-delay-2"><div class="feature-icon">🏆</div><h3 data-en="Pitch Competition" data-vi="Thi thuyết trình">Pitch Competition</h3><p data-en="Present your US market strategy and get feedback from experts" data-vi="Trình bày chiến lược thâm nhập thị trường Mỹ và nhận phản hồi từ chuyên gia">Present your US market strategy and get feedback from experts</p></div>
                     <div class="feature-card reveal reveal-delay-3"><div class="feature-icon">🤝</div><h3 data-en="Network & Connect" data-vi="Kết nối & Networking">Network & Connect</h3><p data-en="Meet founders who've done it, plus like-minded young entrepreneurs" data-vi="Gặp gỡ những founder đã thành công và các bạn trẻ khởi nghiệp cùng chí hướng">Meet founders who've done it, plus like-minded young entrepreneurs</p></div>
                 </div>
+            </div>
+            <div class="section-cta reveal" style="text-align: center; margin-top: 48px;">
+                <a href="https://lu.ma/bkls5m3a" target="_blank" class="btn-primary">
+                    <span data-en="Secure Your Spot" data-vi="Đăng ký ngay">Secure Your Spot</span>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
             </div>
         </div>
     </section>
@@ -1361,31 +1654,54 @@
                     <div class="requirement-item">
                         <span class="req-icon">🚀</span>
                         <div>
-                            <strong data-en="Already Launched" data-vi="Đã ra mắt sản phẩm">Already Launched</strong>
-                            <p data-en="You've shipped a product and are getting real users" data-vi="Bạn đã có sản phẩm và đang có người dùng thực">You've shipped a product and are getting real users</p>
+                            <strong data-en="Have a Product/Service" data-vi="Có sản phẩm/dịch vụ">Have a Product/Service</strong>
+                            <p data-en="You have something in the market — any stage, any industry" data-vi="Bạn có sản phẩm trên thị trường — bất kỳ giai đoạn nào, ngành nào">You have something in the market — any stage, any industry</p>
                         </div>
                     </div>
                     <div class="requirement-item">
-                        <span class="req-icon">🔧</span>
+                        <span class="req-icon">🇺🇸</span>
                         <div>
-                            <strong data-en="Building Now" data-vi="Đang xây dựng">Building Now</strong>
-                            <p data-en="You're actively working on a product with your team" data-vi="Bạn đang tích cực phát triển sản phẩm cùng team">You're actively working on a product with your team</p>
+                            <strong data-en="Interested in US Market" data-vi="Quan tâm thị trường Mỹ">Interested in US Market</strong>
+                            <p data-en="You want to learn about or expand into the United States" data-vi="Bạn muốn tìm hiểu hoặc mở rộng sang thị trường Mỹ">You want to learn about or expand into the United States</p>
                         </div>
                     </div>
                     <div class="requirement-item">
-                        <span class="req-icon">📅</span>
+                        <span class="req-icon">🏪</span>
                         <div>
-                            <strong data-en="Launching Soon" data-vi="Sắp ra mắt">Launching Soon</strong>
-                            <p data-en="You have a clear product and launch timeline" data-vi="Bạn có sản phẩm rõ ràng và timeline ra mắt cụ thể">You have a clear product and launch timeline</p>
+                            <strong data-en="Running a Business" data-vi="Đang vận hành">Running a Business</strong>
+                            <p data-en="You're actively growing your brand, store, or service" data-vi="Bạn đang phát triển thương hiệu, cửa hàng hoặc dịch vụ">You're actively growing your brand, store, or service</p>
                         </div>
                     </div>
                     <div class="requirement-item">
                         <span class="req-icon">🌏</span>
                         <div>
                             <strong data-en="Global Ambition" data-vi="Tham vọng quốc tế">Global Ambition</strong>
-                            <p data-en="You want to expand beyond Vietnam's borders" data-vi="Bạn muốn đưa sản phẩm ra khỏi biên giới Việt Nam">You want to expand beyond Vietnam's borders</p>
+                            <p data-en="You want to expand beyond Vietnam's borders" data-vi="Bạn muốn đưa doanh nghiệp ra khỏi biên giới Việt Nam">You want to expand beyond Vietnam's borders</p>
                         </div>
                     </div>
+                    <div class="requirement-item">
+                        <span class="req-icon">🤝</span>
+                        <div>
+                            <strong data-en="Ready to Connect" data-vi="Sẵn sàng kết nối">Ready to Connect</strong>
+                            <p data-en="You're eager to network with other ambitious founders" data-vi="Bạn muốn kết nối với các founder đầy tham vọng khác">You're eager to network with other ambitious founders</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="industries-card reveal">
+                <h4 data-en="🎯 We Welcome All Industries" data-vi="🎯 Chào đón mọi ngành nghề">🎯 We Welcome All Industries</h4>
+                <div class="industries-grid">
+                    <div class="industry-item"><span>💻</span><span data-en="Technology" data-vi="Công nghệ">Technology</span></div>
+                    <div class="industry-item"><span>🛒</span><span data-en="E-commerce" data-vi="Thương mại điện tử">E-commerce</span></div>
+                    <div class="industry-item"><span>🍜</span><span data-en="F&B" data-vi="F&B">F&B</span></div>
+                    <div class="industry-item"><span>👗</span><span data-en="Fashion" data-vi="Thời trang">Fashion</span></div>
+                    <div class="industry-item"><span>📚</span><span data-en="Education" data-vi="Giáo dục">Education</span></div>
+                    <div class="industry-item"><span>🛎️</span><span data-en="Services" data-vi="Dịch vụ">Services</span></div>
+                    <div class="industry-item"><span>📊</span><span data-en="Consulting" data-vi="Tư vấn">Consulting</span></div>
+                    <div class="industry-item"><span>🎨</span><span data-en="Creative" data-vi="Sáng tạo">Creative</span></div>
+                    <div class="industry-item"><span>🏥</span><span data-en="Healthcare" data-vi="Y tế">Healthcare</span></div>
+                    <div class="industry-item"><span>🌱</span><span data-en="Sustainability" data-vi="Bền vững">Sustainability</span></div>
                 </div>
             </div>
 
@@ -1397,6 +1713,60 @@
                         <p data-en="After the bootcamp, you'll join an <strong>exclusive alumni group chat</strong> to maintain connections, share wins, get feedback, and support each other as you grow your businesses globally. The relationships don't end when the event does." data-vi="Sau bootcamp, bạn sẽ tham gia <strong>group chat alumni độc quyền</strong> để duy trì kết nối, chia sẻ thành công, nhận feedback và hỗ trợ nhau phát triển ra quốc tế. Mối quan hệ không kết thúc khi sự kiện kết thúc.">After the bootcamp, you'll join an <strong>exclusive alumni group chat</strong> to maintain connections, share wins, get feedback, and support each other as you grow your businesses globally. The relationships don't end when the event does.</p>
                     </div>
                 </div>
+            </div>
+            <div class="section-cta reveal" style="text-align: center; margin-top: 48px;">
+                <a href="https://lu.ma/bkls5m3a" target="_blank" class="btn-primary">
+                    <span data-en="Check If You Qualify" data-vi="Kiểm tra điều kiện">Check If You Qualify</span>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits">
+        <div class="container">
+            <span class="section-label reveal" data-en="The Value" data-vi="Giá trị nhận được">The Value</span>
+            <h2 class="section-title reveal reveal-delay-1" data-en="What You'll Walk Away With" data-vi="Bạn sẽ nhận được gì?">What You'll Walk Away With</h2>
+            <p class="section-subtitle reveal reveal-delay-2" data-en="Real outcomes you can use immediately after the bootcamp." data-vi="Kết quả thực tế bạn có thể áp dụng ngay sau bootcamp.">Real outcomes you can use immediately after the bootcamp.</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card benefit-featured reveal">
+                    <div class="benefit-icon">📋</div>
+                    <h3 data-en="Executable GTM Plan" data-vi="Kế hoạch GTM thực thi">Executable GTM Plan</h3>
+                    <p data-en="A concrete go-to-market strategy tailored for getting your product or business into the US market" data-vi="Chiến lược go-to-market cụ thể được thiết kế riêng để đưa sản phẩm/doanh nghiệp của bạn vào thị trường Mỹ">A concrete go-to-market strategy tailored for getting your product or business into the US market</p>
+                </div>
+                <div class="benefit-card reveal reveal-delay-1">
+                    <div class="benefit-icon">🛠️</div>
+                    <h3 data-en="Channel Prototypes" data-vi="Nguyên mẫu kênh phân phối">Channel Prototypes</h3>
+                    <p data-en="Prototypes of distribution channels set up during hands-on workshops — ready to test" data-vi="Nguyên mẫu kênh phân phối được thiết lập trong các workshop thực hành — sẵn sàng thử nghiệm">Prototypes of distribution channels set up during hands-on workshops — ready to test</p>
+                </div>
+                <div class="benefit-card reveal reveal-delay-2">
+                    <div class="benefit-icon">💬</div>
+                    <h3 data-en="Peer Feedback" data-vi="Phản hồi từ đồng nghiệp">Peer Feedback</h3>
+                    <p data-en="Honest feedback from fellow entrepreneurs about your product, positioning, and strategy" data-vi="Phản hồi chân thực từ các entrepreneur khác về sản phẩm, định vị và chiến lược của bạn">Honest feedback from fellow entrepreneurs about your product, positioning, and strategy</p>
+                </div>
+                <div class="benefit-card reveal reveal-delay-3">
+                    <div class="benefit-icon">🤝</div>
+                    <h3 data-en="Powerful Network" data-vi="Mạng lưới mạnh mẽ">Powerful Network</h3>
+                    <p data-en="Connections with experienced entrepreneurs, product builders, and brand creators" data-vi="Kết nối với các entrepreneur giàu kinh nghiệm, product builder và brand creator">Connections with experienced entrepreneurs, product builders, and brand creators</p>
+                </div>
+            </div>
+
+            <div class="benefits-free reveal">
+                <div class="free-badge">🎁 <span data-en="100% FREE" data-vi="MIỄN PHÍ 100%">100% FREE</span></div>
+                <div class="free-items">
+                    <span><span class="check">✓</span> <span data-en="Free Entry" data-vi="Miễn phí tham gia">Free Entry</span></span>
+                    <span><span class="check">✓</span> <span data-en="Free Food & Drinks" data-vi="Miễn phí đồ ăn & thức uống">Free Food & Drinks</span></span>
+                    <span><span class="check">✓</span> <span data-en="Free Materials" data-vi="Miễn phí tài liệu">Free Materials</span></span>
+                    <span><span class="check">✓</span> <span data-en="Free Networking" data-vi="Miễn phí networking">Free Networking</span></span>
+                </div>
+            </div>
+
+            <div class="section-cta reveal" style="text-align: center; margin-top: 48px;">
+                <a href="https://lu.ma/bkls5m3a" target="_blank" class="btn-primary">
+                    <span data-en="Claim Your Free Spot" data-vi="Đăng ký miễn phí">Claim Your Free Spot</span>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
             </div>
         </div>
     </section>
@@ -1442,6 +1812,12 @@
                     <div class="schedule-item"><div class="item-number">4</div><div class="item-content"><h4 data-en="Awards & Networking" data-vi="Trao giải & Networking">Awards & Networking</h4><p data-en="Recognition ceremony + community building" data-vi="Lễ vinh danh + xây dựng cộng đồng">Recognition ceremony + community building</p></div></div>
                 </div>
             </div>
+            <div class="section-cta reveal" style="text-align: center; margin-top: 48px;">
+                <a href="https://lu.ma/bkls5m3a" target="_blank" class="btn-primary">
+                    <span data-en="Reserve Your Seat" data-vi="Đặt chỗ ngay">Reserve Your Seat</span>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -1451,7 +1827,7 @@
             <h2 class="section-title reveal reveal-delay-1" data-en="Built by YSEALI Fellows" data-vi="Được xây dựng bởi YSEALI Fellows">Built by YSEALI Fellows</h2>
             <p class="section-subtitle reveal reveal-delay-2" data-en="A cross-border collaboration between American and Vietnamese entrepreneurs, united by a shared mission to help young founders go global." data-vi="Sự hợp tác xuyên biên giới giữa các doanh nhân Mỹ và Việt Nam, cùng chung sứ mệnh giúp các founder trẻ vươn ra thế giới.">A cross-border collaboration between American and Vietnamese entrepreneurs, united by a shared mission to help young founders go global.</p>
 
-            <div class="team-grid team-grid-3">
+            <div class="team-grid team-grid-4">
                 <div class="team-card reveal">
                     <div class="team-avatar-img">
                         <img src="https://media.licdn.com/dms/image/v2/D5603AQE57_VIhCoW6Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731138391633?e=1773878400&v=beta&t=XUwnQLKE5PMeEoYLSPCLw6pW3OhHwWSVZoMAtlpb-8Y" alt="Andrew Sapwell">
@@ -1460,7 +1836,7 @@
                     <h3>Andrew (AJ) Sapwell</h3>
                     <div class="team-role">YSEALI Reciprocal Fellow 2026</div>
                     <p class="team-tagline" data-en="&quot;Entrepreneurship as a lifestyle&quot;" data-vi="&quot;Khởi nghiệp là lối sống&quot;">"Entrepreneurship as a lifestyle"</p>
-                    <p class="team-bio" data-en="President, Entrepreneurship Club — University of Nevada, Reno. Founder — SW Pressure Washing" data-vi="Chủ tịch CLB Khởi nghiệp — University of Nevada, Reno. Founder — SW Pressure Washing">President, Entrepreneurship Club — University of Nevada, Reno. Founder — SW Pressure Washing</p>
+                    <p class="team-bio" data-en="President, Entrepreneurship Club — University of Nevada, Reno.<br>Founder — SW Pressure Washing" data-vi="Chủ tịch CLB Khởi nghiệp — University of Nevada, Reno.<br>Founder — SW Pressure Washing">President, Entrepreneurship Club — University of Nevada, Reno.<br>Founder — SW Pressure Washing</p>
                     <a href="https://www.linkedin.com/in/andrewsapwell/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
                 </div>
                 <div class="team-card reveal reveal-delay-1">
@@ -1471,7 +1847,7 @@
                     <h3>Ky-Nam Nguyen</h3>
                     <div class="team-role">YSEALI Entrepreneurship Fellow 2025</div>
                     <p class="team-tagline" data-en="&quot;24 y/o tech founder helping you grow on LinkedIn&quot;" data-vi="&quot;Founder 24 tuổi, giúp bạn phát triển trên LinkedIn&quot;">"24 y/o tech founder helping you grow on LinkedIn"</p>
-                    <p class="team-bio" data-en="Host — BuildStuffs.com (Vietnam's largest network of young builders). Founder — EngageKit.io" data-vi="Host — BuildStuffs.com (Mạng lưới builder trẻ lớn nhất Việt Nam). Founder — EngageKit.io">Host — BuildStuffs.com (Vietnam's largest network of young builders). Founder — EngageKit.io</p>
+                    <p class="team-bio" data-en="Host — BuildStuffs.com (Vietnam's largest network of young builders).<br>Founder — EngageKit.io" data-vi="Host — BuildStuffs.com (Mạng lưới builder trẻ lớn nhất Việt Nam).<br>Founder — EngageKit.io">Host — BuildStuffs.com (Vietnam's largest network of young builders).<br>Founder — EngageKit.io</p>
                     <a href="https://www.linkedin.com/in/withkynam/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
                 </div>
                 <div class="team-card reveal reveal-delay-2">
@@ -1482,9 +1858,26 @@
                     <h3>Duy (Fred) Tran</h3>
                     <div class="team-role">YSEALI Entrepreneurship Fellow 2025</div>
                     <p class="team-tagline" data-en="&quot;True Gen Z with nothing to lose, everything to dream&quot;" data-vi="&quot;Gen Z chính hiệu — không gì để mất, tất cả để mơ&quot;">"True Gen Z with nothing to lose, everything to dream"</p>
-                    <p class="team-bio" data-en="Insights & Analytics Associate — Abbott International. Director — SEO-V Vietnam Fellowship" data-vi="Insights & Analytics Associate — Abbott International. Giám đốc — SEO-V Vietnam Fellowship">Insights & Analytics Associate — Abbott International. Director — SEO-V Vietnam Fellowship</p>
+                    <p class="team-bio" data-en="Insights & Analytics — Abbott Nutrition International - APAC.<br>Program Director — SEO-Vietnam" data-vi="Insights & Analytics — Abbott Nutrition International - APAC.<br>Giám đốc Chương trình — SEO-Vietnam">Insights & Analytics — Abbott Nutrition International - APAC.<br>Program Director — SEO-Vietnam</p>
                     <a href="https://www.linkedin.com/in/trantienduy/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
                 </div>
+                <div class="team-card reveal reveal-delay-3">
+                    <div class="team-avatar-img">
+                        <img src="https://scontent-iad3-1.xx.fbcdn.net/v/t39.30808-6/466102675_1560805747881916_2904033957386361900_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=UUiERWYGdwwQ7kNvwGcKYh2&_nc_oc=AdlZZBLC4N1it7SzmSBCjuc66Z9Pqio-3CmoMXDFHFcS3zF1oNOM6e29jH5KOWg67SE&_nc_zt=23&_nc_ht=scontent-iad3-1.xx&_nc_gid=naNsVmEiUg5SWcOprNQCvg&_nc_ss=8&oh=00_AfxbR1Sr2-gSjTKaYm6C0GgSzD2gtOXoiRsxzAzgav-tvA&oe=69AC4EED" alt="Phuong Thao">
+                        <span class="team-flag">🇻🇳</span>
+                    </div>
+                    <h3>Phuong Thao (Zay)</h3>
+                    <div class="team-role">YSEALI Entrepreneurship Fellow 2025</div>
+                    <p class="team-tagline" data-en="&quot;Building bridges between the West and East for growth&quot;" data-vi="&quot;Xây cầu nối giữa phương Tây và phương Đông để phát triển&quot;">"Building bridges between the West and East for growth"</p>
+                    <p class="team-bio" data-en="Director of IT Projects — Bankaool S.A. (Mexico Fintech Bank).<br>Ex-COO @ Wee Digital" data-vi="Giám đốc Dự án CNTT — Bankaool S.A. (Ngân hàng Fintech Mexico).<br>Cựu COO @ Wee Digital">Director of IT Projects — Bankaool S.A. (Mexico Fintech Bank).<br>Ex-COO @ Wee Digital</p>
+                    <a href="#" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                </div>
+            </div>
+            <div class="section-cta reveal" style="text-align: center; margin-top: 48px;">
+                <a href="https://lu.ma/bkls5m3a" target="_blank" class="btn-primary">
+                    <span data-en="Join This Cohort" data-vi="Tham gia ngay">Join This Cohort</span>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
             </div>
         </div>
     </section>
@@ -1538,6 +1931,12 @@
                     <p class="speaker-tagline" data-en="Changing men's shopping habits" data-vi="Thay đổi thói quen mua sắm của nam giới">Changing men's shopping habits</p>
                     <a href="https://www.linkedin.com/in/nhu-pham-04639057/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
                 </div>
+            </div>
+            <div class="section-cta reveal" style="text-align: center; margin-top: 48px;">
+                <a href="https://lu.ma/bkls5m3a" target="_blank" class="btn-primary">
+                    <span data-en="Learn From the Best" data-vi="Học từ những người giỏi nhất">Learn From the Best</span>
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
             </div>
         </div>
     </section>
