@@ -79,7 +79,8 @@ OUTPUT: Chỉ trả về tin nhắn. Không giải thích, KHÔNG CÓ LINK/URL.`
           model: 'arcee-ai/trinity-mini:free',
           messages: [{ role: 'user', content: lang === 'en' ? promptEn : promptVi }],
           temperature: 0.9,
-          max_tokens: 200
+          max_tokens: 500,
+          reasoning: { enabled: true }
         })
       }
     );
