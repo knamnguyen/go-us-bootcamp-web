@@ -6,6 +6,7 @@
     <title>Go-US Entrepreneur Bootcamp | YSEALI 2025</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/favicon.png">
+    <script async src="https://tally.so/widgets/embed.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -1505,6 +1506,146 @@
             .section-title { font-size: 1.8rem; }
             .nav-cta { display: none; }
             .nav-right { gap: 8px; }
+            .hero-date {
+                padding: 8px 16px;
+                gap: 6px;
+                font-size: 0.85rem;
+            }
+            .hero-date .date-icon { font-size: 0.9rem; }
+            .hero-date .date-text { font-size: 0.85rem; }
+        }
+
+        /* Floating Tally Button & Popup */
+        .tally-fab {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--orange), var(--pink));
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            animation: fabPulse 2s infinite;
+        }
+
+        .tally-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(255, 107, 53, 0.5);
+        }
+
+        .tally-fab.hidden {
+            transform: scale(0);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @keyframes fabPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(255, 107, 53, 0.6), 0 0 0 8px rgba(255, 107, 53, 0.1); }
+        }
+
+        .tally-popup {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 360px;
+            max-height: 450px;
+            background: #1a1a2e;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow: hidden;
+            transform: scale(0.8) translateY(20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            transform-origin: bottom right;
+        }
+
+        .tally-popup.open {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .tally-popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(255, 51, 102, 0.1));
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tally-popup-header h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tally-popup-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        .tally-popup-close:hover {
+            color: var(--text-primary);
+        }
+
+        .tally-popup-body {
+            padding: 0;
+            max-height: 380px;
+            overflow-y: auto;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+        }
+
+        .tally-popup-body::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .tally-popup-body iframe {
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .tally-fab {
+                bottom: 16px;
+                right: 16px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            .tally-popup {
+                bottom: 0;
+                right: 0;
+                left: 0;
+                width: 100%;
+                max-height: 70vh;
+                border-radius: 16px 16px 0 0;
+                transform: translateY(100%);
+            }
+            .tally-popup.open {
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -1575,7 +1716,7 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator" data-en="Scroll" data-vi="Cuộn xuống">Scroll</div>
+        <div class="scroll-indicator"></div>
     </section>
 
     <section id="supported-by">
@@ -2003,6 +2144,21 @@
         </div>
     </footer>
 
+    <!-- Floating Tally Button & Popup -->
+    <button id="tally-fab" class="tally-fab" aria-label="Open registration form">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+    </button>
+
+    <div id="tally-popup" class="tally-popup">
+        <div class="tally-popup-header">
+            <h4>👋 <span data-en="Stay Updated" data-vi="Cập nhật thông tin">Stay Updated</span></h4>
+            <button id="tally-popup-close" class="tally-popup-close" aria-label="Close">&times;</button>
+        </div>
+        <div class="tally-popup-body">
+            <iframe data-tally-src="https://tally.so/embed/dWY1oA?alignLeft=1&dynamicHeight=1" loading="lazy" width="100%" height="320" frameborder="0" marginheight="0" marginwidth="0" title="Follow Go-US"></iframe>
+        </div>
+    </div>
+
     <script>
         const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
@@ -2085,6 +2241,42 @@
         if (savedLang && savedLang !== 'en') {
             switchLanguage(savedLang);
         }
+
+        // Tally Popup
+        const tallyFab = document.getElementById('tally-fab');
+        const tallyPopup = document.getElementById('tally-popup');
+        const tallyPopupClose = document.getElementById('tally-popup-close');
+        let popupShown = false;
+
+        function openTallyPopup() {
+            tallyPopup.classList.add('open');
+            tallyFab.classList.add('hidden');
+            // Load Tally embeds
+            if (typeof Tally !== 'undefined') {
+                Tally.loadEmbeds();
+            }
+        }
+
+        function closeTallyPopup() {
+            tallyPopup.classList.remove('open');
+            tallyFab.classList.remove('hidden');
+        }
+
+        tallyFab.addEventListener('click', openTallyPopup);
+        tallyPopupClose.addEventListener('click', closeTallyPopup);
+
+        // Auto-open after 10 seconds
+        setTimeout(() => {
+            if (!popupShown && !localStorage.getItem('tally-popup-dismissed')) {
+                openTallyPopup();
+                popupShown = true;
+            }
+        }, 10000);
+
+        // Remember if user closed the popup
+        tallyPopupClose.addEventListener('click', () => {
+            localStorage.setItem('tally-popup-dismissed', 'true');
+        });
     </script>
 </body>
 </html>
