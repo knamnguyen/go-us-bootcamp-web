@@ -2,4 +2,4 @@ name = "go-us-bootcamp"
 compatibility_date = "2024-01-01"
 
 [placement]
-region = "aws:us-east-1"
+hostname = "generativelanguage.googleapis.com"
