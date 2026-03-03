@@ -2686,11 +2686,8 @@
             linkedin: (url, text) => `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
             threads: (url, text) => `https://www.threads.net/intent/post?text=${encodeURIComponent(text)}`,
             whatsapp: (url, text) => `https://wa.me/?text=${encodeURIComponent(text)}`,
-            messenger: (url, text) => `https://www.facebook.com/dialog/share?href=${encodeURIComponent(url)}&display=popup`,
-            zalo: (url, text) => {
-                const caption = text.replace(url, '').trim();
-                return `https://sp.zalo.me/share_h5?url=${encodeURIComponent(url)}&t=${encodeURIComponent(caption)}`;
-            }
+            messenger: (url, text) => `https://www.facebook.com/dialog/send?link=${encodeURIComponent(url)}&app_id=291494419107518&redirect_uri=${encodeURIComponent(url)}`,
+            zalo: (url, text) => null // Zalo requires SDK, we'll handle it specially
         };
 
         // Platform buttons click handlers
@@ -2698,6 +2695,21 @@
             btn.addEventListener('click', () => {
                 const platform = btn.dataset.platform;
                 const caption = shareCaptionBox.textContent || '';
+
+                // Special handling for Zalo - no web URL available, copy and show instructions
+                if (platform === 'zalo') {
+                    navigator.clipboard.writeText(caption).then(() => {
+                        copiedToast.textContent = currentShareLang === 'en'
+                            ? '✓ Copied! Open Zalo app to share'
+                            : '✓ Đã sao chép! Mở Zalo để chia sẻ';
+                        copiedToast.classList.add('show');
+                        setTimeout(() => copiedToast.classList.remove('show'), 3000);
+                    });
+                    // Try to open Zalo app (works on mobile)
+                    window.location.href = 'zalo://';
+                    return;
+                }
+
                 const shareUrl = shareHandlers[platform](SHARE_URL, caption);
 
                 // For platforms that don't support pre-filled text, copy to clipboard first
