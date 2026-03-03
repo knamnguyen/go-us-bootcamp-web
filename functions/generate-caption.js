@@ -34,17 +34,17 @@ STYLE GUIDE:
 - Sound like a real Gen Z/young professional sharing something cool they found
 - Casual, lowercase okay, natural typing style
 - NO salesy language, NO "amazing opportunity", NO "don't miss out"
-- NO AI artifacts like "[Apply Link Here]" or "[link]"
 - 1-2 sentences max, keep it short like a real text
 - Use 0-2 emojis max, not excessive
-- Do NOT include any link in your message
+
+CRITICAL: Do NOT include any URL, link, or website in your response. The link will be added separately.
 
 EXAMPLES of the vibe:
 - "hey guyss just found this free bootcamp for viet entrepreneurs wanting to crack the US market, looks pretty legit"
 - "yo if anyone's building something and wants to learn about selling to the US, check this out"
 - "found this workshop thing for founders, it's free and in hcmc next month"
 
-OUTPUT: Return ONLY the message text, nothing else. No quotes, no explanations, no link.`;
+OUTPUT: Return ONLY the message text. No quotes, no explanations, NO LINKS/URLs.`;
 
     const promptVi = `Viết tin nhắn casual như đang nhắn cho bạn bè về GO-US Entrepreneur Bootcamp.
 
@@ -55,16 +55,17 @@ CÁCH VIẾT:
 - Dùng tiếng lóng phổ biến: "hay phết", "đỉnh", "xịn", "t" thay "tao/mình", "m" thay "mày/bạn"
 - Viết tắt tự nhiên: "ko" (không), "đc" (được), "j" (gì), "r" (rồi)
 - KHÔNG dùng ngôn ngữ quảng cáo, KHÔNG "cơ hội vàng", KHÔNG "đừng bỏ lỡ"
-- KHÔNG có link trong tin nhắn
 - 1-2 câu thôi, ngắn gọn như tin nhắn thật
 - Dùng 0-2 emoji, đừng spam
+
+QUAN TRỌNG: KHÔNG bao gồm bất kỳ URL, link, hay website nào. Link sẽ được thêm riêng.
 
 VÍ DỤ:
 - "ê t mới tìm đc cái workshop này cho founders việt muốn hiểu thị trường mỹ, free luôn"
 - "m có đang build gì ko? có cái bootcamp này hay phết cho mấy đứa muốn sell qua mỹ"
 - "vừa thấy cái này khá xịn cho startup, ở tphcm tháng 4, free nữa"
 
-OUTPUT: Chỉ trả về tin nhắn, không giải thích gì thêm. Không có dấu ngoặc kép, không có link.`;
+OUTPUT: Chỉ trả về tin nhắn. Không giải thích, KHÔNG CÓ LINK/URL.`;
 
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${GEMINI_API_KEY}`,
@@ -89,13 +90,22 @@ OUTPUT: Chỉ trả về tin nhắn, không giải thích gì thêm. Không có 
       throw new Error('Empty response from Gemini');
     }
 
-    // Clean up - remove quotes and any existing links
-    caption = caption.trim().replace(/^["']|["']$/g, '');
-    caption = caption.replace(/https?:\/\/[^\s]+/g, '').trim();
-    caption = caption.replace(/:\s*$/, '').trim(); // Remove trailing colon
+    // Clean up the caption
+    caption = caption.trim();
+    // Remove surrounding quotes
+    caption = caption.replace(/^["']|["']$/g, '');
+    // Remove any URLs (http, https, or just domain patterns)
+    caption = caption.replace(/https?:\/\/[^\s]+/gi, '');
+    caption = caption.replace(/gous-entrecamp\.pages\.dev/gi, '');
+    caption = caption.replace(/\b\w+\.pages\.dev\b/gi, '');
+    caption = caption.replace(/\b\w+\.(com|dev|io|org|net)\b/gi, '');
+    // Clean up any leftover artifacts
+    caption = caption.replace(/:\s*$/, ''); // Remove trailing colon
+    caption = caption.replace(/\s+/g, ' '); // Normalize whitespace
+    caption = caption.trim();
 
-    // Always append link at end with proper formatting
-    caption += `\n\n${SHARE_URL}`;
+    // Always append link at end with 2 line breaks
+    caption = caption + '\n\n' + SHARE_URL;
 
     return new Response(JSON.stringify({ caption }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' }
