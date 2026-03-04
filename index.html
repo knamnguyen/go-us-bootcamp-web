@@ -1112,55 +1112,66 @@
             line-height: 1.6;
         }
 
-        .benefits-free {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 210, 63, 0.1));
-            border: 2px solid rgba(255, 210, 63, 0.4);
-            border-radius: 20px;
-            padding: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .free-badge {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--gold);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .free-items {
-            display: flex;
-            gap: 32px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .free-items span {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 1rem;
-            color: var(--text-secondary);
-        }
-
-        .free-items .check {
-            color: var(--cyan);
-            font-weight: bold;
-        }
-
         @media (max-width: 1024px) {
             .benefits-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
             .benefits-grid { grid-template-columns: 1fr; }
-            .benefits-free { flex-direction: column; gap: 20px; }
-            .free-items { flex-direction: column; gap: 12px; align-items: center; }
+        }
+
+        .benefits-applicants {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 210, 63, 0.1));
+            border: 2px solid rgba(255, 210, 63, 0.4);
+            border-radius: 20px;
+            padding: 28px 32px;
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .applicants-badge {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--gold);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .applicants-content p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .applicants-perks {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .applicants-perks span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .applicants-perks .check {
+            color: var(--cyan);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .applicants-perks {
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+            }
         }
 
         .industries-card {
@@ -1436,6 +1447,18 @@
 
         .footer-link:hover {
             text-decoration: underline;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-divider {
+            color: var(--text-muted);
         }
 
         .footer-copy {
@@ -2138,7 +2161,7 @@
                 <div class="who-main reveal">
                     <div class="serious-badge" data-en="🎯 Highly Selective" data-vi="🎯 Tuyển chọn gắt gao">🎯 Highly Selective</div>
                     <h3 data-en="30 Hand-Selected Young Entrepreneurs" data-vi="30 Founder trẻ được tuyển chọn kỹ lưỡng">30 Hand-Selected Young Entrepreneurs</h3>
-                    <p data-en="We're sourcing from <strong>1,000+ top students</strong> across Vietnam's leading universities to select only <strong>30 serious young founders</strong> who are ready to go global." data-vi="Chúng tôi sàng lọc từ <strong>1,000+ sinh viên xuất sắc</strong> tại các trường đại học hàng đầu Việt Nam để chọn ra <strong>30 founder trẻ nghiêm túc</strong> sẵn sàng vươn ra quốc tế.">We're sourcing from <strong>1,000+ top students</strong> across Vietnam's leading universities to select only <strong>30 serious young founders</strong> who are ready to go global.</p>
+                    <p data-en="We're sourcing from <strong>students and young people under 30</strong> across Vietnam to select only <strong>30 serious young founders</strong> who are ready to go global." data-vi="Chúng tôi sàng lọc từ <strong>sinh viên và người trẻ dưới 30 tuổi</strong> trên khắp Việt Nam để chọn ra <strong>30 founder trẻ nghiêm túc</strong> sẵn sàng vươn ra quốc tế.">We're sourcing from <strong>students and young people under 30</strong> across Vietnam to select only <strong>30 serious young founders</strong> who are ready to go global.</p>
                     
                     <div class="not-for-box">
                         <h4 data-en="❌ This is NOT for you if:" data-vi="❌ Chương trình KHÔNG phù hợp nếu bạn:">❌ This is NOT for you if:</h4>
@@ -2206,15 +2229,6 @@
                 </div>
             </div>
 
-            <div class="post-program reveal">
-                <div class="post-program-content">
-                    <div class="post-icon">💬</div>
-                    <div>
-                        <h4 data-en="Post-Program Community" data-vi="Cộng đồng sau chương trình">Post-Program Community</h4>
-                        <p data-en="After the bootcamp, you'll join an <strong>exclusive alumni group chat</strong> to maintain connections, share wins, get feedback, and support each other as you grow your businesses globally. The relationships don't end when the event does." data-vi="Sau bootcamp, bạn sẽ tham gia <strong>group chat alumni độc quyền</strong> để duy trì kết nối, chia sẻ thành công, nhận feedback và hỗ trợ nhau phát triển ra quốc tế. Mối quan hệ không kết thúc khi sự kiện kết thúc.">After the bootcamp, you'll join an <strong>exclusive alumni group chat</strong> to maintain connections, share wins, get feedback, and support each other as you grow your businesses globally. The relationships don't end when the event does.</p>
-                    </div>
-                </div>
-            </div>
             <div class="section-cta reveal" style="text-align: center; margin-top: 48px;">
                 <a href="https://lu.ma/bkls5m3a" target="_blank" class="btn-primary">
                     <span data-en="Check If You Qualify" data-vi="Kiểm tra điều kiện">Check If You Qualify</span>
@@ -2251,15 +2265,36 @@
                     <h3 data-en="Powerful Network" data-vi="Mạng lưới mạnh mẽ">Powerful Network</h3>
                     <p data-en="Connections with experienced entrepreneurs, product builders, and brand creators" data-vi="Kết nối với các entrepreneur giàu kinh nghiệm, product builder và brand creator">Connections with experienced entrepreneurs, product builders, and brand creators</p>
                 </div>
+                <div class="benefit-card reveal reveal-delay-4">
+                    <div class="benefit-icon">💬</div>
+                    <h3 data-en="Alumni Community" data-vi="Cộng đồng Alumni">Alumni Community</h3>
+                    <p data-en="Join an exclusive group chat to share wins, get feedback, and support each other long after the event ends" data-vi="Tham gia group chat độc quyền để chia sẻ thành công, nhận feedback và hỗ trợ nhau sau khi sự kiện kết thúc">Join an exclusive group chat to share wins, get feedback, and support each other long after the event ends</p>
+                </div>
+                <div class="benefit-card reveal reveal-delay-5">
+                    <div class="benefit-icon">🏆</div>
+                    <h3 data-en="Certificate" data-vi="Chứng nhận">Certificate</h3>
+                    <p data-en="We know you're a serious founder who doesn't need certificates — but we still give them out upon completion" data-vi="Chúng tôi biết bạn là founder nghiêm túc không cần chứng nhận — nhưng vẫn trao sau khi hoàn thành">We know you're a serious founder who doesn't need certificates — but we still give them out upon completion</p>
+                </div>
+                <div class="benefit-card reveal reveal-delay-6">
+                    <div class="benefit-icon">🎁</div>
+                    <h3 data-en="100% Free" data-vi="Miễn phí 100%">100% Free</h3>
+                    <p data-en="Free entry, food & drinks, materials, and networking — absolutely no hidden costs" data-vi="Miễn phí tham gia, đồ ăn & thức uống, tài liệu, và networking — không phí ẩn">Free entry, food & drinks, materials, and networking — absolutely no hidden costs</p>
+                </div>
+                <div class="benefit-card reveal reveal-delay-7">
+                    <div class="benefit-icon">🌙</div>
+                    <h3 data-en="YSEALI Night Out" data-vi="Đêm giao lưu YSEALI">YSEALI Night Out</h3>
+                    <p data-en="Hang out with YSEALI fellows after hours — casual drinks, good vibes, real connections" data-vi="Giao lưu với các YSEALI fellows buổi tối — đồ uống, không khí vui vẻ, kết nối thực sự">Hang out with YSEALI fellows after hours — casual drinks, good vibes, real connections</p>
+                </div>
             </div>
 
-            <div class="benefits-free reveal">
-                <div class="free-badge">🎁 <span data-en="100% FREE" data-vi="MIỄN PHÍ 100%">100% FREE</span></div>
-                <div class="free-items">
-                    <span><span class="check">✓</span> <span data-en="Free Entry" data-vi="Miễn phí tham gia">Free Entry</span></span>
-                    <span><span class="check">✓</span> <span data-en="Free Food & Drinks" data-vi="Miễn phí đồ ăn & thức uống">Free Food & Drinks</span></span>
-                    <span><span class="check">✓</span> <span data-en="Free Materials" data-vi="Miễn phí tài liệu">Free Materials</span></span>
-                    <span><span class="check">✓</span> <span data-en="Free Networking" data-vi="Miễn phí networking">Free Networking</span></span>
+            <div class="benefits-applicants reveal">
+                <div class="applicants-badge">📣 <span data-en="FOR ALL APPLICANTS" data-vi="DÀNH CHO TẤT CẢ ỨNG VIÊN">FOR ALL APPLICANTS</span></div>
+                <div class="applicants-content">
+                    <p data-en="Even if you're not selected for the in-person bootcamp, you still get value just by applying:" data-vi="Dù không được chọn tham gia trực tiếp, bạn vẫn nhận được giá trị chỉ bằng việc đăng ký:">Even if you're not selected for the in-person bootcamp, you still get value just by applying:</p>
+                    <div class="applicants-perks">
+                        <span><span class="check">✓</span> <span data-en="Free workshop materials & recordings" data-vi="Tài liệu & bản ghi workshop miễn phí">Free workshop materials & recordings</span></span>
+                        <span><span class="check">✓</span> <span data-en="Tailored feedback on your business idea & direction" data-vi="Feedback cá nhân hoá cho ý tưởng & định hướng kinh doanh">Tailored feedback on your business idea & direction</span></span>
+                    </div>
                 </div>
             </div>
 
@@ -2495,10 +2530,13 @@
                 <div class="footer-partners">
                     <span>🇺🇸 U.S. Department of State</span>
                     <span>YSEALI</span>
-                    <span>Ozmen Center for Entrepreneurship</span>
                     <span>NNIC</span>
                 </div>
-                <a href="https://ysealiafp.org/reciprocal-exchanges" target="_blank" class="footer-link">ysealiafp.org/reciprocal-exchanges</a>
+                <div class="footer-links">
+                    <span>Contact:</span> <a href="mailto:gousentrecamp@gmail.com" class="footer-link">gousentrecamp@gmail.com</a>
+                    <span class="footer-divider">|</span>
+                    <a href="https://ysealiafp.org/reciprocal-exchanges" target="_blank" class="footer-link">ysealiafp.org/reciprocal-exchanges</a>
+                </div>
                 <p class="footer-copy" data-en="© 2025 Go-US Entrepreneur Bootcamp. A YSEALI Reciprocal Exchange Initiative." data-vi="© 2025 Go-US Entrepreneur Bootcamp. Sáng kiến Trao đổi YSEALI.">© 2025 Go-US Entrepreneur Bootcamp. A YSEALI Reciprocal Exchange Initiative.</p>
             </div>
         </div>
@@ -2778,7 +2816,7 @@
         let sharePopupShown = false;
         let currentShareLang = 'en';
         let generatedCaptions = { en: '', vi: '' };
-        const SHARE_URL = 'https://gous-entrecamp.pages.dev';
+        const SHARE_URL = 'https://gous-entrecamp.com';
 
         // Auto-copy to clipboard with toast
         async function autoCopyCaption(text) {
