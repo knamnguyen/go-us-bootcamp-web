@@ -2830,7 +2830,44 @@
             }
         }
 
+        // Prefetch caption silently (no UI updates)
+        async function prefetchCaption(lang) {
+            if (generatedCaptions[lang]) return; // Already cached
+
+            try {
+                const response = await fetch('/generate-caption', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ lang })
+                });
+                const data = await response.json();
+                generatedCaptions[lang] = data.caption;
+                console.log(`Prefetched ${lang} caption`);
+            } catch (error) {
+                console.error(`Prefetch ${lang} caption failed:`, error);
+                // Set fallback so we don't retry
+                const fallbackEn = `hey found this free workshop for viet founders wanting to learn about the US market, looks pretty solid\n\n${SHARE_URL}`;
+                const fallbackVi = `ê t mới thấy cái workshop này hay phết cho founders muốn hiểu thị trường mỹ, free luôn\n\n${SHARE_URL}`;
+                generatedCaptions[lang] = lang === 'en' ? fallbackEn : fallbackVi;
+            }
+        }
+
+        // Prefetch both languages on page load
+        setTimeout(() => {
+            prefetchCaption('en');
+            prefetchCaption('vi');
+        }, 2000); // Start after 2s to not block initial page load
+
         async function generateCaption(lang) {
+            // If already prefetched, just display it
+            if (generatedCaptions[lang]) {
+                shareCaptionBox.classList.remove('loading');
+                shareCaptionBox.textContent = generatedCaptions[lang];
+                shareBtnRegenerate.classList.remove('loading');
+                autoCopyCaption(generatedCaptions[lang]);
+                return;
+            }
+
             shareCaptionBox.classList.add('loading');
             shareCaptionBox.innerHTML = lang === 'en' ? 'Generating caption...' : 'Đang tạo caption...';
             shareBtnRegenerate.classList.add('loading');
