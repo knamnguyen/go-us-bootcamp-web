@@ -13,7 +13,7 @@ export async function onRequestPost(context) {
     return new Response(null, { headers: corsHeaders });
   }
 
-  const SHARE_URL = 'https://gous-entrecamp.pages.dev';
+  const SHARE_URL = 'https://gous-entrecamp.com';
   let lang = 'en';
 
   try {
@@ -79,8 +79,7 @@ OUTPUT: Chỉ trả về tin nhắn. Không giải thích, KHÔNG CÓ LINK/URL.`
           model: 'arcee-ai/trinity-mini:free',
           messages: [{ role: 'user', content: lang === 'en' ? promptEn : promptVi }],
           temperature: 0.9,
-          max_tokens: 500,
-          reasoning: { enabled: true }
+          max_tokens: 1000
         })
       }
     );
@@ -104,6 +103,7 @@ OUTPUT: Chỉ trả về tin nhắn. Không giải thích, KHÔNG CÓ LINK/URL.`
     caption = caption.replace(/^["']|["']$/g, '');
     // Remove any URLs (http, https, or just domain patterns)
     caption = caption.replace(/https?:\/\/[^\s]+/gi, '');
+    caption = caption.replace(/gous-entrecamp\.com/gi, '');
     caption = caption.replace(/gous-entrecamp\.pages\.dev/gi, '');
     caption = caption.replace(/\b\w+\.pages\.dev\b/gi, '');
     caption = caption.replace(/\b\w+\.(com|dev|io|org|net)\b/gi, '');
