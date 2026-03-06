@@ -1126,7 +1126,24 @@
         }
 
         @media (max-width: 768px) {
-            .benefits-grid { grid-template-columns: 1fr; }
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .benefits-grid .benefit-card {
+                padding: 20px;
+            }
+            .benefits-grid .benefit-icon {
+                font-size: 1.8rem;
+                margin-bottom: 12px;
+            }
+            .benefits-grid .benefit-card h3 {
+                font-size: 0.9rem;
+                margin-bottom: 8px;
+            }
+            .benefits-grid .benefit-card p {
+                font-size: 0.75rem;
+            }
         }
 
         .benefits-applicants {
@@ -1916,15 +1933,31 @@
             .hero h1 { font-size: 2.5rem; }
             .hero-stats { gap: 24px; }
             .about-content { grid-template-columns: 1fr; }
-            .feature-grid { grid-template-columns: 1fr; }
+            .feature-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .feature-grid .feature-card { padding: 20px; }
+            .feature-grid .feature-icon { font-size: 1.8rem; margin-bottom: 12px; }
+            .feature-grid .feature-card h3 { font-size: 0.9rem; }
+            .feature-grid .feature-card p { font-size: 0.75rem; }
             .who-grid { grid-template-columns: 1fr; }
             .post-program-content { flex-direction: column; text-align: center; }
             .schedule-days { grid-template-columns: 1fr; }
-            .team-grid { grid-template-columns: 1fr; }
-            .team-grid-3 { grid-template-columns: 1fr; max-width: 100%; }
-            .team-grid-4 { grid-template-columns: 1fr; max-width: 100%; }
+            .team-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .team-grid .team-card { padding: 20px; }
+            .team-grid .team-avatar-img { width: 80px; height: 80px; }
+            .team-grid .team-card h3 { font-size: 0.95rem; }
+            .team-grid .team-role { font-size: 0.7rem; }
+            .team-grid .team-tagline { font-size: 0.75rem; }
+            .team-grid .team-bio { font-size: 0.7rem; }
+            .team-grid-3 { grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 100%; }
+            .team-grid-4 { grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 100%; }
             .speakers-grid { grid-template-columns: repeat(2, 1fr); }
-            .speakers-grid-new { grid-template-columns: 1fr; }
+            .speakers-grid-new { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .speakers-grid-new .speaker-card-new { padding: 20px; }
+            .speakers-grid-new .speaker-img { width: 70px; height: 70px; margin-bottom: 12px; }
+            .speakers-grid-new .speaker-placeholder { font-size: 2rem; }
+            .speakers-grid-new .speaker-card-new h4 { font-size: 0.9rem; }
+            .speakers-grid-new .speaker-title { font-size: 0.7rem; }
+            .speakers-grid-new .speaker-tagline { font-size: 0.7rem; }
             .partnership-grid { grid-template-columns: 1fr; }
             .scroll-indicator { display: none; }
             .tentative-badge { display: block; margin-top: 12px; }
@@ -1936,7 +1969,28 @@
             .hero-buttons { flex-direction: column; }
             .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
             .target-audience { flex-direction: column; gap: 12px; }
-            .speakers-grid { grid-template-columns: 1fr; }
+            .speakers-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .speakers-grid-new { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .speakers-grid-new .speaker-card-new { padding: 16px; }
+            .speakers-grid-new .speaker-img { width: 60px; height: 60px; }
+            .speakers-grid-new .speaker-placeholder { font-size: 1.6rem; }
+            .speakers-grid-new .speaker-card-new h4 { font-size: 0.8rem; }
+            .speakers-grid-new .speaker-title { font-size: 0.65rem; }
+            .speakers-grid-new .speaker-tagline { font-size: 0.65rem; }
+            .benefits-grid { gap: 12px; }
+            .benefits-grid .benefit-card { padding: 16px; }
+            .benefits-grid .benefit-icon { font-size: 1.5rem; }
+            .benefits-grid .benefit-card h3 { font-size: 0.8rem; }
+            .benefits-grid .benefit-card p { font-size: 0.7rem; }
+            .feature-grid { gap: 12px; }
+            .feature-grid .feature-card { padding: 16px; }
+            .feature-grid .feature-icon { font-size: 1.5rem; }
+            .feature-grid .feature-card h3 { font-size: 0.8rem; }
+            .feature-grid .feature-card p { font-size: 0.7rem; }
+            .team-grid, .team-grid-3, .team-grid-4 { gap: 12px; }
+            .team-grid .team-card { padding: 16px; }
+            .team-grid .team-avatar-img { width: 70px; height: 70px; }
+            .team-grid .team-card h3 { font-size: 0.85rem; }
             .stats-row { flex-direction: column; }
             .hero h1 { font-size: 2rem; }
             .hero-stats { flex-wrap: wrap; }
