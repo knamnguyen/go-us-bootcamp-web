@@ -895,6 +895,15 @@
             border: 2px solid var(--bg-dark);
         }
 
+        .speaker-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--bg-card), rgba(0, 212, 255, 0.1));
+            border: 2px solid var(--border);
+        }
+
         .speaker-card-new h4 {
             font-size: 1.05rem;
             font-weight: 700;
@@ -1355,16 +1364,23 @@
 
         /* Supported By Partners */
         .partners-logos {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin-top: 40px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .partners-logos a {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 40px;
-            margin-top: 40px;
         }
 
         .partner-logo {
-            height: 105px;
+            height: 90px;
             width: auto;
             object-fit: contain;
             filter: grayscale(100%) brightness(1.5);
@@ -1384,10 +1400,11 @@
 
         @media (max-width: 768px) {
             .partners-logos {
+                grid-template-columns: repeat(2, 1fr);
                 gap: 24px;
             }
             .partner-logo {
-                height: 75px;
+                height: 70px;
             }
         }
 
@@ -1465,6 +1482,404 @@
             font-size: 0.8rem;
             color: var(--text-muted);
             margin-top: 24px;
+        }
+
+        /* Workshop Schedule Accordion Styles */
+        .schedule-detailed {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .day-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 28px;
+            backdrop-filter: blur(20px);
+        }
+
+        .day-block-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .day-block-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--orange), var(--pink));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .day-block-info h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 2px;
+        }
+
+        .day-block-info .day-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .day-block-theme {
+            margin-left: auto;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(255, 51, 102, 0.1));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--cyan);
+        }
+
+        .schedule-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .timeline-item {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            border-color: rgba(255, 107, 53, 0.3);
+        }
+
+        .timeline-item.is-break {
+            background: rgba(255, 255, 255, 0.02);
+            border-style: dashed;
+        }
+
+        .timeline-item.is-break .timeline-header {
+            cursor: default;
+        }
+
+        .timeline-item.is-break:hover {
+            border-color: var(--border);
+        }
+
+        .timeline-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .timeline-header:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .timeline-item.is-break .timeline-header:hover {
+            background: transparent;
+        }
+
+        .timeline-time {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--cyan);
+            font-weight: 600;
+            min-width: 85px;
+            flex-shrink: 0;
+        }
+
+        .timeline-title {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .timeline-title h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .timeline-item.expanded .timeline-title h4 {
+            white-space: normal;
+            overflow: visible;
+        }
+
+        .timeline-title .subtitle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: none;
+        }
+
+        .timeline-item.expanded .timeline-title .subtitle {
+            display: block;
+            margin-top: 4px;
+        }
+
+        .timeline-badge {
+            background: linear-gradient(135deg, var(--orange), var(--pink));
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+        }
+
+        .timeline-toggle {
+            width: 28px;
+            height: 28px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .timeline-toggle svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--text-muted);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item.expanded .timeline-toggle {
+            background: linear-gradient(135deg, var(--orange), var(--pink));
+            border-color: transparent;
+        }
+
+        .timeline-item.expanded .timeline-toggle svg {
+            transform: rotate(180deg);
+            stroke: white;
+        }
+
+        .timeline-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .timeline-item.expanded .timeline-content {
+            max-height: 800px;
+        }
+
+        .timeline-content-inner {
+            padding: 0 24px 24px 24px;
+            border-top: 1px solid var(--border);
+            margin-top: 0;
+            padding-top: 20px;
+        }
+
+        .workshop-format {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .format-block {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .format-block h5 {
+            font-size: 0.8rem;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .format-block p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .format-block ul {
+            margin: 0;
+            padding-left: 16px;
+        }
+
+        .format-block li {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 4px;
+        }
+
+        .workshop-deliverable {
+            background: linear-gradient(135deg, rgba(255, 210, 63, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 210, 63, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .workshop-deliverable .deliverable-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .workshop-deliverable .deliverable-content h5 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .workshop-deliverable .deliverable-content p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .speaker-info-note {
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .speaker-info-note .note-icon {
+            font-size: 1.2rem;
+        }
+
+        .speaker-info-note p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .speaker-info-note strong {
+            color: var(--cyan);
+        }
+
+        @media (max-width: 1024px) {
+            .schedule-detailed {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .day-block {
+                padding: 28px;
+            }
+
+            .day-block-number {
+                width: 56px;
+                height: 56px;
+                font-size: 1.4rem;
+            }
+
+            .day-block-info h3 {
+                font-size: 1.4rem;
+            }
+
+            .timeline-header {
+                padding: 18px 20px;
+                gap: 14px;
+            }
+
+            .timeline-time {
+                font-size: 0.8rem;
+                min-width: 95px;
+            }
+
+            .timeline-title h4 {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .day-block {
+                padding: 20px;
+            }
+
+            .day-block-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .timeline-header {
+                padding: 14px 16px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .timeline-time {
+                font-size: 0.8rem;
+            }
+
+            .timeline-title {
+                width: 100%;
+            }
+
+            .timeline-title h4 {
+                white-space: normal;
+                overflow: visible;
+                text-overflow: unset;
+                font-size: 0.95rem;
+                line-height: 1.3;
+            }
+
+            .timeline-badge {
+                position: absolute;
+                top: 14px;
+                right: 50px;
+            }
+
+            .timeline-toggle {
+                position: absolute;
+                top: 14px;
+                right: 16px;
+            }
+
+            .timeline-item {
+                position: relative;
+            }
+
+            .workshop-format {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-content-inner {
+                padding: 0 16px 16px 16px;
+            }
         }
 
         .reveal {
@@ -2115,6 +2530,7 @@
                 <a href="https://engagekit.io" target="_blank"><img src="assets/partners/engagekit.png" alt="EngageKit" class="partner-logo color"></a>
                 <a href="https://upyouth.org/" target="_blank"><img src="assets/partners/upyouth.jpeg" alt="UpYouth" class="partner-logo color"></a>
                 <a href="https://www.unr.edu/nnic" target="_blank"><img src="assets/partners/nnic.jpg" alt="Northern Nevada International Center" class="partner-logo color"></a>
+                <a href="https://www.linkedin.com/company/seo-vietnam/" target="_blank"><img src="assets/seo-vietnam-logo.jpeg" alt="SEO-Vietnam" class="partner-logo color"></a>
             </div>
         </div>
     </section>
@@ -2312,42 +2728,506 @@
             <div class="schedule-header">
                 <div>
                     <span class="section-label reveal" data-en="Event Schedule" data-vi="Lịch trình sự kiện">Event Schedule</span>
-                    <h2 class="section-title reveal reveal-delay-1" data-en="2 Days of Learning" data-vi="2 Ngày học tập chuyên sâu">2 Days of Learning</h2>
+                    <h2 class="section-title reveal reveal-delay-1" data-en="2 Days of Hands-On Learning" data-vi="2 Ngày Học Tập Thực Hành">2 Days of Hands-On Learning</h2>
                 </div>
                 <div class="location-badge reveal reveal-delay-2">📍 Ho Chi Minh City • <span data-en="April 11-12, 2025" data-vi="11-12 Tháng 4, 2025">April 11-12, 2025</span></div>
             </div>
 
-            <div class="target-audience reveal">
-                <div class="audience-tag"><span>👤</span> <span data-en="Under 30 years old" data-vi="Dưới 30 tuổi">Under 30 years old</span></div>
-                <div class="audience-tag"><span>🎓</span> <span data-en="Students & Young Professionals" data-vi="Sinh viên & Người đi làm trẻ">Students & Young Professionals</span></div>
-                <div class="audience-tag"><span>🌐</span> <span data-en="All Industries" data-vi="Mọi ngành nghề">All Industries</span></div>
-                <div class="audience-tag"><span>💡</span> <span data-en="Must have a product/idea in mind" data-vi="Phải có sản phẩm/ý tưởng cụ thể">Must have a product/idea in mind</span></div>
+            <!-- Speaker Info Note -->
+            <div class="speaker-info-note reveal">
+                <span class="note-icon">🎤</span>
+                <p data-en="<strong>For Speakers:</strong> Each workshop follows a prototype-based format. You share expertise for 10-15 minutes, then facilitate 45-50 minutes of hands-on work where participants create real deliverables — not traditional group presentations." data-vi="<strong>Dành cho Diễn giả:</strong> Mỗi workshop theo format prototype. Bạn chia sẻ 10-15 phút, sau đó hướng dẫn 45-50 phút thực hành để người tham gia tạo ra sản phẩm thực — không phải thuyết trình nhóm truyền thống."><strong>For Speakers:</strong> Each workshop follows a prototype-based format. You share expertise for 10-15 minutes, then facilitate 45-50 minutes of hands-on work where participants create real deliverables — not traditional group presentations.</p>
             </div>
 
-            <div class="schedule-days">
-                <div class="day-card reveal">
-                    <div class="day-header">
-                        <div class="day-number">01</div>
-                        <div class="day-info"><h3 data-en="Learn & Strategize" data-vi="Học hỏi & Xây dựng chiến lược">Learn & Strategize</h3><span data-en="Saturday, April 11" data-vi="Thứ Bảy, 11 Tháng 4">Saturday, April 11</span></div>
+            <div class="schedule-detailed">
+                <!-- DAY 1 -->
+                <div class="day-block reveal">
+                    <div class="day-block-header">
+                        <div class="day-block-number">01</div>
+                        <div class="day-block-info">
+                            <h3 data-en="Understand, Validate & Strategize" data-vi="Tìm hiểu, Xác nhận & Lên chiến lược">Understand, Validate & Strategize</h3>
+                            <span class="day-date" data-en="Saturday, April 11" data-vi="Thứ Bảy, 11 Tháng 4">Saturday, April 11</span>
+                        </div>
                     </div>
-                    <div class="schedule-item"><div class="item-number">1</div><div class="item-content"><h4 data-en="Understanding the US Market" data-vi="Hiểu thị trường Mỹ">Understanding the US Market</h4><p data-en="Consumer behaviors, market dynamics, regional differences across states" data-vi="Hành vi người tiêu dùng, động lực thị trường, khác biệt vùng miền giữa các tiểu bang">Consumer behaviors, market dynamics, regional differences across states</p></div></div>
-                    <div class="schedule-item"><div class="item-number">2</div><div class="item-content"><h4 data-en="Testing Ideas in the US" data-vi="Kiểm chứng ý tưởng tại thị trường Mỹ">Testing Ideas in the US</h4><p data-en="How to validate and assess product-market fit for American consumers" data-vi="Cách validate và đánh giá product-market fit cho người tiêu dùng Mỹ">How to validate and assess product-market fit for American consumers</p></div></div>
-                    <div class="schedule-item"><div class="item-number">3</div><div class="item-content"><h4 data-en="Go-to-Market Strategy" data-vi="Chiến lược Go-to-Market">Go-to-Market Strategy</h4><p data-en="Social media (TikTok, Instagram, UGC), LinkedIn personal branding, partnerships, community building, building in public, sales process" data-vi="Social media (TikTok, Instagram, UGC), xây dựng thương hiệu cá nhân LinkedIn, hợp tác, xây dựng cộng đồng, building in public, quy trình sales">Social media (TikTok, Instagram, UGC), LinkedIn personal branding, partnerships, community building, building in public, sales process</p></div></div>
-                    <div class="schedule-item"><div class="item-number">4</div><div class="item-content"><h4 data-en="Panel: Local → US Market" data-vi="Toạ đàm: Từ Việt Nam → Thị trường Mỹ">Panel: Local → US Market</h4><p data-en="Real stories from Vietnamese founders who've expanded to the US" data-vi="Câu chuyện thực tế từ các founder Việt Nam đã mở rộng sang Mỹ">Real stories from Vietnamese founders who've expanded to the US</p></div></div>
-                    <div class="schedule-item"><div class="item-number">5</div><div class="item-content"><h4 data-en="Team Formation" data-vi="Thành lập nhóm">Team Formation</h4><p data-en="Form teams for Day 2 pitch competition" data-vi="Thành lập nhóm cho phần thi pitch Ngày 2">Form teams for Day 2 pitch competition</p></div></div>
+
+                    <div class="schedule-timeline">
+                        <!-- Welcome -->
+                        <div class="timeline-item is-break">
+                            <div class="timeline-header">
+                                <span class="timeline-time">8:00 - 8:30</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="Welcome & Icebreaker" data-vi="Chào mừng & Làm quen">Welcome & Icebreaker</h4>
+                                    <span class="subtitle" data-en="Registration, networking, and warm-up activities" data-vi="Đăng ký, networking, và hoạt động làm quen">Registration, networking, and warm-up activities</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Workshop 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-header" onclick="toggleTimeline(this)">
+                                <span class="timeline-time">8:30 - 10:00</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="W1: U.S. Consumer Psychology" data-vi="W1: Tâm lý Người tiêu dùng Mỹ">W1: U.S. Consumer Psychology</h4>
+                                    <span class="subtitle" data-en="Marketing Psychology & Consumer Behavior" data-vi="Tâm lý Marketing & Hành vi Người tiêu dùng">Marketing Psychology & Consumer Behavior</span>
+                                </div>
+                                <span class="timeline-badge" data-en="Workshop" data-vi="Workshop">Workshop</span>
+                                <div class="timeline-toggle">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                                </div>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-content-inner">
+                                    <div class="workshop-format">
+                                        <div class="format-block">
+                                            <h5 data-en="🎤 Speaker Session (10-15 min)" data-vi="🎤 Phần chia sẻ (10-15 phút)">🎤 Speaker Session (10-15 min)</h5>
+                                            <p data-en="U.S. consumer psychology, cultural nuances, what triggers buying decisions, regional differences across states" data-vi="Tâm lý người tiêu dùng Mỹ, sắc thái văn hóa, yếu tố kích hoạt quyết định mua, sự khác biệt giữa các vùng">U.S. consumer psychology, cultural nuances, what triggers buying decisions, regional differences across states</p>
+                                        </div>
+                                        <div class="format-block">
+                                            <h5 data-en="🛠️ Hands-On Prototype (45-50 min)" data-vi="🛠️ Thực hành Prototype (45-50 phút)">🛠️ Hands-On Prototype (45-50 min)</h5>
+                                            <ul>
+                                                <li data-en="Build a U.S. customer persona using templates" data-vi="Xây dựng persona khách hàng Mỹ bằng template">Build a U.S. customer persona using templates</li>
+                                                <li data-en="Design 1 social media ad targeting that persona" data-vi="Thiết kế 1 quảng cáo social media nhắm đến persona đó">Design 1 social media ad targeting that persona</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="workshop-deliverable">
+                                        <span class="deliverable-icon">📦</span>
+                                        <div class="deliverable-content">
+                                            <h5 data-en="Deliverable" data-vi="Sản phẩm đầu ra">Deliverable</h5>
+                                            <p data-en="1 U.S. customer persona card + 1 ad creative draft ready for testing" data-vi="1 persona khách hàng Mỹ + 1 bản nháp quảng cáo sẵn sàng test">1 U.S. customer persona card + 1 ad creative draft ready for testing</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Break -->
+                        <div class="timeline-item is-break">
+                            <div class="timeline-header">
+                                <span class="timeline-time">10:00 - 10:15</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="☕ Coffee Break" data-vi="☕ Giải lao">☕ Coffee Break</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Workshop 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-header" onclick="toggleTimeline(this)">
+                                <span class="timeline-time">10:15 - 12:00</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="W2: Product Positioning & USP" data-vi="W2: Định vị Sản phẩm & USP">W2: Product Positioning & USP</h4>
+                                    <span class="subtitle" data-en="Positioning, USP & Competitive Edge" data-vi="Định vị, USP & Lợi thế Cạnh tranh">Positioning, USP & Competitive Edge</span>
+                                </div>
+                                <span class="timeline-badge" data-en="Workshop" data-vi="Workshop">Workshop</span>
+                                <div class="timeline-toggle">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                                </div>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-content-inner">
+                                    <div class="workshop-format">
+                                        <div class="format-block">
+                                            <h5 data-en="🎤 Speaker Session (10-15 min)" data-vi="🎤 Phần chia sẻ (10-15 phút)">🎤 Speaker Session (10-15 min)</h5>
+                                            <p data-en="How to position your product for American consumers, USP frameworks, competitive differentiation strategies" data-vi="Cách định vị sản phẩm cho người tiêu dùng Mỹ, framework USP, chiến lược khác biệt hóa cạnh tranh">How to position your product for American consumers, USP frameworks, competitive differentiation strategies</p>
+                                        </div>
+                                        <div class="format-block">
+                                            <h5 data-en="🛠️ Hands-On Prototype (45-50 min)" data-vi="🛠️ Thực hành Prototype (45-50 phút)">🛠️ Hands-On Prototype (45-50 min)</h5>
+                                            <ul>
+                                                <li data-en="Design product packaging mockup for U.S. market" data-vi="Thiết kế mockup bao bì sản phẩm cho thị trường Mỹ">Design product packaging mockup for U.S. market</li>
+                                                <li data-en="Draft a landing page hero section" data-vi="Viết nháp phần hero của landing page">Draft a landing page hero section</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="workshop-deliverable">
+                                        <span class="deliverable-icon">📦</span>
+                                        <div class="deliverable-content">
+                                            <h5 data-en="Deliverable" data-vi="Sản phẩm đầu ra">Deliverable</h5>
+                                            <p data-en="1 product packaging mockup + 1 landing page wireframe/draft" data-vi="1 mockup bao bì sản phẩm + 1 wireframe/nháp landing page">1 product packaging mockup + 1 landing page wireframe/draft</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lunch -->
+                        <div class="timeline-item is-break">
+                            <div class="timeline-header">
+                                <span class="timeline-time">12:00 - 13:30</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="🍜 Lunch Break" data-vi="🍜 Nghỉ trưa">🍜 Lunch Break</h4>
+                                    <span class="subtitle" data-en="Networking lunch provided" data-vi="Bữa trưa networking được cung cấp">Networking lunch provided</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Workshop 3 -->
+                        <div class="timeline-item">
+                            <div class="timeline-header" onclick="toggleTimeline(this)">
+                                <span class="timeline-time">13:45 - 14:45</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="W3: GTM Channels & Distribution" data-vi="W3: Kênh GTM & Phân phối">W3: GTM Channels & Distribution</h4>
+                                    <span class="subtitle" data-en="Channels, Distribution & Partnerships" data-vi="Kênh phân phối, Hợp tác & Đối tác">Channels, Distribution & Partnerships</span>
+                                </div>
+                                <span class="timeline-badge" data-en="Workshop" data-vi="Workshop">Workshop</span>
+                                <div class="timeline-toggle">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                                </div>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-content-inner">
+                                    <div class="workshop-format">
+                                        <div class="format-block">
+                                            <h5 data-en="🎤 Speaker Session (10-15 min)" data-vi="🎤 Phần chia sẻ (10-15 phút)">🎤 Speaker Session (10-15 min)</h5>
+                                            <p data-en="Amazon, Shopify, TikTok Shop strategies; D2C vs wholesale; building partnerships; community-driven growth" data-vi="Chiến lược Amazon, Shopify, TikTok Shop; D2C vs bán sỉ; xây dựng đối tác; tăng trưởng nhờ cộng đồng">Amazon, Shopify, TikTok Shop strategies; D2C vs wholesale; building partnerships; community-driven growth</p>
+                                        </div>
+                                        <div class="format-block">
+                                            <h5 data-en="🛠️ Hands-On Prototype (45-50 min)" data-vi="🛠️ Thực hành Prototype (45-50 phút)">🛠️ Hands-On Prototype (45-50 min)</h5>
+                                            <ul>
+                                                <li data-en="Draft a TikTok Shop or Amazon listing" data-vi="Viết nháp listing TikTok Shop hoặc Amazon">Draft a TikTok Shop or Amazon listing</li>
+                                                <li data-en="Create a distribution channel strategy map" data-vi="Tạo bản đồ chiến lược kênh phân phối">Create a distribution channel strategy map</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="workshop-deliverable">
+                                        <span class="deliverable-icon">📦</span>
+                                        <div class="deliverable-content">
+                                            <h5 data-en="Deliverable" data-vi="Sản phẩm đầu ra">Deliverable</h5>
+                                            <p data-en="1 draft product listing + 1 channel strategy document" data-vi="1 bản nháp listing sản phẩm + 1 tài liệu chiến lược kênh">1 draft product listing + 1 channel strategy document</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Break -->
+                        <div class="timeline-item is-break">
+                            <div class="timeline-header">
+                                <span class="timeline-time">14:45 - 15:00</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="☕ Coffee Break" data-vi="☕ Giải lao">☕ Coffee Break</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Workshop 4 -->
+                        <div class="timeline-item">
+                            <div class="timeline-header" onclick="toggleTimeline(this)">
+                                <span class="timeline-time">15:00 - 16:00</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="W4: Sales & Outreach" data-vi="W4: Bán hàng & Tiếp cận">W4: Sales & Outreach</h4>
+                                    <span class="subtitle" data-en="From First Call to Closed Deal" data-vi="Từ Cuộc gọi đầu tiên đến Chốt đơn">From First Call to Closed Deal</span>
+                                </div>
+                                <span class="timeline-badge" data-en="Workshop" data-vi="Workshop">Workshop</span>
+                                <div class="timeline-toggle">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                                </div>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-content-inner">
+                                    <div class="workshop-format">
+                                        <div class="format-block">
+                                            <h5 data-en="🎤 Speaker Session (10-15 min)" data-vi="🎤 Phần chia sẻ (10-15 phút)">🎤 Speaker Session (10-15 min)</h5>
+                                            <p data-en="Sales psychology for U.S. market, cold outreach strategies, demo call best practices, closing techniques" data-vi="Tâm lý bán hàng cho thị trường Mỹ, chiến lược tiếp cận cold, best practice demo call, kỹ thuật chốt đơn">Sales psychology for U.S. market, cold outreach strategies, demo call best practices, closing techniques</p>
+                                        </div>
+                                        <div class="format-block">
+                                            <h5 data-en="🛠️ Hands-On Prototype (45-50 min)" data-vi="🛠️ Thực hành Prototype (45-50 phút)">🛠️ Hands-On Prototype (45-50 min)</h5>
+                                            <ul>
+                                                <li data-en="Practice sales/demo call (pair up, role-play)" data-vi="Thực hành cuộc gọi sales/demo (ghép cặp, đóng vai)">Practice sales/demo call (pair up, role-play)</li>
+                                                <li data-en="Write a cold email/LinkedIn DM sequence" data-vi="Viết chuỗi cold email/LinkedIn DM">Write a cold email/LinkedIn DM sequence</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="workshop-deliverable">
+                                        <span class="deliverable-icon">📦</span>
+                                        <div class="deliverable-content">
+                                            <h5 data-en="Deliverable" data-vi="Sản phẩm đầu ra">Deliverable</h5>
+                                            <p data-en="1 recorded practice pitch + 1 cold outreach template ready to use" data-vi="1 bản ghi pitch thực hành + 1 template cold outreach sẵn sàng sử dụng">1 recorded practice pitch + 1 cold outreach template ready to use</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Circle Roundtable -->
+                        <div class="timeline-item">
+                            <div class="timeline-header" onclick="toggleTimeline(this)">
+                                <span class="timeline-time">16:15 - 17:15</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="Roundtable + Day 2 Prep" data-vi="Tọa đàm + Chuẩn bị Ngày 2">Roundtable + Day 2 Prep</h4>
+                                    <span class="subtitle" data-en="Reflect, share learnings & prep for Day 2 pitch" data-vi="Nhìn lại, chia sẻ & chuẩn bị pitch Ngày 2">Reflect, share learnings & prep for Day 2 pitch</span>
+                                </div>
+                                <div class="timeline-toggle">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                                </div>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-content-inner">
+                                    <div class="workshop-format">
+                                        <div class="format-block">
+                                            <h5 data-en="💬 Group Discussion" data-vi="💬 Thảo luận nhóm">💬 Group Discussion</h5>
+                                            <ul>
+                                                <li data-en="Share key insights from the day" data-vi="Chia sẻ những insight quan trọng trong ngày">Share key insights from the day</li>
+                                                <li data-en="Q&A with speakers and mentors" data-vi="Hỏi đáp với diễn giả và mentor">Q&A with speakers and mentors</li>
+                                                <li data-en="Peer networking in small groups" data-vi="Networking với nhóm nhỏ">Peer networking in small groups</li>
+                                            </ul>
+                                        </div>
+                                        <div class="format-block">
+                                            <h5 data-en="📝 Homework for Day 2" data-vi="📝 Bài tập cho Ngày 2">📝 Homework for Day 2</h5>
+                                            <ul>
+                                                <li data-en="Prepare your GTM pitch draft" data-vi="Chuẩn bị bản nháp pitch GTM">Prepare your GTM pitch draft</li>
+                                                <li data-en="Form teams or work individually" data-vi="Thành lập nhóm hoặc làm việc cá nhân">Form teams or work individually</li>
+                                                <li data-en="Use today's prototypes as evidence" data-vi="Sử dụng prototype hôm nay làm bằng chứng">Use today's prototypes as evidence</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="day-card reveal reveal-delay-1">
-                    <div class="day-header">
-                        <div class="day-number">02</div>
-                        <div class="day-info"><h3 data-en="Build & Pitch" data-vi="Xây dựng & Thuyết trình">Build & Pitch</h3><span data-en="Sunday, April 12" data-vi="Chủ Nhật, 12 Tháng 4">Sunday, April 12</span></div>
+                <!-- DAY 2 -->
+                <div class="day-block reveal reveal-delay-1">
+                    <div class="day-block-header">
+                        <div class="day-block-number">02</div>
+                        <div class="day-block-info">
+                            <h3 data-en="Build, Pitch & Win" data-vi="Xây dựng, Pitch & Chiến thắng">Build, Pitch & Win</h3>
+                            <span class="day-date" data-en="Sunday, April 12" data-vi="Chủ Nhật, 12 Tháng 4">Sunday, April 12</span>
+                        </div>
                     </div>
-                    <div class="schedule-item"><div class="item-number">1</div><div class="item-content"><h4 data-en="Workshop Time" data-vi="Thời gian workshop">Workshop Time</h4><p data-en="Teams develop go-to-market strategy for their chosen local product" data-vi="Các nhóm phát triển chiến lược go-to-market cho sản phẩm địa phương đã chọn">Teams develop go-to-market strategy for their chosen local product</p></div></div>
-                    <div class="schedule-item"><div class="item-number">2</div><div class="item-content"><h4 data-en="Mentorship Rounds" data-vi="Phiên mentoring">Mentorship Rounds</h4><p data-en="1-on-1 feedback sessions with speakers and organizers" data-vi="Phiên feedback 1-1 với diễn giả và ban tổ chức">1-on-1 feedback sessions with speakers and organizers</p></div></div>
-                    <div class="schedule-item"><div class="item-number">3</div><div class="item-content"><h4 data-en="Pitch Competition" data-vi="Thi thuyết trình">Pitch Competition</h4><p data-en="Present your US market entry strategy to judges" data-vi="Trình bày chiến lược thâm nhập thị trường Mỹ trước ban giám khảo">Present your US market entry strategy to judges</p></div></div>
-                    <div class="schedule-item"><div class="item-number">4</div><div class="item-content"><h4 data-en="Awards & Networking" data-vi="Trao giải & Networking">Awards & Networking</h4><p data-en="Recognition ceremony + community building" data-vi="Lễ vinh danh + xây dựng cộng đồng">Recognition ceremony + community building</p></div></div>
+
+                    <div class="schedule-timeline">
+                        <!-- Workshop 5 -->
+                        <div class="timeline-item">
+                            <div class="timeline-header" onclick="toggleTimeline(this)">
+                                <span class="timeline-time">8:45 - 9:45</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="W5: Storytelling & Experiments" data-vi="W5: Kể chuyện & Thử nghiệm">W5: Storytelling & Experiments</h4>
+                                    <span class="subtitle" data-en="Design GTM Experiments That Matter" data-vi="Thiết kế Thử nghiệm GTM Có ý nghĩa">Design GTM Experiments That Matter</span>
+                                </div>
+                                <span class="timeline-badge" data-en="Workshop" data-vi="Workshop">Workshop</span>
+                                <div class="timeline-toggle">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                                </div>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-content-inner">
+                                    <div class="workshop-format">
+                                        <div class="format-block">
+                                            <h5 data-en="🎤 Speaker Session (10-15 min)" data-vi="🎤 Phần chia sẻ (10-15 phút)">🎤 Speaker Session (10-15 min)</h5>
+                                            <p data-en="Storytelling frameworks for pitching, how to run cheap GTM experiments, what evidence investors/partners care about" data-vi="Framework storytelling cho pitch, cách chạy thử nghiệm GTM chi phí thấp, bằng chứng nào nhà đầu tư/đối tác quan tâm">Storytelling frameworks for pitching, how to run cheap GTM experiments, what evidence investors/partners care about</p>
+                                        </div>
+                                        <div class="format-block">
+                                            <h5 data-en="🛠️ Hands-On Prototype (45-50 min)" data-vi="🛠️ Thực hành Prototype (45-50 phút)">🛠️ Hands-On Prototype (45-50 min)</h5>
+                                            <ul>
+                                                <li data-en="Create your pitch story structure" data-vi="Tạo cấu trúc câu chuyện pitch">Create your pitch story structure</li>
+                                                <li data-en="Design 1 GTM experiment (hypothesis → test → metric)" data-vi="Thiết kế 1 thử nghiệm GTM (giả thuyết → test → metric)">Design 1 GTM experiment (hypothesis → test → metric)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="workshop-deliverable">
+                                        <span class="deliverable-icon">📦</span>
+                                        <div class="deliverable-content">
+                                            <h5 data-en="Deliverable" data-vi="Sản phẩm đầu ra">Deliverable</h5>
+                                            <p data-en="1 pitch story outline + 1 experiment design ready to execute" data-vi="1 outline câu chuyện pitch + 1 thiết kế thử nghiệm sẵn sàng thực hiện">1 pitch story outline + 1 experiment design ready to execute</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Break -->
+                        <div class="timeline-item is-break">
+                            <div class="timeline-header">
+                                <span class="timeline-time">9:45 - 10:00</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="☕ Coffee Break" data-vi="☕ Giải lao">☕ Coffee Break</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Workshop 6 -->
+                        <div class="timeline-item">
+                            <div class="timeline-header" onclick="toggleTimeline(this)">
+                                <span class="timeline-time">10:00 - 11:00</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="W6: Legal, Tax & Viet Kieu Network" data-vi="W6: Pháp lý, Thuế & Mạng lưới Việt Kiều">W6: Legal, Tax & Viet Kieu Network</h4>
+                                    <span class="subtitle" data-en="Set Up, Sell & Scale Safely" data-vi="Thành lập, Bán hàng & Mở rộng An toàn">Set Up, Sell & Scale Safely</span>
+                                </div>
+                                <span class="timeline-badge" data-en="Workshop" data-vi="Workshop">Workshop</span>
+                                <div class="timeline-toggle">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                                </div>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-content-inner">
+                                    <div class="workshop-format">
+                                        <div class="format-block">
+                                            <h5 data-en="🎤 Speaker Session (10-15 min)" data-vi="🎤 Phần chia sẻ (10-15 phút)">🎤 Speaker Session (10-15 min)</h5>
+                                            <ul>
+                                                <li data-en="U.S. business structures (LLC vs Corp)" data-vi="Cấu trúc doanh nghiệp Mỹ (LLC vs Corp)">U.S. business structures (LLC vs Corp)</li>
+                                                <li data-en="Tax obligations (sales tax, income tax for foreign businesses)" data-vi="Nghĩa vụ thuế (thuế bán hàng, thuế thu nhập cho doanh nghiệp nước ngoài)">Tax obligations (sales tax, income tax for foreign businesses)</li>
+                                                <li data-en="Product certifications & standards (FDA, FTC, UL)" data-vi="Chứng nhận & tiêu chuẩn sản phẩm (FDA, FTC, UL)">Product certifications & standards (FDA, FTC, UL)</li>
+                                                <li data-en="Viet Kieu support ecosystem (lawyers, accountants, mentors, business networks)" data-vi="Hệ sinh thái hỗ trợ Việt Kiều (luật sư, kế toán, mentor, mạng lưới kinh doanh)">Viet Kieu support ecosystem (lawyers, accountants, mentors, business networks)</li>
+                                            </ul>
+                                        </div>
+                                        <div class="format-block">
+                                            <h5 data-en="🛠️ Hands-On Prototype (45-50 min)" data-vi="🛠️ Thực hành Prototype (45-50 phút)">🛠️ Hands-On Prototype (45-50 min)</h5>
+                                            <ul>
+                                                <li data-en="Complete a 'U.S. Market Readiness Checklist'" data-vi="Hoàn thành 'Checklist Sẵn sàng Thị trường Mỹ'">Complete a "U.S. Market Readiness Checklist"</li>
+                                                <li data-en="Map your Viet Kieu network connections" data-vi="Lập bản đồ kết nối mạng lưới Việt Kiều">Map your Viet Kieu network connections</li>
+                                                <li data-en="Identify certifications needed for your product" data-vi="Xác định chứng nhận cần thiết cho sản phẩm">Identify certifications needed for your product</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="workshop-deliverable">
+                                        <span class="deliverable-icon">📦</span>
+                                        <div class="deliverable-content">
+                                            <h5 data-en="Deliverable" data-vi="Sản phẩm đầu ra">Deliverable</h5>
+                                            <p data-en="1 U.S. Market Readiness Checklist + 1 Viet Kieu network map + certification requirements list" data-vi="1 Checklist Sẵn sàng Thị trường Mỹ + 1 bản đồ mạng lưới Việt Kiều + danh sách yêu cầu chứng nhận">1 U.S. Market Readiness Checklist + 1 Viet Kieu network map + certification requirements list</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Work Sprint -->
+                        <div class="timeline-item">
+                            <div class="timeline-header" onclick="toggleTimeline(this)">
+                                <span class="timeline-time">11:15 - 12:00</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="Work Sprint: Pitch Draft" data-vi="Sprint: Bản nháp Pitch">Work Sprint: Pitch Draft</h4>
+                                    <span class="subtitle" data-en="Finalize your pitch using all prototypes" data-vi="Hoàn thiện pitch sử dụng tất cả prototype">Finalize your pitch using all prototypes</span>
+                                </div>
+                                <div class="timeline-toggle">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                                </div>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-content-inner">
+                                    <div class="workshop-format">
+                                        <div class="format-block">
+                                            <h5 data-en="⚡ Focused Work Time" data-vi="⚡ Thời gian Làm việc Tập trung">⚡ Focused Work Time</h5>
+                                            <ul>
+                                                <li data-en="Combine all your prototypes into pitch deck" data-vi="Kết hợp tất cả prototype vào pitch deck">Combine all your prototypes into pitch deck</li>
+                                                <li data-en="Practice your 5-minute pitch" data-vi="Luyện tập pitch 5 phút">Practice your 5-minute pitch</li>
+                                                <li data-en="Get quick feedback from peers" data-vi="Nhận feedback nhanh từ bạn bè">Get quick feedback from peers</li>
+                                            </ul>
+                                        </div>
+                                        <div class="format-block">
+                                            <h5 data-en="📋 What to Include" data-vi="📋 Cần bao gồm">📋 What to Include</h5>
+                                            <ul>
+                                                <li data-en="Your U.S. customer persona" data-vi="Persona khách hàng Mỹ của bạn">Your U.S. customer persona</li>
+                                                <li data-en="Product positioning & USP" data-vi="Định vị sản phẩm & USP">Product positioning & USP</li>
+                                                <li data-en="GTM channel strategy" data-vi="Chiến lược kênh GTM">GTM channel strategy</li>
+                                                <li data-en="Experiment design & evidence" data-vi="Thiết kế thử nghiệm & bằng chứng">Experiment design & evidence</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lunch -->
+                        <div class="timeline-item is-break">
+                            <div class="timeline-header">
+                                <span class="timeline-time">12:00 - 13:30</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="🍜 Lunch Break" data-vi="🍜 Nghỉ trưa">🍜 Lunch Break</h4>
+                                    <span class="subtitle" data-en="Networking lunch provided" data-vi="Bữa trưa networking được cung cấp">Networking lunch provided</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mentor Hours -->
+                        <div class="timeline-item">
+                            <div class="timeline-header" onclick="toggleTimeline(this)">
+                                <span class="timeline-time">13:45 - 14:45</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="1-on-1 Mentor Feedback" data-vi="Feedback 1-1 với Mentor">1-on-1 Mentor Feedback</h4>
+                                    <span class="subtitle" data-en="Personal guidance from speakers & mentors" data-vi="Hướng dẫn cá nhân từ diễn giả & mentor">Personal guidance from speakers & mentors</span>
+                                </div>
+                                <div class="timeline-toggle">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                                </div>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-content-inner">
+                                    <div class="workshop-format">
+                                        <div class="format-block">
+                                            <h5 data-en="🤝 1-on-1 Sessions" data-vi="🤝 Phiên 1-1">🤝 1-on-1 Sessions</h5>
+                                            <ul>
+                                                <li data-en="10-15 minute slots with each mentor" data-vi="Slot 10-15 phút với mỗi mentor">10-15 minute slots with each mentor</li>
+                                                <li data-en="Get feedback on your pitch & GTM plan" data-vi="Nhận feedback về pitch & kế hoạch GTM">Get feedback on your pitch & GTM plan</li>
+                                                <li data-en="Ask specific questions about your market" data-vi="Đặt câu hỏi cụ thể về thị trường">Ask specific questions about your market</li>
+                                            </ul>
+                                        </div>
+                                        <div class="format-block">
+                                            <h5 data-en="💡 Topics to Discuss" data-vi="💡 Chủ đề Thảo luận">💡 Topics to Discuss</h5>
+                                            <ul>
+                                                <li data-en="Pitch refinement" data-vi="Tinh chỉnh pitch">Pitch refinement</li>
+                                                <li data-en="Channel selection advice" data-vi="Tư vấn chọn kênh">Channel selection advice</li>
+                                                <li data-en="Legal/tax questions" data-vi="Câu hỏi pháp lý/thuế">Legal/tax questions</li>
+                                                <li data-en="Viet Kieu network introductions" data-vi="Giới thiệu mạng lưới Việt Kiều">Viet Kieu network introductions</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pitch Session -->
+                        <div class="timeline-item">
+                            <div class="timeline-header" onclick="toggleTimeline(this)">
+                                <span class="timeline-time">15:00 - 17:30</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="Pitch Session" data-vi="Phiên Pitch">Pitch Session</h4>
+                                    <span class="subtitle" data-en="15 pitches × 5 minutes each + Peer feedback" data-vi="15 pitch × 5 phút mỗi bài + Feedback từ bạn bè">15 pitches × 5 minutes each + Peer feedback</span>
+                                </div>
+                                <span class="timeline-badge" data-en="Main Event" data-vi="Sự kiện chính">Main Event</span>
+                                <div class="timeline-toggle">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                                </div>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-content-inner">
+                                    <div class="workshop-format">
+                                        <div class="format-block">
+                                            <h5 data-en="🎯 Pitch Format" data-vi="🎯 Format Pitch">🎯 Pitch Format</h5>
+                                            <ul>
+                                                <li data-en="5 minutes to present your U.S. GTM strategy" data-vi="5 phút trình bày chiến lược GTM tại Mỹ">5 minutes to present your U.S. GTM strategy</li>
+                                                <li data-en="2 minutes Q&A from judges" data-vi="2 phút hỏi đáp từ ban giám khảo">2 minutes Q&A from judges</li>
+                                                <li data-en="Show your prototypes as evidence" data-vi="Trình bày prototype làm bằng chứng">Show your prototypes as evidence</li>
+                                            </ul>
+                                        </div>
+                                        <div class="format-block">
+                                            <h5 data-en="👥 Judging Panel" data-vi="👥 Ban Giám khảo">👥 Judging Panel</h5>
+                                            <ul>
+                                                <li data-en="3-4 judges (speakers & industry experts)" data-vi="3-4 giám khảo (diễn giả & chuyên gia ngành)">3-4 judges (speakers & industry experts)</li>
+                                                <li data-en="Peer feedback from other participants" data-vi="Feedback từ người tham gia khác">Peer feedback from other participants</li>
+                                                <li data-en="Actionable insights for everyone" data-vi="Insight hành động cho tất cả mọi người">Actionable insights for everyone</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Awards -->
+                        <div class="timeline-item is-break">
+                            <div class="timeline-header">
+                                <span class="timeline-time">17:45 - 18:00</span>
+                                <div class="timeline-title">
+                                    <h4 data-en="🏆 Awards & Wrap-Up" data-vi="🏆 Trao giải & Bế mạc">🏆 Awards & Wrap-Up</h4>
+                                    <span class="subtitle" data-en="Recognition, certificates & networking" data-vi="Vinh danh, chứng nhận & networking">Recognition, certificates & networking</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="section-cta reveal" style="text-align: center; margin-top: 48px;">
                 <a href="https://lu.ma/bkls5m3a" target="_blank" class="btn-primary">
                     <span data-en="Reserve Your Seat" data-vi="Đặt chỗ ngay">Reserve Your Seat</span>
@@ -2359,8 +3239,8 @@
 
     <section id="team">
         <div class="container">
-            <span class="section-label reveal" data-en="Meet the Team" data-vi="Gặp gỡ đội ngũ">Meet the Team</span>
-            <h2 class="section-title reveal reveal-delay-1" data-en="Built by YSEALI Fellows" data-vi="Được xây dựng bởi YSEALI Fellows">Built by YSEALI Fellows</h2>
+            <span class="section-label reveal" data-en="Our Team" data-vi="Đội ngũ của chúng tôi">Our Team</span>
+            <h2 class="section-title reveal reveal-delay-1" data-en="YSEALI Fellows & Entrepreneur Supporters" data-vi="YSEALI Fellows & Những người hỗ trợ khởi nghiệp">YSEALI Fellows & Entrepreneur Supporters</h2>
             <p class="section-subtitle reveal reveal-delay-2" data-en="A cross-border collaboration between American and Vietnamese entrepreneurs, united by a shared mission to help young founders go global." data-vi="Sự hợp tác xuyên biên giới giữa các doanh nhân Mỹ và Việt Nam, cùng chung sứ mệnh giúp các founder trẻ vươn ra thế giới.">A cross-border collaboration between American and Vietnamese entrepreneurs, united by a shared mission to help young founders go global.</p>
 
             <div class="team-grid team-grid-4">
@@ -2393,7 +3273,7 @@
                     </div>
                     <h3>Duy (Fred) Tran</h3>
                     <div class="team-role">YSEALI Entrepreneurship Fellow 2025</div>
-                    <p class="team-tagline" data-en="&quot;True Gen Z with nothing to lose, everything to dream&quot;" data-vi="&quot;Gen Z chính hiệu — không gì để mất, tất cả để mơ&quot;">"True Gen Z with nothing to lose, everything to dream"</p>
+                    <p class="team-tagline" data-en="&quot;Insights enabler by day, community-builder by heart&quot;" data-vi="&quot;Ban ngày làm insights, ban đêm xây cộng đồng&quot;">"Insights enabler by day, community-builder by heart"</p>
                     <p class="team-bio" data-en="Insights & Analytics — Abbott Nutrition International - APAC.<br>Program Director — SEO-Vietnam" data-vi="Insights & Analytics — Abbott Nutrition International - APAC.<br>Giám đốc Chương trình — SEO-Vietnam">Insights & Analytics — Abbott Nutrition International - APAC.<br>Program Director — SEO-Vietnam</p>
                     <a href="https://www.linkedin.com/in/trantienduy/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
                 </div>
@@ -2421,51 +3301,45 @@
     <section id="speakers">
         <div class="container">
             <span class="section-label reveal" data-en="Expert Mentors" data-vi="Chuyên gia & Mentor">Expert Mentors</span>
-            <h2 class="section-title reveal reveal-delay-1" data-en="Potential Speakers" data-vi="Diễn giả tiềm năng">Potential Speakers</h2>
+            <h2 class="section-title reveal reveal-delay-1" data-en="Speakers - Top Entrepreneurs with US Market Experience" data-vi="Diễn giả - Doanh nhân hàng đầu có kinh nghiệm thị trường Mỹ">Speakers - Top Entrepreneurs with US Market Experience</h2>
             <p class="section-subtitle reveal reveal-delay-2"><span data-en="Learn from founders with real US-Vietnam business experience." data-vi="Học hỏi từ các founder có kinh nghiệm kinh doanh Mỹ-Việt thực tế.">Learn from founders with real US-Vietnam business experience.</span> <span class="tentative-badge" data-en="⚠️ Speakers are tentative and not yet confirmed" data-vi="⚠️ Diễn giả chưa được xác nhận chính thức">⚠️ Speakers are tentative and not yet confirmed</span></p>
 
             <div class="speakers-grid-new">
                 <div class="speaker-card-new reveal">
-                    <div class="speaker-img"><img src="https://media.licdn.com/dms/image/v2/D5603AQHna0vy0Vx_kQ/profile-displayphoto-scale_400_400/B56ZfqglJ7G0Ak-/0/1751986100514?e=1773878400&v=beta&t=wJ4uYq_EBdlVSdT7tCE3Hl7AhVwtEaErUs-EAgUyYW4" alt="Jonathan Viet Pham"></div>
-                    <h4>Jonathan Viet Pham</h4>
-                    <span class="speaker-title">Founder @ Diaflow</span>
+                    <div class="speaker-img speaker-placeholder">🤖</div>
+                    <h4 data-en="AI Startup Founder" data-vi="Founder Startup AI">AI Startup Founder</h4>
+                    <span class="speaker-title" data-en="Building AI solutions for enterprises" data-vi="Xây dựng giải pháp AI cho doanh nghiệp">Building AI solutions for enterprises</span>
                     <p class="speaker-tagline" data-en="Leader in AI for Businesses" data-vi="Tiên phong AI cho doanh nghiệp">Leader in AI for Businesses</p>
-                    <a href="https://www.linkedin.com/in/jonathanvietpham/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
                 </div>
                 <div class="speaker-card-new reveal reveal-delay-1">
-                    <div class="speaker-img"><img src="https://media.licdn.com/dms/image/v2/D5603AQGt_5cBknDjMw/profile-displayphoto-shrink_400_400/B56ZT9aTAwGsAg-/0/1739418317324?e=1773878400&v=beta&t=l7dhKBZHooL6zjYLTcbScGcvpL_r7IGlfw4ORs2n7Jg" alt="Stephen Turban"></div>
-                    <h4>Stephen Turban</h4>
-                    <span class="speaker-title">Founder @ Lumiere</span>
-                    <p class="speaker-tagline" data-en="McKinsey & Harvard Alum | Comedian" data-vi="Cựu McKinsey & Harvard | Diễn viên hài">McKinsey & Harvard Alum | Comedian</p>
-                    <a href="https://www.linkedin.com/in/stephenturban/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                    <div class="speaker-img speaker-placeholder">🎓</div>
+                    <h4 data-en="EdTech Founder" data-vi="Founder EdTech">EdTech Founder</h4>
+                    <span class="speaker-title" data-en="Ex-McKinsey, Harvard MBA" data-vi="Cựu McKinsey, MBA Harvard">Ex-McKinsey, Harvard MBA</span>
+                    <p class="speaker-tagline" data-en="Building the future of education" data-vi="Xây dựng tương lai giáo dục">Building the future of education</p>
                 </div>
                 <div class="speaker-card-new reveal reveal-delay-2">
-                    <div class="speaker-img"><img src="https://media.licdn.com/dms/image/v2/D5603AQHxYMB3-ouLKQ/profile-displayphoto-scale_400_400/B56ZpIXfc2J8Ag-/0/1762150711285?e=1773878400&v=beta&t=3YvJrq6idjGa44_mE04mCmiH3_Zd12kK_Qqoc2LCgKo" alt="Robert Huynh"></div>
-                    <h4>Robert Huynh</h4>
-                    <span class="speaker-title">Founder @ Reforged Labs (YC23)</span>
-                    <p class="speaker-tagline" data-en="Data alchemist turned startup pirate 🏴‍☠️" data-vi="Từ data alchemist thành startup pirate 🏴‍☠️">Data alchemist turned startup pirate 🏴‍☠️</p>
-                    <a href="https://www.linkedin.com/in/huynhrobert/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                    <div class="speaker-img speaker-placeholder">🚀</div>
+                    <h4 data-en="YC-Backed Founder" data-vi="Founder được YC đầu tư">YC-Backed Founder</h4>
+                    <span class="speaker-title" data-en="Y Combinator 2023 batch" data-vi="Y Combinator khóa 2023">Y Combinator 2023 batch</span>
+                    <p class="speaker-tagline" data-en="From data scientist to startup founder" data-vi="Từ data scientist đến startup founder">From data scientist to startup founder</p>
                 </div>
                 <div class="speaker-card-new reveal reveal-delay-3">
-                    <div class="speaker-img"><img src="https://media.licdn.com/dms/image/v2/D5603AQFK8afxI0JQ9Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1666304361260?e=1773878400&v=beta&t=54NTcjpiKeB6uPLqv12SA2igFHL0lq_0z6MKB-8ioPs" alt="David Yi"></div>
-                    <h4>David Yi</h4>
-                    <span class="speaker-title">General Partner @ Ethos Fund</span>
-                    <p class="speaker-tagline" data-en="A VC who hates most VCs" data-vi="Một VC ghét đa số VC khác">A VC who hates most VCs</p>
-                    <a href="https://www.linkedin.com/in/thedavidyi/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                    <div class="speaker-img speaker-placeholder">💰</div>
+                    <h4 data-en="Venture Capitalist" data-vi="Nhà đầu tư mạo hiểm">Venture Capitalist</h4>
+                    <span class="speaker-title" data-en="General Partner at US-based VC fund" data-vi="General Partner tại quỹ VC Mỹ">General Partner at US-based VC fund</span>
+                    <p class="speaker-tagline" data-en="Invested in 50+ startups globally" data-vi="Đã đầu tư hơn 50 startup toàn cầu">Invested in 50+ startups globally</p>
                 </div>
                 <div class="speaker-card-new reveal reveal-delay-4">
-                    <div class="speaker-img"><img src="https://media.licdn.com/dms/image/v2/D5603AQHgJo0ciD4HcA/profile-displayphoto-shrink_400_400/B56ZeKIaVQHoAs-/0/1750369151951?e=1773878400&v=beta&t=PfQH6GucIYhfWgizWK85_XroE100gV5cmRsG0VWa4i8" alt="Kelly Tran"></div>
-                    <h4>Kelly Tran</h4>
-                    <span class="speaker-title">Founder @ AppGenie</span>
-                    <p class="speaker-tagline" data-en="Helping the world bet on Vietnam" data-vi="Giúp thế giới đặt cược vào Việt Nam">Helping the world bet on Vietnam</p>
-                    <a href="https://www.linkedin.com/in/kellytranha/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                    <div class="speaker-img speaker-placeholder">🌏</div>
+                    <h4 data-en="Cross-Border Expert" data-vi="Chuyên gia xuyên biên giới">Cross-Border Expert</h4>
+                    <span class="speaker-title" data-en="Helped Vietnamese brands enter US market" data-vi="Giúp thương hiệu Việt thâm nhập thị trường Mỹ">Helped Vietnamese brands enter US market</span>
+                    <p class="speaker-tagline" data-en="Bridging Vietnam and the US" data-vi="Kết nối Việt Nam và Mỹ">Bridging Vietnam and the US</p>
                 </div>
-                <div class="speaker-card-new reveal reveal-delay-4">
-                    <div class="speaker-img"><img src="https://media.licdn.com/dms/image/v2/C5603AQGOd0cLN8gtkA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1643014167094?e=1773878400&v=beta&t=ws_pnH_AYAwGzr3lkNeJDnlOZGqtodFWCV9Kpc2n7Jk" alt="Nhu Pham"></div>
-                    <h4>Nhu Pham</h4>
-                    <span class="speaker-title">Founder @ Coolmate</span>
-                    <p class="speaker-tagline" data-en="Changing men's shopping habits" data-vi="Thay đổi thói quen mua sắm của nam giới">Changing men's shopping habits</p>
-                    <a href="https://www.linkedin.com/in/nhu-pham-04639057/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <div class="speaker-card-new reveal reveal-delay-5">
+                    <div class="speaker-img speaker-placeholder">🛒</div>
+                    <h4 data-en="D2C Brand Founder" data-vi="Founder thương hiệu D2C">D2C Brand Founder</h4>
+                    <span class="speaker-title" data-en="Built a $50M+ e-commerce brand" data-vi="Xây dựng thương hiệu e-commerce $50M+">Built a $50M+ e-commerce brand</span>
+                    <p class="speaker-tagline" data-en="Revolutionizing retail in Vietnam" data-vi="Cách mạng hóa bán lẻ tại Việt Nam">Revolutionizing retail in Vietnam</p>
                 </div>
             </div>
             <div class="section-cta reveal" style="text-align: center; margin-top: 48px;">
@@ -2481,7 +3355,7 @@
         <div class="container">
             <span class="section-label reveal" data-en="Partnership" data-vi="Hợp tác">Partnership</span>
             <h2 class="section-title reveal reveal-delay-1" data-en="Become a Partner" data-vi="Trở thành Đối tác">Become a Partner</h2>
-            <p class="section-subtitle reveal reveal-delay-2" data-en="Join us in empowering the next generation of Vietnamese entrepreneurs." data-vi="Cùng chúng tôi tiếp sức cho thế hệ doanh nhân Việt Nam tiếp theo.">Join us in empowering the next generation of Vietnamese entrepreneurs.</p>
+            <p class="section-subtitle reveal reveal-delay-2" data-en="Join us in empowering the next generation of Vietnamese entrepreneurs. Contact us via <a href='mailto:gousentrecamp@gmail.com' style='color: var(--orange); text-decoration: none;'>gousentrecamp@gmail.com</a> or via our team's LinkedIn above." data-vi="Cùng chúng tôi tiếp sức cho thế hệ doanh nhân Việt Nam tiếp theo. Liên hệ qua <a href='mailto:gousentrecamp@gmail.com' style='color: var(--orange); text-decoration: none;'>gousentrecamp@gmail.com</a> hoặc LinkedIn của team ở trên.">Join us in empowering the next generation of Vietnamese entrepreneurs. Contact us via <a href="mailto:gousentrecamp@gmail.com" style="color: var(--orange); text-decoration: none;">gousentrecamp@gmail.com</a> or via our team's LinkedIn above.</p>
 
             <div class="partnership-grid">
                 <div class="partnership-card reveal">
@@ -2640,6 +3514,20 @@
     <div id="copied-toast" class="copied-toast" data-en="✓ Copied to clipboard!" data-vi="✓ Đã sao chép!">✓ Copied to clipboard!</div>
 
     <script>
+        // Accordion Toggle for Workshop Schedule
+        function toggleTimeline(header) {
+            const item = header.closest('.timeline-item');
+            if (item.classList.contains('is-break')) return;
+
+            // Close all other expanded items
+            document.querySelectorAll('.timeline-item.expanded').forEach(el => {
+                if (el !== item) el.classList.remove('expanded');
+            });
+
+            // Toggle current item
+            item.classList.toggle('expanded');
+        }
+
         const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
