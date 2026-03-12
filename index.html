@@ -11,7 +11,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Go-US Entrepreneur Bootcamp | YSEALI 2025</title>
+    <title>Go-US Entrepreneur Bootcamp | YSEALI 2026</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/favicon.png">
     <script async src="https://tally.so/widgets/embed.js"></script>
@@ -1403,7 +1403,7 @@
         /* Supported By Partners */
         .partners-logos {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 32px;
             margin-top: 40px;
             max-width: 900px;
@@ -1418,17 +1418,15 @@
         }
 
         .partner-logo {
-            height: 90px;
+            height: 140px;
             width: auto;
+            max-width: 100%;
             object-fit: contain;
-            filter: grayscale(100%) brightness(1.5);
-            opacity: 0.7;
             transition: all 0.3s ease;
         }
 
         .partner-logo:hover {
-            filter: grayscale(0%) brightness(1);
-            opacity: 1;
+            transform: scale(1.05);
         }
 
         .partner-logo.color {
@@ -1436,13 +1434,36 @@
             opacity: 1;
         }
 
+        .partner-logo-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: white;
+            object-fit: contain;
+            padding: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .partner-logo-circle.bg-black {
+            background: black;
+        }
+
+        .partner-logo-circle:hover {
+            transform: scale(1.05);
+        }
+
         @media (max-width: 768px) {
             .partners-logos {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
             }
             .partner-logo {
-                height: 70px;
+                height: 80px;
+            }
+            .partner-logo-circle {
+                width: 80px;
+                height: 80px;
+                padding: 10px;
             }
         }
 
@@ -2565,10 +2586,10 @@
                 </h1>
                 <div class="hero-date reveal reveal-delay-2">
                     <span class="date-icon">📅</span>
-                    <span class="date-text" data-en="April 11-12, 2025" data-vi="11-12 Tháng 4, 2025">April 11-12, 2025</span>
+                    <span class="date-text" data-en="April 11-12, 2026" data-vi="11-12 Tháng 4, 2026">April 11-12, 2026</span>
                     <span class="date-divider">•</span>
                     <span class="date-icon">📍</span>
-                    <span class="date-text" data-en="Ho Chi Minh City" data-vi="TP. Hồ Chí Minh">Ho Chi Minh City</span>
+                    <span class="date-text" data-en="Fulbright University Vietnam" data-vi="Đại học Fulbright Việt Nam">Fulbright University Vietnam</span>
                 </div>
                 <p class="reveal reveal-delay-3" data-en="A 2-day intensive workshop helping Vietnamese youth take local products global. Backed by U.S. Department of State." data-vi="Workshop 2 ngày dành cho các bạn trẻ Việt Nam muốn đưa sản phẩm ra thị trường Mỹ. Tài trợ bởi Bộ Ngoại giao Hoa Kỳ.">
                     A 2-day intensive workshop helping Vietnamese youth take local products global.
@@ -2598,14 +2619,16 @@
             <h2 class="section-title reveal reveal-delay-1" data-en="Supported By Absolutely Amazing Partners" data-vi="Được hỗ trợ bởi các Đối tác Tuyệt vời">Supported By Absolutely Amazing Partners</h2>
 
             <div class="partners-logos reveal reveal-delay-2">
-                <a href="https://www.usa.gov/" target="_blank"><img src="assets/partners/us-flag.png" alt="United States" class="partner-logo color"></a>
+                <a href="https://freedom250.org/" target="_blank"><img src="assets/partners/freedom250.png" alt="Freedom250" class="partner-logo-circle"></a>
                 <a href="https://www.state.gov/" target="_blank"><img src="assets/partners/us-dept-state.png" alt="U.S. Department of State" class="partner-logo color"></a>
-                <a href="https://www.ysealiafp.org/" target="_blank"><img src="assets/partners/yseali.png" alt="YSEALI" class="partner-logo color"></a>
-                <a href="https://buildstuffs.com" target="_blank"><img src="assets/partners/buildstuffs.png" alt="BuildStuffs.com" class="partner-logo color"></a>
+                <a href="https://www.ysealiafp.org/" target="_blank"><img src="assets/partners/yseali.png" alt="YSEALI" class="partner-logo-circle"></a>
+                <a href="https://www.unr.edu/business/centers/ozmen" target="_blank"><img src="assets/partners/ozmen-center.png" alt="Ozmen Center for Entrepreneurship" class="partner-logo-circle"></a>
+                <a href="https://fulbright.edu.vn/centre-of-entrepreneurship-and-innovation/" target="_blank"><img src="assets/partners/fuv.png" alt="Fulbright University Vietnam" class="partner-logo-circle"></a>
+                <a href="https://upyouth.org/" target="_blank"><img src="assets/partners/upyouth.jpeg" alt="UpYouth" class="partner-logo-circle"></a>
                 <a href="https://engagekit.io" target="_blank"><img src="assets/partners/engagekit.png" alt="EngageKit" class="partner-logo color"></a>
-                <a href="https://upyouth.org/" target="_blank"><img src="assets/partners/upyouth.jpeg" alt="UpYouth" class="partner-logo color"></a>
-                <a href="https://www.unr.edu/nnic" target="_blank"><img src="assets/partners/nnic.jpg" alt="Northern Nevada International Center" class="partner-logo color"></a>
-                <a href="https://www.linkedin.com/company/seo-vietnam/" target="_blank"><img src="assets/seo-vietnam-logo.jpeg" alt="SEO-Vietnam" class="partner-logo color"></a>
+                <a href="https://www.eutopia.vn/" target="_blank"><img src="assets/partners/eutopia.webp" alt="Eutopia" class="partner-logo-circle"></a>
+                <a href="https://www.linkedin.com/company/seo-vietnam/" target="_blank"><img src="assets/seo-vietnam-logo.jpeg" alt="SEO-Vietnam" class="partner-logo-circle bg-black"></a>
+                <a href="https://buildstuffs.com" target="_blank"><img src="assets/partners/buildstuffs.png" alt="BuildStuffs.com" class="partner-logo color"></a>
             </div>
         </div>
     </section>
@@ -2805,7 +2828,7 @@
                     <span class="section-label reveal" data-en="Event Schedule" data-vi="Lịch trình sự kiện">Event Schedule</span>
                     <h2 class="section-title reveal reveal-delay-1" data-en="2 Days of Hands-On Learning" data-vi="2 Ngày Học Tập Thực Hành">2 Days of Hands-On Learning</h2>
                 </div>
-                <div class="location-badge reveal reveal-delay-2">📍 Ho Chi Minh City • <span data-en="April 11-12, 2025" data-vi="11-12 Tháng 4, 2025">April 11-12, 2025</span></div>
+                <div class="location-badge reveal reveal-delay-2">📍 Fulbright University Vietnam • <span data-en="April 11-12, 2026" data-vi="11-12 Tháng 4, 2026">April 11-12, 2026</span></div>
             </div>
 
             <!-- Speaker Info Note -->
@@ -3318,7 +3341,7 @@
             <h2 class="section-title reveal reveal-delay-1" data-en="YSEALI Fellows & Entrepreneur Supporters" data-vi="YSEALI Fellows & Những người hỗ trợ khởi nghiệp">YSEALI Fellows & Entrepreneur Supporters</h2>
             <p class="section-subtitle reveal reveal-delay-2" data-en="A cross-border collaboration between American and Vietnamese entrepreneurs, united by a shared mission to help young founders go global." data-vi="Sự hợp tác xuyên biên giới giữa các doanh nhân Mỹ và Việt Nam, cùng chung sứ mệnh giúp các founder trẻ vươn ra thế giới.">A cross-border collaboration between American and Vietnamese entrepreneurs, united by a shared mission to help young founders go global.</p>
 
-            <div class="team-grid team-grid-4">
+            <div class="team-grid team-grid-3">
                 <div class="team-card reveal">
                     <div class="team-avatar-img">
                         <img src="https://media.licdn.com/dms/image/v2/D5603AQE57_VIhCoW6Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731138391633?e=1773878400&v=beta&t=XUwnQLKE5PMeEoYLSPCLw6pW3OhHwWSVZoMAtlpb-8Y" alt="Andrew Sapwell">
@@ -3327,21 +3350,41 @@
                     <h3>Andrew (AJ) Sapwell</h3>
                     <div class="team-role">YSEALI Reciprocal Fellow 2026</div>
                     <p class="team-tagline" data-en="&quot;Entrepreneurship as a lifestyle&quot;" data-vi="&quot;Khởi nghiệp là lối sống&quot;">"Entrepreneurship as a lifestyle"</p>
-                    <p class="team-bio" data-en="President, Entrepreneurship Club — University of Nevada, Reno.<br>Founder — SW Pressure Washing" data-vi="Chủ tịch CLB Khởi nghiệp — University of Nevada, Reno.<br>Founder — SW Pressure Washing">President, Entrepreneurship Club — University of Nevada, Reno.<br>Founder — SW Pressure Washing</p>
+                    <p class="team-bio" data-en="Founder — SW Pressure Washing" data-vi="Founder — SW Pressure Washing">Founder — SW Pressure Washing</p>
                     <a href="https://www.linkedin.com/in/andrewsapwell/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
                 </div>
                 <div class="team-card reveal reveal-delay-1">
                     <div class="team-avatar-img">
-                        <img src="https://media.licdn.com/dms/image/v2/D5603AQHW5qAnwgnC9w/profile-displayphoto-crop_800_800/B56ZlGgWCgHAAI-/0/1757824508857?e=1773878400&v=beta&t=dSSZdTQXt506VC4f-D8RmzsBKleuJfBtHl4gE2rcTak" alt="Ky-Nam Nguyen">
+                        <img src="https://scontent-iad3-1.xx.fbcdn.net/v/t39.30808-6/466102675_1560805747881916_2904033957386361900_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=UUiERWYGdwwQ7kNvwGcKYh2&_nc_oc=AdlZZBLC4N1it7SzmSBCjuc66Z9Pqio-3CmoMXDFHFcS3zF1oNOM6e29jH5KOWg67SE&_nc_zt=23&_nc_ht=scontent-iad3-1.xx&_nc_gid=naNsVmEiUg5SWcOprNQCvg&_nc_ss=8&oh=00_AfxbR1Sr2-gSjTKaYm6C0GgSzD2gtOXoiRsxzAzgav-tvA&oe=69AC4EED" alt="Phuong Thao">
                         <span class="team-flag">🇻🇳</span>
                     </div>
-                    <h3>Ky-Nam Nguyen</h3>
+                    <h3>Phuong Thao (Zay)</h3>
                     <div class="team-role">YSEALI Entrepreneurship Fellow 2025</div>
-                    <p class="team-tagline" data-en="&quot;24 y/o tech founder helping you grow on LinkedIn&quot;" data-vi="&quot;Founder 24 tuổi, giúp bạn phát triển trên LinkedIn&quot;">"24 y/o tech founder helping you grow on LinkedIn"</p>
-                    <p class="team-bio" data-en="Host — BuildStuffs.com (Vietnam's largest network of young builders).<br>Founder — EngageKit.io" data-vi="Host — BuildStuffs.com (Mạng lưới builder trẻ lớn nhất Việt Nam).<br>Founder — EngageKit.io">Host — BuildStuffs.com (Vietnam's largest network of young builders).<br>Founder — EngageKit.io</p>
-                    <a href="https://www.linkedin.com/in/withkynam/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                    <p class="team-tagline" data-en="&quot;Building bridges between the West and East for growth&quot;" data-vi="&quot;Xây cầu nối giữa phương Tây và phương Đông để phát triển&quot;">"Building bridges between the West and East for growth"</p>
+                    <p class="team-bio" data-en="Director of IT Projects — Bankaool S.A. (Mexico Fintech Bank).<br>Ex-COO @ Wee Digital" data-vi="Giám đốc Dự án CNTT — Bankaool S.A. (Ngân hàng Fintech Mexico).<br>Cựu COO @ Wee Digital">Director of IT Projects — Bankaool S.A. (Mexico Fintech Bank).<br>Ex-COO @ Wee Digital</p>
+                    <a href="#" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
                 </div>
                 <div class="team-card reveal reveal-delay-2">
+                    <div class="team-avatar-img">
+                        <img src="https://media.licdn.com/dms/image/v2/D5603AQFNI9ZVcUrv6Q/profile-displayphoto-scale_400_400/B56Zxnx5bQIQAg-/0/1771267662354?e=1775088000&v=beta&t=F-W9RJBKWUmnW6-NCC_64mLy5VC2nUAawdw3MDIgOr8" alt="Anh-Thu Vo">
+                        <span class="team-flag">🇻🇳</span>
+                    </div>
+                    <h3>Anh-Thu Vo</h3>
+                    <div class="team-role">Chief of Staff — UpYouth<br>Business Associate — SmartSolar</div>
+                    <p class="team-tagline" data-en="&quot;Pioneering Startup Innovation Ecosystem&quot;" data-vi="&quot;Tiên phong hệ sinh thái đổi mới khởi nghiệp&quot;">"Pioneering Startup Innovation Ecosystem"</p>
+                    <a href="https://www.linkedin.com/in/anhthu-vo/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                </div>
+                <div class="team-card reveal">
+                    <div class="team-avatar-img">
+                        <img src="https://media.licdn.com/dms/image/v2/D5603AQE8S1ZXIujfLQ/profile-displayphoto-crop_800_800/B56ZopSN5lHQAM-/0/1761629233596?e=1775088000&v=beta&t=b0fRdVJ07FxO6etL-Fj_t9UjoAOgGIARy5OboJ0o7Iw" alt="Viet Anh">
+                        <span class="team-flag">🇻🇳</span>
+                    </div>
+                    <h3>Viet Anh</h3>
+                    <div class="team-role">YSEALI Entrepreneurship Fellow 2025<br>Co-Founder — unimate.com.vn</div>
+                    <p class="team-tagline" data-en="&quot;Connect mentors with you to ace your study abroad process!&quot;" data-vi="&quot;Kết nối mentor giúp bạn chinh phục du học!&quot;">"Connect mentors with you to ace your study abroad process!"</p>
+                    <a href="https://www.linkedin.com/in/vietanhlviea/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                </div>
+                <div class="team-card reveal reveal-delay-1">
                     <div class="team-avatar-img">
                         <img src="https://media.licdn.com/dms/image/v2/D5603AQHJl2CTCGZXdw/profile-displayphoto-crop_800_800/B56Zo7T2G_G4AI-/0/1761931651271?e=1773878400&v=beta&t=sh-_um59gmGPyAprUaFuOzBWqYRMAU7eemlXwT-e5UU" alt="Duy Tran">
                         <span class="team-flag">🇻🇳</span>
@@ -3352,16 +3395,16 @@
                     <p class="team-bio" data-en="Insights & Analytics — Abbott Nutrition International - APAC.<br>Program Director — SEO-Vietnam" data-vi="Insights & Analytics — Abbott Nutrition International - APAC.<br>Giám đốc Chương trình — SEO-Vietnam">Insights & Analytics — Abbott Nutrition International - APAC.<br>Program Director — SEO-Vietnam</p>
                     <a href="https://www.linkedin.com/in/trantienduy/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
                 </div>
-                <div class="team-card reveal reveal-delay-3">
+                <div class="team-card reveal reveal-delay-2">
                     <div class="team-avatar-img">
-                        <img src="https://scontent-iad3-1.xx.fbcdn.net/v/t39.30808-6/466102675_1560805747881916_2904033957386361900_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=UUiERWYGdwwQ7kNvwGcKYh2&_nc_oc=AdlZZBLC4N1it7SzmSBCjuc66Z9Pqio-3CmoMXDFHFcS3zF1oNOM6e29jH5KOWg67SE&_nc_zt=23&_nc_ht=scontent-iad3-1.xx&_nc_gid=naNsVmEiUg5SWcOprNQCvg&_nc_ss=8&oh=00_AfxbR1Sr2-gSjTKaYm6C0GgSzD2gtOXoiRsxzAzgav-tvA&oe=69AC4EED" alt="Phuong Thao">
+                        <img src="https://media.licdn.com/dms/image/v2/D5603AQHW5qAnwgnC9w/profile-displayphoto-crop_800_800/B56ZlGgWCgHAAI-/0/1757824508857?e=1773878400&v=beta&t=dSSZdTQXt506VC4f-D8RmzsBKleuJfBtHl4gE2rcTak" alt="Ky-Nam Nguyen">
                         <span class="team-flag">🇻🇳</span>
                     </div>
-                    <h3>Phuong Thao (Zay)</h3>
+                    <h3>Ky-Nam Nguyen</h3>
                     <div class="team-role">YSEALI Entrepreneurship Fellow 2025</div>
-                    <p class="team-tagline" data-en="&quot;Building bridges between the West and East for growth&quot;" data-vi="&quot;Xây cầu nối giữa phương Tây và phương Đông để phát triển&quot;">"Building bridges between the West and East for growth"</p>
-                    <p class="team-bio" data-en="Director of IT Projects — Bankaool S.A. (Mexico Fintech Bank).<br>Ex-COO @ Wee Digital" data-vi="Giám đốc Dự án CNTT — Bankaool S.A. (Ngân hàng Fintech Mexico).<br>Cựu COO @ Wee Digital">Director of IT Projects — Bankaool S.A. (Mexico Fintech Bank).<br>Ex-COO @ Wee Digital</p>
-                    <a href="#" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                    <p class="team-tagline" data-en="&quot;24 y/o tech founder helping you grow on LinkedIn&quot;" data-vi="&quot;Founder 24 tuổi, giúp bạn phát triển trên LinkedIn&quot;">"24 y/o tech founder helping you grow on LinkedIn"</p>
+                    <p class="team-bio" data-en="Host — BuildStuffs.com (Vietnam's largest network of young builders).<br>Founder — EngageKit.io" data-vi="Host — BuildStuffs.com (Mạng lưới builder trẻ lớn nhất Việt Nam).<br>Founder — EngageKit.io">Host — BuildStuffs.com (Vietnam's largest network of young builders).<br>Founder — EngageKit.io</p>
+                    <a href="https://www.linkedin.com/in/withkynam/" target="_blank" class="linkedin-link"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
                 </div>
             </div>
             <div class="section-cta reveal" style="text-align: center; margin-top: 48px;">
@@ -3442,7 +3485,7 @@
                     <ul class="partnership-list">
                         <li><span class="icon">🎤</span><span class="text"><strong data-en="Co-Host Role" data-vi="Đồng tổ chức">Co-Host Role</strong> — <span data-en="Introduce speakers & help promote to your students" data-vi="Giới thiệu diễn giả & quảng bá đến sinh viên của bạn">Introduce speakers & help promote to your students</span></span></li>
                         <li><span class="icon">🌏</span><span class="text"><strong data-en="Speaker Referrals" data-vi="Giới thiệu diễn giả">Speaker Referrals</strong> — <span data-en="Connect us with entrepreneurs in your network who have US-Vietnam business experience" data-vi="Kết nối chúng tôi với các doanh nhân có kinh nghiệm kinh doanh Mỹ-Việt trong mạng lưới của bạn">Connect us with entrepreneurs in your network who have US-Vietnam business experience</span></span></li>
-                        <li><span class="icon">🏢</span><span class="text"><strong data-en="Venue Sponsorship" data-vi="Tài trợ địa điểm">Venue Sponsorship</strong> — <span data-en="Full-day venue access on April 11 & 12, 2025" data-vi="Sử dụng địa điểm cả ngày 11 & 12 tháng 4, 2025">Full-day venue access on April 11 & 12, 2025</span></span></li>
+                        <li><span class="icon">🏢</span><span class="text"><strong data-en="Venue Sponsorship" data-vi="Tài trợ địa điểm">Venue Sponsorship</strong> — <span data-en="Full-day venue access on April 11 & 12, 2026" data-vi="Sử dụng địa điểm cả ngày 11 & 12 tháng 4, 2026">Full-day venue access on April 11 & 12, 2026</span></span></li>
                         <li><span class="icon">🍱</span><span class="text"><strong data-en="Lunch Arrangement" data-vi="Hỗ trợ ăn trưa">Lunch Arrangement</strong> — <span data-en="Permission to bring food/catering for participants" data-vi="Cho phép mang đồ ăn/catering cho người tham gia">Permission to bring food/catering for participants</span></span></li>
                     </ul>
                 </div>
@@ -3483,14 +3526,14 @@
                 <div class="footer-partners">
                     <span>🇺🇸 U.S. Department of State</span>
                     <span>YSEALI</span>
-                    <span>NNIC</span>
+                    <span>Fulbright University Vietnam</span>
                 </div>
                 <div class="footer-links">
                     <span>Contact:</span> <a href="mailto:gousentrecamp@gmail.com" class="footer-link">gousentrecamp@gmail.com</a>
                     <span class="footer-divider">|</span>
                     <a href="https://ysealiafp.org/reciprocal-exchanges" target="_blank" class="footer-link">ysealiafp.org/reciprocal-exchanges</a>
                 </div>
-                <p class="footer-copy" data-en="© 2025 Go-US Entrepreneur Bootcamp. A YSEALI Reciprocal Exchange Initiative." data-vi="© 2025 Go-US Entrepreneur Bootcamp. Sáng kiến Trao đổi YSEALI.">© 2025 Go-US Entrepreneur Bootcamp. A YSEALI Reciprocal Exchange Initiative.</p>
+                <p class="footer-copy" data-en="© 2026 Go-US Entrepreneur Bootcamp. A YSEALI Reciprocal Exchange Initiative." data-vi="© 2026 Go-US Entrepreneur Bootcamp. Sáng kiến Trao đổi YSEALI.">© 2026 Go-US Entrepreneur Bootcamp. A YSEALI Reciprocal Exchange Initiative.</p>
             </div>
         </div>
     </footer>
@@ -3671,8 +3714,8 @@
             
             // Update page title
             document.title = lang === 'en' 
-                ? 'Go-US Entrepreneur Bootcamp | YSEALI 2025' 
-                : 'Go-US Entrepreneur Bootcamp | Chương trình YSEALI 2025';
+                ? 'Go-US Entrepreneur Bootcamp | YSEALI 2026'
+                : 'Go-US Entrepreneur Bootcamp | Chương trình YSEALI 2026';
             
             // Store preference
             localStorage.setItem('go-us-lang', lang);
