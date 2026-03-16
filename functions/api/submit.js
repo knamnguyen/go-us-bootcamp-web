@@ -11,6 +11,10 @@ const KEYWORDS = [
   'gous bootcamp',
   '#gousentrecamp',
   '#gous',
+  '@gousentrecamp',
+  'gous_entrecamp',
+  'gous entrepreneur',
+  'go-us entrepreneur',
 ];
 
 function detectPlatform(url) {
