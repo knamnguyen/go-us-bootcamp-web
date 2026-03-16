@@ -2227,8 +2227,237 @@
             font-size: 0.9rem;
         }
 
+
+        /* Social Submit FAB */
+        .social-fab {
+            position: fixed;
+            bottom: 24px;
+            right: 164px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            animation: socialFabPulse 2s infinite;
+        }
+
+        .social-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(139, 92, 246, 0.5);
+        }
+
+        .social-fab.hidden {
+            transform: scale(0) !important;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @keyframes socialFabPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(139, 92, 246, 0.6), 0 0 0 8px rgba(139, 92, 246, 0.1); }
+        }
+
+        /* Social Submit Popup */
+        .social-popup {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 380px;
+            background: #1a1a2e;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1002;
+            overflow: hidden;
+            transform: scale(0.8) translateY(20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            transform-origin: bottom right;
+        }
+
+        .social-popup.open {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .social-popup-body {
+            padding: 20px;
+        }
+
+        .social-input-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .social-input {
+            flex: 1;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .social-input:focus {
+            border-color: #8b5cf6;
+        }
+
+        .social-submit-btn {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .social-submit-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .social-submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .social-status {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .social-status.error { color: #f87171; }
+        .social-status.success { color: #34d399; }
+
+        /* Marquee Section */
+        .marquee-section {
+            padding: 60px 0;
+            overflow: hidden;
+        }
+
+        .marquee-row {
+            display: flex;
+            gap: 24px;
+            animation: marqueeScroll 40s linear infinite;
+            width: max-content;
+            padding: 12px 0;
+        }
+
+        .marquee-row.reverse {
+            animation: marqueeScrollReverse 40s linear infinite;
+        }
+
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes marqueeScrollReverse {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        .marquee-card {
+            flex-shrink: 0;
+            width: 320px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            backdrop-filter: blur(20px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .marquee-card:hover {
+            border-color: rgba(139, 92, 246, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .marquee-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .marquee-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: var(--glass);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .marquee-author-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .marquee-author-name {
+            font-size: 1.15rem;
+            font-weight: 800;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .marquee-platform {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: capitalize;
+        }
+
+        .marquee-caption {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .marquee-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+
+        .marquee-empty {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 40px 0;
+        }
+
         @media (max-width: 480px) {
-            .tally-fab, .share-fab {
+            .tally-fab, .share-fab, .social-fab {
                 bottom: 16px !important;
                 width: 50px !important;
                 height: 50px !important;
@@ -2236,7 +2465,8 @@
             }
             .tally-fab { right: 16px !important; }
             .share-fab { right: 76px !important; }
-            .tally-popup, .share-popup {
+            .social-fab { right: 136px !important; }
+            .tally-popup, .share-popup, .social-popup {
                 bottom: 0 !important;
                 right: 0 !important;
                 left: 0 !important;
@@ -2247,9 +2477,10 @@
                 opacity: 1 !important;
                 transform-origin: bottom center !important;
             }
-            .tally-popup.open, .share-popup.open {
+            .tally-popup.open, .share-popup.open, .social-popup.open {
                 transform: translateY(0) !important;
             }
+            .marquee-card { width: 260px; }
         }
 
         /* Share FAB Button */
@@ -2613,6 +2844,17 @@
                 <a href="https://www.linkedin.com/company/seo-vietnam/" target="_blank"><img src="assets/seo-vietnam-logo.jpeg" alt="SEO-Vietnam" class="partner-logo-circle bg-black"></a>
                 <a href="https://buildstuffs.com" target="_blank"><img src="assets/partners/buildstuffs.png" alt="BuildStuffs.com" class="partner-logo color"></a>
             </div>
+        </div>
+    </section>
+
+    <section id="social-wall" class="marquee-section" style="display: none;">
+        <div class="container" style="text-align: center;">
+            <span class="section-label reveal" style="justify-content: center;" data-en="Community Posts" data-vi="Bài viết cộng đồng">Community Posts</span>
+            <h2 class="section-title reveal reveal-delay-1" data-en="Awesome Young Entrepreneur Partners Supporting Us (and You!)" data-vi="Các đối tác doanh nhân trẻ tuyệt vời đang ủng hộ chúng tôi (và bạn!)">Awesome Young Entrepreneur Partners Supporting Us (and You!)</h2>
+        </div>
+        <div id="marquee-container" style="margin-top: 32px;">
+            <div class="marquee-row" id="marquee-row-1"></div>
+            <div class="marquee-row reverse" id="marquee-row-2"></div>
         </div>
     </section>
 
@@ -3616,6 +3858,40 @@
         </div>
     </div>
 
+    <!-- Social Submit FAB -->
+    <button id="social-fab" class="social-fab" aria-label="Submit your social post">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    </button>
+
+    <div id="social-popup" class="social-popup">
+        <div class="tally-popup-header">
+            <h4>📱 <span data-en="Feature Your Post" data-vi="Đăng bài của bạn">Feature Your Post</span></h4>
+            <button id="social-popup-close" class="tally-popup-close" aria-label="Close">&times;</button>
+        </div>
+        <div class="social-popup-body">
+            <div style="display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:14px;">
+                <span style="font-size:0.85rem;color:var(--text-secondary);" data-en="Supported platforms:" data-vi="Nền tảng hỗ trợ:">Supported platforms:</span>
+                <div class="share-platform-buttons" style="margin:0;">
+                    <button class="platform-btn" style="pointer-events:none;" title="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </button>
+                    <button class="platform-btn" style="pointer-events:none;" title="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </button>
+                    <button class="platform-btn" style="pointer-events:none;" title="Threads">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.59 12c.025 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.182.408-2.256 1.332-3.023.88-.73 2.088-1.146 3.396-1.17 1.211-.024 2.318.193 3.312.65.009-.177.012-.356.012-.54 0-1.058-.13-1.88-.392-2.458-.375-.826-1.033-1.29-1.956-1.38-.772-.075-1.438.088-1.98.486-.458.337-.738.753-.861 1.275l-2.03-.482c.199-.993.713-1.819 1.532-2.46.953-.744 2.17-1.12 3.617-1.12h.18c1.65.074 2.938.63 3.829 1.652.717.825 1.153 1.95 1.297 3.343.986.569 1.782 1.309 2.365 2.203.833 1.277 1.106 2.765.79 4.302-.406 1.979-1.47 3.584-3.073 4.636-1.38.906-3.08 1.366-5.054 1.366h-.007z"/></svg>
+                    </button>
+                </div>
+            </div>
+            <p class="mail-popup-desc" data-en="Posted about Go-US on Facebook, LinkedIn, or Threads? Paste the link and we'll feature it on our site! Must mention <strong>#gousentrecamp</strong> or <strong>Go-US Entrepreneur Bootcamp</strong>." data-vi="Đã đăng bài về Go-US trên Facebook, LinkedIn, hoặc Threads? Dán link và chúng tôi sẽ hiển thị trên trang! Bài phải có <strong>#gousentrecamp</strong> hoặc <strong>Go-US Entrepreneur Bootcamp</strong>.">Posted about Go-US on Facebook, LinkedIn, or Threads? Paste the link and we'll feature it on our site! Must mention <strong>#gousentrecamp</strong> or <strong>Go-US Entrepreneur Bootcamp</strong>.</p>
+            <div class="social-input-group">
+                <input type="url" id="social-url-input" class="social-input" placeholder="https://linkedin.com/posts/..." data-en="Paste post URL..." data-vi="Dán link bài viết...">
+                <button id="social-submit-btn" class="social-submit-btn" data-en="Submit" data-vi="Gửi">Submit</button>
+            </div>
+            <div id="social-status" class="social-status"></div>
+        </div>
+    </div>
+
     <div id="copied-toast" class="copied-toast" data-en="✓ Copied to clipboard!" data-vi="✓ Đã sao chép!">✓ Copied to clipboard!</div>
 
     <script>
@@ -4011,6 +4287,162 @@
                 sharePopupShown = true;
             }
         }, 20000);
+    </script>
+
+    <script>
+        // Social Submit FAB
+        const socialFab = document.getElementById('social-fab');
+        const socialPopup = document.getElementById('social-popup');
+        const socialPopupClose = document.getElementById('social-popup-close');
+        const socialUrlInput = document.getElementById('social-url-input');
+        const socialSubmitBtn = document.getElementById('social-submit-btn');
+        const socialStatus = document.getElementById('social-status');
+
+        socialFab.addEventListener('click', () => {
+            socialPopup.classList.toggle('open');
+            socialFab.classList.toggle('hidden');
+        });
+
+        socialPopupClose.addEventListener('click', () => {
+            socialPopup.classList.remove('open');
+            socialFab.classList.remove('hidden');
+            localStorage.setItem('social-popup-dismissed', 'true');
+        });
+
+        // Auto-open social popup 10s after share popup (30s total)
+        setTimeout(() => {
+            if (!socialPopup.classList.contains('open') && !localStorage.getItem('social-popup-dismissed')) {
+                socialPopup.classList.add('open');
+                socialFab.classList.add('hidden');
+            }
+        }, 30000);
+
+        socialSubmitBtn.addEventListener('click', async () => {
+            const url = socialUrlInput.value.trim();
+            if (!url) return;
+
+            socialSubmitBtn.disabled = true;
+            socialSubmitBtn.textContent = '...';
+            socialStatus.className = 'social-status';
+            socialStatus.textContent = '';
+
+            try {
+                const res = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url }),
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                    socialStatus.className = 'social-status success';
+                    socialStatus.textContent = '🎉 Your post has been featured! Refresh to see it.';
+                    socialUrlInput.value = '';
+                    loadSocialPosts();
+                } else {
+                    socialStatus.className = 'social-status error';
+                    socialStatus.textContent = data.error || 'Something went wrong.';
+                }
+            } catch (err) {
+                socialStatus.className = 'social-status error';
+                socialStatus.textContent = 'Network error. Please try again.';
+            }
+
+            socialSubmitBtn.disabled = false;
+            socialSubmitBtn.textContent = 'Submit';
+        });
+
+        // Marquee: Load and render social posts
+        function proxyImage(url, platform) {
+            if (!url) return '';
+            // Data URIs are already embedded — use directly
+            if (url.startsWith('data:')) return url;
+            // External Facebook/Threads images need proxying due to hotlink protection
+            if (platform === 'facebook' || platform === 'threads') {
+                return '/api/proxy-image?url=' + encodeURIComponent(url);
+            }
+            return url;
+        }
+
+        function createPostCard(post) {
+            const caption = post.caption.length > 150
+                ? post.caption.slice(0, 150) + '...'
+                : post.caption;
+
+            const platformIcons = {
+                linkedin: '💼',
+                facebook: '📘',
+                threads: '🧵',
+            };
+
+            const avatarUrl = proxyImage(post.authorAvatar, post.platform);
+            const imageUrl = proxyImage(post.postImage, post.platform);
+
+            let html = `<a href="${post.postUrl}" target="_blank" class="marquee-card">
+                <div class="marquee-author">`;
+
+            if (avatarUrl) {
+                html += `<img src="${avatarUrl}" alt="${post.authorName}" class="marquee-avatar" onerror="this.outerHTML='<div class=\\'marquee-avatar\\' style=\\'display:flex;align-items:center;justify-content:center;font-size:1.2rem;\\'>${platformIcons[post.platform] || '📝'}</div>'">`;
+            } else {
+                html += `<div class="marquee-avatar" style="display:flex;align-items:center;justify-content:center;font-size:1.2rem;">${platformIcons[post.platform] || '📝'}</div>`;
+            }
+
+            html += `<div class="marquee-author-info">
+                        <div class="marquee-author-name">${post.authorName || 'Anonymous'}</div>
+                        <div class="marquee-platform">${platformIcons[post.platform] || ''} ${post.platform}</div>
+                    </div>
+                </div>
+                <div class="marquee-caption">${caption}</div>`;
+
+            if (imageUrl) {
+                html += `<img src="${imageUrl}" alt="" class="marquee-image" loading="lazy" onerror="this.style.display='none'">`;
+            }
+
+            html += `</a>`;
+            return html;
+        }
+
+        async function loadSocialPosts() {
+            try {
+                const res = await fetch('/api/posts');
+                const data = await res.json();
+
+                if (!data.posts || data.posts.length === 0) {
+                    document.getElementById('social-wall').style.display = 'none';
+                    return;
+                }
+
+                document.getElementById('social-wall').style.display = '';
+
+                // Repeat posts to fill the marquee
+                let allPosts = data.posts;
+                while (allPosts.length < 8) {
+                    allPosts = allPosts.concat(data.posts);
+                }
+
+                const row1 = document.getElementById('marquee-row-1');
+                const row2 = document.getElementById('marquee-row-2');
+
+                // Split posts into two rows
+                const mid = Math.ceil(allPosts.length / 2);
+                const posts1 = allPosts.slice(0, mid);
+                const posts2 = allPosts.slice(mid);
+
+                // Duplicate for seamless loop
+                const cards1 = posts1.map(createPostCard).join('');
+                const cards2 = posts2.length > 0
+                    ? posts2.map(createPostCard).join('')
+                    : posts1.map(createPostCard).join('');
+
+                row1.innerHTML = cards1 + cards1;
+                row2.innerHTML = cards2 + cards2;
+            } catch (err) {
+                // Silently fail — marquee just won't show
+            }
+        }
+
+        // Load posts on page load
+        loadSocialPosts();
     </script>
 </body>
 </html>
