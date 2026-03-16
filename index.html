@@ -4412,6 +4412,9 @@
                     return;
                 }
 
+                // Sort newest first
+                data.posts.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+
                 document.getElementById('social-wall').style.display = '';
 
                 // Repeat posts to fill the marquee
