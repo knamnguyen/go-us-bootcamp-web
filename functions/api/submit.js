@@ -257,7 +257,13 @@ async function fetchImageAsDataUri(url) {
       if (!contentType.startsWith('image/')) continue;
       const buffer = await resp.arrayBuffer();
       if (buffer.byteLength > 500000) return '';
-      const base64 = btoa(String.fromCharCode(...new Uint8Array(buffer)));
+      // Convert to base64 in chunks to avoid stack overflow with spread operator
+      const bytes = new Uint8Array(buffer);
+      let binary = '';
+      for (let i = 0; i < bytes.length; i++) {
+        binary += String.fromCharCode(bytes[i]);
+      }
+      const base64 = btoa(binary);
       return `data:${contentType};base64,${base64}`;
     } catch {
       continue;
@@ -357,7 +363,7 @@ export async function onRequestPost(context) {
     if (!authorAvatar) {
       return new Response(
         JSON.stringify({
-          error: 'Could not fetch the author avatar from this post. Please try a direct post (not a shared/reposted one).',
+          error: 'Could not fetch the author avatar from this post. Please try again or use a different post.',
         }),
         { status: 400, headers }
       );
