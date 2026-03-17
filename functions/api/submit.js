@@ -338,8 +338,9 @@ export async function onRequestPost(context) {
         break;
     }
 
-    // Check for keywords in caption
-    if (!containsKeyword(data.caption)) {
+    // Check for keywords in caption, post URL, and submitted URL
+    const searchText = [data.caption, data.postUrl, url].join(' ');
+    if (!containsKeyword(searchText)) {
       return new Response(
         JSON.stringify({
           error:
@@ -352,6 +353,15 @@ export async function onRequestPost(context) {
     // Download avatar and post image as base64 data URIs so they always display
     const authorAvatar = await fetchImageAsDataUri(data.authorAvatar);
     const postImage = await fetchImageAsDataUri(data.postImage);
+
+    if (!authorAvatar) {
+      return new Response(
+        JSON.stringify({
+          error: 'Could not fetch the author avatar from this post. Please try a direct post (not a shared/reposted one).',
+        }),
+        { status: 400, headers }
+      );
+    }
 
     // Store the post
     const post = {
