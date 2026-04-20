@@ -3,4 +3,4 @@ compatibility_date = "2024-01-01"
 
 [[kv_namespaces]]
 binding = "SOCIAL_POSTS"
-id = "b7dd3f93f32d493cb29f451605a7ce06"
+id = "your-kv-namespace-id-here"
